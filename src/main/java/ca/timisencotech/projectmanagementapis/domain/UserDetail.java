@@ -24,7 +24,7 @@ public class UserDetail implements Serializable{
 	private String lastName;
 	private String firstName;
 	private String phoneNo;	
-	private String phoneCode;
+	private String countryCode;
 	private String address;
 	private String gender;
 	
@@ -122,16 +122,7 @@ public class UserDetail implements Serializable{
 	}
 	
 	
-	public String getCountryPhoneCode()
-	{
-		return phoneCode;
-	}
 	
-	
-	public void setCountryPhoneCode(String phoneCode)
-	{
-		this.phoneCode =phoneCode;
-	}
 	
 	
 
@@ -149,7 +140,7 @@ public class UserDetail implements Serializable{
 	@Override
 	public String toString()
 	{
-		return "{email:"+email+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName+ ", phoneCode:"+phoneCode+", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
+		return "{email:"+email+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName+ ", countryCode:"+countryCode+", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
 	}
 	public static class UserDetailsId implements Serializable {
 	    /**

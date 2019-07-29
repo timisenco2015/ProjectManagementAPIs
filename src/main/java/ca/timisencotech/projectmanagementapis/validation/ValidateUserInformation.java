@@ -55,7 +55,7 @@ public class ValidateUserInformation  implements Validator{
 			                  }
 			                  if(!invalid)
 				                {
-				                	if(userDetail.getFirstName().length()<10 || userDetail.getFirstName().length()>30)
+				                	if(userDetail.getFirstName().length()<2 || userDetail.getFirstName().length()>30)
 				                	{
 				                		 errors.rejectValue("firstName", "field length must be between 10 and 30");
 				   	                  
@@ -84,18 +84,14 @@ public class ValidateUserInformation  implements Validator{
 			                  }
 			                  if(!invalid)
 				                {
-				                	if(userDetail.getMiddleName().length()<10 || userDetail.getMiddleName().length()>30)
+				                	if(userDetail.getMiddleName().length()<1 || userDetail.getMiddleName().length()>30)
 				                	{
 				                		 errors.rejectValue("middleName", "field length must be between 10 and 30");
 				   	                  
 				                	}
 				                }   
 		       }
-			   else
-			   {
-				   errors.rejectValue("middleName", "field required");
-			   }
-
+			  
 			
 			 
 			 // starting from line 101 to line 127 checks for valid lastName 
@@ -114,7 +110,7 @@ public class ValidateUserInformation  implements Validator{
 			                  }
 			                  if(!invalid)
 				                {
-				                	if(userDetail.getLastName().length()<10 || userDetail.getLastName().length()>30)
+				                	if(userDetail.getLastName().length()<2 || userDetail.getLastName().length()>30)
 				                	{
 				                		 errors.rejectValue("lastName", "field length must be between 10 and 30");
 				   	                  
@@ -147,7 +143,7 @@ public class ValidateUserInformation  implements Validator{
 		           }
 				 if(!invalid)
 	                {
-	                	if(userDetail.getUserAddress().length()<10 || userDetail.getUserAddress().length()>80)
+	                	if(userDetail.getUserAddress().length()<10 || userDetail.getUserAddress().length()>100)
 	                	{
 	                		 errors.rejectValue("userAddress", "field length must be between 10 and 80");
 	   	                  
@@ -180,7 +176,7 @@ public class ValidateUserInformation  implements Validator{
 			 
 			// starting from line 181 to line 197 checks for valid phone country code 
 				
-			 if(userDetail.getCountryPhoneCode()!=null&& userDetail.getCountryPhoneCode().length()>0 && !Character.isWhitespace(userDetail.getCountryPhoneCode().charAt(0)))
+		/*	 if(userDetail.getCountryPhoneCode()!=null&& userDetail.getCountryPhoneCode().length()>0 && !Character.isWhitespace(userDetail.getCountryPhoneCode().charAt(0)))
 		     {
 				String countryPhoneCodeRegex = "/^(\\+?\\d{1,3}|\\d{1,4})$/";
 			
@@ -195,7 +191,7 @@ public class ValidateUserInformation  implements Validator{
 				 errors.rejectValue("phoneCode", "field required");
 		     } 
 			 
-			
+			*/
 			 
 			 
 			 

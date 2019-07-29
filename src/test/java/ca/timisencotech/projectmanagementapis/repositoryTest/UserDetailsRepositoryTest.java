@@ -33,7 +33,7 @@ public class UserDetailsRepositoryTest {
 				newUserLoginDetails.setUserEmail("userEmail@gmail.com");
 			  
 			  UserDetails userDetails = new UserDetails();
-			  userDetails.setCountryPhoneCode("+1");
+			 // userDetails.setCountryPhoneCode("+1");
 			  userDetails.setFirstName("Ayobami");
 			  userDetails.setLastName("Idowu");
 			  userDetails.setMiddleName("O");

@@ -11,7 +11,7 @@ import ca.timisencotech.projectmanagementapis.domain.UserLoginDetail;
 import ca.timisencotech.projectmanagementapis.exception.ValidationError;
 import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
-import ca.timisencotech.projectmanagementapis.validation.ValidateUserInformation;
+import ca.timisencotech.projectmanagementapis.validation.ValidateUserLoginDetails;
 
 @Repository
 public class UserLoginDetailsServiceImp implements UserLoginDetailsService {
@@ -24,8 +24,10 @@ public class UserLoginDetailsServiceImp implements UserLoginDetailsService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> Container<T> addUserLoginDetails(UserLoginDetail userLoginDetail,BindingResult result) {
+		
+		
 		Container<T> genericObject=null;
-		new ValidateUserInformation().validate(userLoginDetail, result);
+		new ValidateUserLoginDetails().validate(userLoginDetail, result);
 		ValidationError  validationError = new ValidationError()	;
 		if (result.hasErrors())
 		{

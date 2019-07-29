@@ -26,7 +26,7 @@ public class UserDetailsServiceImpTest<T>
 	public void addServiceTest() 
 	 {
 		  UserDetail userDetail = new UserDetail();
-		  userDetail.setCountryPhoneCode("+1");
+		 // userDetail.setCountryPhoneCode("+1");
 		  userDetail.setFirstName("Ayobami");
 		  userDetail.setLastName("Idowu");
 		  userDetail.setMiddleName("O");
@@ -43,7 +43,7 @@ public class UserDetailsServiceImpTest<T>
 			{
 			 
 				UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-				assertEquals("+1", resultUserDetail.getCountryPhoneCode());
+			//	assertEquals("+1", resultUserDetail.getCountryPhoneCode());
 				assertEquals("Ayobami",resultUserDetail.getFirstName());
 				assertEquals("Idowu", resultUserDetail.getLastName());
 				assertEquals("O", resultUserDetail.getMiddleName());
@@ -79,7 +79,7 @@ public class UserDetailsServiceImpTest<T>
 			
 			 UserDetail userDetail = new UserDetail();
 			 
-			 userDetail.setCountryPhoneCode("+1");
+			// userDetail.setCountryPhoneCode("+1");
 			 userDetail.setFirstName("Ayobami");
 			 userDetail.setMiddleName("O");
 			 userDetail.setLastName("Idowu");
@@ -95,7 +95,7 @@ public class UserDetailsServiceImpTest<T>
 				{
 				 
 					UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-				 assertEquals("+1", resultUserDetail.getCountryPhoneCode());
+				// assertEquals("+1", resultUserDetail.getCountryPhoneCode());
 				 assertEquals("Ayobami", resultUserDetail.getFirstName());
 				 assertEquals("O", resultUserDetail.getMiddleName());
 				 assertEquals("Idowu", resultUserDetail.getLastName());
@@ -118,7 +118,7 @@ public class UserDetailsServiceImpTest<T>
 			
 			 UserDetail userDetail = new UserDetail();
 			 
-			 userDetail.setCountryPhoneCode("+1");
+			// userDetail.setCountryPhoneCode("+1");
 			 userDetail.setFirstName("Ayobamii");
 			 userDetail.setMiddleName("O");
 			 userDetail.setLastName("Idowu");
@@ -134,7 +134,7 @@ public class UserDetailsServiceImpTest<T>
 				{
 				 
 					UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-				 assertEquals("+1", resultUserDetail.getCountryPhoneCode());
+				// assertEquals("+1", resultUserDetail.getCountryPhoneCode());
 				 assertEquals("Ayobamii", resultUserDetail.getFirstName());
 				 assertEquals("O", resultUserDetail.getMiddleName());
 				 assertEquals("Idowu", resultUserDetail.getLastName());

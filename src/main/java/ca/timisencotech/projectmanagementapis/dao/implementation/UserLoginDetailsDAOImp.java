@@ -39,19 +39,17 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 		newUserLoginDetails.setLoginTime(timeStamp);
 		newUserLoginDetails.setUserEmail(userLoginDetail.getUserEmail());
 		
-		
-			UserLoginDetails responseUserDetails = null;
 			 try {
 				 
-				 responseUserDetails = userLoginDetailsRepository.save(newUserLoginDetails);
-				 UserLoginDetails domainUserLoginDetails = new UserLoginDetails();
-				 domainUserLoginDetails.setLoginTime(responseUserDetails.getLoginTime());
-				 domainUserLoginDetails.setPassword(responseUserDetails.getPassword());
-				 domainUserLoginDetails.setUserDetails(responseUserDetails.getUserDetails());
+				 UserLoginDetails responseUserDetails = userLoginDetailsRepository.save(newUserLoginDetails);
+				 UserLoginDetail domainUserLoginDetail = new UserLoginDetail();
+				 domainUserLoginDetail.setLoginTime(responseUserDetails.getLoginTime());
+				 domainUserLoginDetail.setPassword(responseUserDetails.getPassword());
+				 domainUserLoginDetail.setUserEmail(responseUserDetails.getUserEmail());
 				 
-				 Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point new user has successful saved to the database. Return userdetails from repo is"+domainUserLoginDetails);
+				 Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point new user has successful saved to the database. Return userdetails from repo is"+domainUserLoginDetail);
 				 
-				 genericObject = (Container<T>) new Container<UserLoginDetails>(domainUserLoginDetails,"Class Object");
+				 genericObject = (Container<T>) new Container<UserLoginDetail>(domainUserLoginDetail,"Class Object");
 			    } 
 			 
 		

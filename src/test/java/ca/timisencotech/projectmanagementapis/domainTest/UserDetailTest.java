@@ -22,9 +22,9 @@ public class UserDetailTest
 		
 		
 		//check setter and getter for phone code
-		userDetail.setCountryPhoneCode("+1");
+		//userDetail.setCountryPhoneCode("+1");
 		String testResult1 = "+1";
-		assertEquals(testResult1, userDetail.getCountryPhoneCode());
+		//assertEquals(testResult1, userDetail.getCountryPhoneCode());
 		
 		//check setter and getter for first name
 		userDetail.setFirstName("Ayobami");
@@ -63,7 +63,7 @@ public class UserDetailTest
 		
 	
 
-		assertEquals("+1", userDetail.getCountryPhoneCode());
+		//assertEquals("+1", userDetail.getCountryPhoneCode());
 		assertEquals("Ayobami",userDetail.getFirstName());
 		assertEquals("Idowu", userDetail.getLastName());
 		assertEquals("O", userDetail.getMiddleName());

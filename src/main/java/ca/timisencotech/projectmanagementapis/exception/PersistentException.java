@@ -224,6 +224,7 @@ import org.springframework.dao.CleanupFailureDataAccessException;
 			{
 				if(dataAccessException.getCause().getClass().getSimpleName().equalsIgnoreCase("ConstraintViolationException"))
 				{
+					System.out.println("error "+dataAccessException);
 					return new ApiError("Persistence Error", "Constraint error");
 				}
 				else

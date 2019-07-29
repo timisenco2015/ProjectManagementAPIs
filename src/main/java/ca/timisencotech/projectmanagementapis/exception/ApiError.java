@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ApiError {
 	
 	 private String status;
-	   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	   private LocalDateTime timestamp;
 	   private String message;
 	  
@@ -38,13 +37,13 @@ public class ApiError {
 		   return timestamp;
 	   }
 	   
+	 @Override
+	 public String toString()
+	 {
+	
+		return "status: "+status+", message:"+message+", timestamp:"+timestamp;		 
+	}
 	   
-	   
-	   @Override
-	   public String toString()
-	   {
-		   return "Time::- "+timestamp+" \n"+"Status::- "+status+" \n"+"Message::- "+message;
-	   }
-
+	
 	 
 }

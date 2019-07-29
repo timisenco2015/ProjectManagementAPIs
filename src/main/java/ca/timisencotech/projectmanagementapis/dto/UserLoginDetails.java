@@ -49,7 +49,7 @@ public class UserLoginDetails implements Serializable{
 	@Column(name = "logintime", nullable = false,length=100)
 	private Timestamp loginTime;
 	
-	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
+	@OneToOne(mappedBy = "userLoginDetails", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
 	private UserDetails userDetails;
 					
 	

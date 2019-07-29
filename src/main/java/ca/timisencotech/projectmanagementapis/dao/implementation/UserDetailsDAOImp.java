@@ -32,7 +32,7 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 		UserLoginDetails findUserLoginDetails = userLoginDetailsRepository.findByEmail(userDetail.getUserEmail());
 		if(findUserLoginDetails==null)
 		{
-			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this state or province Id: "+userDetail.getUserEmail()+" in our database"),"Error Object");
+			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user email: "+userDetail.getUserEmail()+" in our database"),"Error Object");
 			Application.getLogger().info("addCities method in Cities DAO Implementation. At this point unable to find foreign key statePronvinceId in the database");
 			
 		}
@@ -44,7 +44,7 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 		newUserDetails.setLastName(userDetail.getLastName());
 		newUserDetails.setUserGender(userDetail.getUserGender());
 		newUserDetails.setMiddleName(userDetail.getMiddleName());
-		newUserDetails.setCountryPhoneCode(userDetail.getCountryPhoneCode());
+		//newUserDetails.setCountryPhoneCode("234");
 		newUserDetails.setPhoneNo(userDetail.getPhoneNo());
 		newUserDetails.setUserAddress(userDetail.getUserAddress());
 		
@@ -53,7 +53,7 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 				 
 				 responseUserDetails = userDetailsRepository.save(newUserDetails);
 				 UserDetail domainUserDetail = new UserDetail();
-				 domainUserDetail.setCountryPhoneCode(responseUserDetails.getCountryPhoneCode());
+				 //domainUserDetail.setCountryPhoneCode("234");
 				 domainUserDetail.setFirstName(responseUserDetails.getFirstName());
 				 domainUserDetail.setLastName(responseUserDetails.getLastName());
 				 domainUserDetail.setMiddleName(responseUserDetails.getMiddleName());

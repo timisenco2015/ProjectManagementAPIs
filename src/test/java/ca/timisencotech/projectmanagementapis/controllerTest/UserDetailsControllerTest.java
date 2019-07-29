@@ -45,7 +45,7 @@ public class UserDetailsControllerTest {
 		public void testAddNewUser() throws Exception
 		{
 			UserDetail  userDetail = new  UserDetail();
-			 userDetail.setCountryPhoneCode("+1");
+		//	 userDetail.setCountryPhoneCode("+1");
 			 userDetail.setFirstName("Ayobami");
 			 userDetail.setMiddleName("O");
 			 userDetail.setLastName("Idowu");

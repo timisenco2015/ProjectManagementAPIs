@@ -45,8 +45,6 @@ public class UserDetails implements Serializable{
 	@Column(name = "phoneno", nullable = false,length=20,unique = true)
 	private String phoneNo;
 	
-	@Column(name = "countryphonecode", nullable = false,length=8)
-	private String phoneCode;
 	
 	
 	@Column(name = "address", nullable = false,length=200)
@@ -60,7 +58,6 @@ public class UserDetails implements Serializable{
 	
 	
 	@Id
-	@Column(name = "email",unique = true, nullable = false,length=80)
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "email",referencedColumnName="email" , nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -159,19 +156,6 @@ public class UserDetails implements Serializable{
 	}
 	
 	
-	@Bean
-	public String getCountryPhoneCode()
-	{
-		return phoneCode;
-	}
-	
-	
-	@Bean
-	public void setCountryPhoneCode(String phoneCode)
-	{
-		this.phoneCode =phoneCode;
-	}
-	
 	
 	@Bean
 	public String getUserAddress()
@@ -188,7 +172,7 @@ public class UserDetails implements Serializable{
 	@Override
 	public String toString()
 	{
-		return "{email:"+userLoginDetails.getUserEmail()+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName+ ", phoneCode:"+phoneCode+", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
+		return "{email:"+userLoginDetails.getUserEmail()+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName +", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
 	}
 	
 	

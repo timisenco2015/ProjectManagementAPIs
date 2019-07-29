@@ -39,9 +39,9 @@ public class UserLoginDetailsIntegrationTest {
 			Timestamp timeStamp = new Timestamp(date.getTime());
 			
 			UserLoginDetail userLoginDetail = new UserLoginDetail();
-			userLoginDetail.setPassword("Test@2018");
+			userLoginDetail.setPassword("Test@201009");
 			userLoginDetail.setLoginTime(timeStamp);
-			userLoginDetail.setUserEmail("userEmail@gmail.com");
+			userLoginDetail.setUserEmail("userCEmail@gmail.com");
 		  
 		 
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
@@ -50,7 +50,7 @@ public class UserLoginDetailsIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<UserLoginDetail> entity = new HttpEntity<>(userLoginDetail, headers);
-	       
+	     //  System.out.println("--==>"+entity.getBody());
 	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addUserLoginDetails", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        System.out.println(response.getBody());

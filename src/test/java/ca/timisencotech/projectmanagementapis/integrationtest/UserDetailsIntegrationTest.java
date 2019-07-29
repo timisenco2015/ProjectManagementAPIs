@@ -33,16 +33,16 @@ public class UserDetailsIntegrationTest {
 		 {
 			
 		 UserDetail userDetail = new UserDetail();
-		  userDetail.setCountryPhoneCode("+234");
+		 
 		  userDetail.setFirstName("Bola");
 		  userDetail.setLastName("Ige");
 		  userDetail.setMiddleName("A");
 		  userDetail.setPhoneNo("2048623746");
-		  userDetail.setUserAddress("52 George");
+		  userDetail.setUserAddress("52 George Street");
 		  userDetail.setUserEmail("dayo@gmail.com");
 		  userDetail.setUserGender("FeMale");
-		  
-		 
+		//  userDetail.setCountryPhoneCode("234");
+		 System.out.println("--> "+userDetail);
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
 		 mediaTypeList.add(MediaType.APPLICATION_JSON);
 		 HttpHeaders headers = new HttpHeaders();
