@@ -82,6 +82,25 @@ public class UserLoginDetailsControllerTest {
 		
 		}
 		
+		
+		@Test
+		public void testUpdateUserPassword() throws Exception
+		{
+			UserLoginDetail  userLoginDetail = new  UserLoginDetail();
+			userLoginDetail.setUserEmail("userEmail@gmail.com");	
+			userLoginDetail.setPassword("Test@2026");
+	
+			mockMvc.perform( MockMvcRequestBuilders
+				      .post("/projectmanagement/changePassword")
+				      .content(asJsonString(userLoginDetail))
+				      .contentType(MediaType.APPLICATION_JSON)
+				      .accept(MediaType.APPLICATION_JSON))
+				      .andExpect(status().isOk());
+				     
+		
+		}
+		
+		
 		public static String asJsonString(final Object obj) {
 		    try {
 		        return new ObjectMapper().writeValueAsString(obj);

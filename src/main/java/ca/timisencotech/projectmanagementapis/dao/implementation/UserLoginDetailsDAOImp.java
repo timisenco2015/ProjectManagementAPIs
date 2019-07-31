@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.UserLoginDetailsDAO;
@@ -88,7 +90,7 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 					 domainUserLoginDetail.setPassword(responseUserLoginDetails.getPassword());
 					 domainUserLoginDetail.setUserEmail(responseUserLoginDetails.getUserEmail());
 					 
-					 Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point new user has successful saved to the database. Return userdetails from repo is"+domainUserLoginDetail);
+					 Application.getLogger().info("confirmdUserLoginDetails method in UserDetails DAO Implementation. At this point user login details has successful been confirmed. Return userdetails from repo is"+domainUserLoginDetail);
 					 
 					 genericObject = (Container<T>) new Container<UserLoginDetail>(domainUserLoginDetail,"Class Object");
 				    
@@ -99,7 +101,7 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 			 	}
 		 }
 		 catch (DataAccessException dataAccessException) {
-			 Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point there is an error that has prevented saving new user to the database");
+			 Application.getLogger().info("confirmdUserLoginDetails method in UserDetails DAO Implementation. At this point there is an error that has prevented confirming user login details");
 			 
 			 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 	
@@ -108,6 +110,39 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 		 return genericObject;
 	}
 		
+	@SuppressWarnings("unchecked")
+	@Transactional
+	@Override
+	public <T> Container<T> updateUserPassword(UserLoginDetail userLoginDetail) {
+	
+		Container<T> genericObject=null;
+		int responseUserLoginDetails = userLoginDetailsRepository.updatePassword(userLoginDetail.getPassword(),userLoginDetail.getUserEmail());
+			
+		 try { 
+				
 
+		
+			 	if(responseUserLoginDetails>0)
+			 	{
+			 		
+					 Application.getLogger().info("updateUserPassword method in UserDetails DAO Implementation. At this point user password has successfully been changed in the database. Return userdetails from repo is"+userLoginDetail);
+					 genericObject = (Container<T>) new Container<UserLoginDetail>(userLoginDetail,"Class Object");
+				    
+			 	}
+			 	else
+			 	{
+			 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Unable to update password"),"Update Object");
+			 	}
+			 	
+		 }
+		 catch (DataAccessException dataAccessException) {
+			 Application.getLogger().info("updateUserPassword method in UserDetails DAO Implementation. At this point there is an error that has prevented changing user password in the database");
+			 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
+	
+		 
+		 }
+		
+		 return genericObject;
+	}
 
 }

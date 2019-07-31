@@ -76,5 +76,30 @@ public class UserLoginDetailsServiceImp implements UserLoginDetailsService {
 		}
 		return genericObject;	
 	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> Container<T> updateUserPassword(UserLoginDetail userLoginDetail,BindingResult result)
+	{Container<T> genericObject=null;
+	new ValidateUserLoginDetails().validate(userLoginDetail, result);
+	ValidationError  validationError = new ValidationError()	;
+	if (result.hasErrors())
+	{
 		
+		validationError.setErrorStatus("Failed");
+		validationError.setMessage("Failed validation test for all or most of the fields");
+		validationError.setAllErrorObject(result.getAllErrors());
+
+	 genericObject = (Container<T>) new  Container<ValidationError> (validationError,"Error Object");
+	 Application.getLogger().info("New user information validation error. Error info: "+validationError.getMessageObject());
+
+	}
+	
+	else
+	{
+		Application.getLogger().info("updateUserPassword method in UserLoginDetails Service Implementation. User password updated");
+	    
+		genericObject=userLoginDetailsDAOImp.updateUserPassword(userLoginDetail); 
+	}
+	return genericObject;	
+}
 }

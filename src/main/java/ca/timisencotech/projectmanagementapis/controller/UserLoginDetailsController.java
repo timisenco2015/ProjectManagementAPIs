@@ -26,7 +26,7 @@ public class UserLoginDetailsController
 	@PostMapping("/addUserLoginDetails")
 	@ResponseBody
 	public <T> Container<T> addNewUserLoginDetails(@Validated @RequestBody UserLoginDetail userLoginDetail,BindingResult result) { 
-		Application.getLogger().info("User called add user details api. parameters passed is: "+userLoginDetail);
+		Application.getLogger().info("User called add user details (/addUserLoginDetails) api. parameters passed is: "+userLoginDetail);
 	    return  userLoginDetailsService.addUserLoginDetails(userLoginDetail, result);
 	    		
 	}
@@ -35,8 +35,17 @@ public class UserLoginDetailsController
 	@PostMapping("/confirmLoginDetails")
 	@ResponseBody
 	public <T> Container<T> confirmdUserLoginDetail(@Validated @RequestBody UserLoginDetail userLoginDetail,BindingResult result) { 
-		Application.getLogger().info("User called add user details api. parameters passed is: "+userLoginDetail);
+		Application.getLogger().info("User called confirmed user details (/confirmLoginDetails) api. parameters passed is: "+userLoginDetail);
 	    return  userLoginDetailsService.confirmdUserLoginDetails(userLoginDetail, result);
+	    			
+	}
+	
+	
+	@PostMapping("/changePassword")
+	@ResponseBody
+	public <T> Container<T> updateUserPassword(@Validated @RequestBody UserLoginDetail userLoginDetail,BindingResult result) { 
+		Application.getLogger().info("User called update user password (/changePassword) api. parameters passed is: "+userLoginDetail);
+	    return  userLoginDetailsService.updateUserPassword(userLoginDetail, result);
 	    			
 	}
 	

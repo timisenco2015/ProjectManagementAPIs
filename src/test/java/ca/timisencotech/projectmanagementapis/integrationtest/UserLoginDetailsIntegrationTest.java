@@ -58,7 +58,7 @@ public class UserLoginDetailsIntegrationTest {
 	     //   assertEquals(expectedOutput, response.getBody());
 	       }
 	 
-	/*
+	
 	 @Test
 	public void confirmUserLoginDetailsTest() 
 		 {
@@ -83,5 +83,5 @@ public class UserLoginDetailsIntegrationTest {
 	     //   assertEquals(expectedOutput, response.getBody());
 	       }
 	 
-*/
+
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.implementation.UserDetailsDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.UserDetail;
@@ -13,8 +12,7 @@ import ca.timisencotech.projectmanagementapis.exception.ValidationError;
 import ca.timisencotech.projectmanagementapis.service.UserDetailsService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateUserInformation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 
