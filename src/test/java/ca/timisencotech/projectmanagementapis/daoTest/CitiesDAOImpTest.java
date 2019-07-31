@@ -26,7 +26,7 @@ public class CitiesDAOImpTest<T>
 	 {
 		  City city = new City();
 		  city.setCityId(35);
-		  city.setCityName("Iresi");
+		  city.setCityName("Ire");
 		  city.setStateId(23);	
 
 			 Container<T> cityContainer = citiesDAOImp.addCities(city);
@@ -50,7 +50,7 @@ public class CitiesDAOImpTest<T>
 		 
 	 }
 	
-	
+/*
 	@Test
 	public void addServiceConstraintErrorTest() 
 	 {
@@ -113,5 +113,5 @@ public class CitiesDAOImpTest<T>
 		}
 	 }
 	
-	
+	*/
 }

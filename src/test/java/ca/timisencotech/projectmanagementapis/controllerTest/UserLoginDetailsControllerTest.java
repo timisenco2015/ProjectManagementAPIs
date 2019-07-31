@@ -45,7 +45,7 @@ public class UserLoginDetailsControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddNewUserLoginDetails() throws Exception
 		{
 			Date date= new Date();
 			Timestamp timeStamp = new Timestamp(date.getTime());
@@ -56,6 +56,24 @@ public class UserLoginDetailsControllerTest {
 			
 			mockMvc.perform( MockMvcRequestBuilders
 				      .post("/projectmanagement/addUserLoginDetails")
+				      .content(asJsonString(userLoginDetail))
+				      .contentType(MediaType.APPLICATION_JSON)
+				      .accept(MediaType.APPLICATION_JSON))
+				      .andExpect(status().isOk());
+				     
+		
+		}
+		
+		
+		@Test
+		public void testConfirmUserLoginDetails() throws Exception
+		{
+			UserLoginDetail  userLoginDetail = new  UserLoginDetail();
+			userLoginDetail.setUserEmail("userEmail@gmail.com");	
+			userLoginDetail.setPassword("Test@2018");
+	
+			mockMvc.perform( MockMvcRequestBuilders
+				      .post("/projectmanagement/confirmLoginDetails")
 				      .content(asJsonString(userLoginDetail))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

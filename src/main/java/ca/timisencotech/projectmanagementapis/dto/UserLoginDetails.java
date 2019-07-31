@@ -9,17 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.context.annotation.Bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -29,17 +23,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UserLoginDetails implements Serializable{
 
 	
+	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8486341599378874546L;
+
 
 	/**
 	 * 
 	 */
 	
 	@Id
-	@Column(name = "email",unique = true, nullable = false,length=50)
+	@Column(name = "email", unique = true,nullable = false,length=60)
 	private String email;
 	
 	
@@ -49,7 +46,8 @@ public class UserLoginDetails implements Serializable{
 	@Column(name = "logintime", nullable = false,length=100)
 	private Timestamp loginTime;
 	
-	@OneToOne(mappedBy = "userLoginDetails", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
+	@OneToOne(mappedBy = "userLoginDetails", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
 	private UserDetails userDetails;
 					
 	

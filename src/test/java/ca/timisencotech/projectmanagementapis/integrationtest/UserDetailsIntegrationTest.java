@@ -39,10 +39,8 @@ public class UserDetailsIntegrationTest {
 		  userDetail.setMiddleName("A");
 		  userDetail.setPhoneNo("2048623746");
 		  userDetail.setUserAddress("52 George Street");
-		  userDetail.setUserEmail("dayo@gmail.com");
-		  userDetail.setUserGender("FeMale");
-		//  userDetail.setCountryPhoneCode("234");
-		 System.out.println("--> "+userDetail);
+		  userDetail.setUserEmail("userEmailA@gmail.com");
+		  userDetail.setUserGender("Male");
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
 		 mediaTypeList.add(MediaType.APPLICATION_JSON);
 		 HttpHeaders headers = new HttpHeaders();
@@ -52,9 +50,8 @@ public class UserDetailsIntegrationTest {
 	       
 	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addUser", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
-	        System.out.println(response.getBody());
-	        assertEquals(HttpStatus.OK, response.getStatusCode());
-	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
+	     assertEquals(HttpStatus.OK, response.getStatusCode());
+	        //assertEquals(MediaType.APPLICATION_JSON, resp   System.out.println("-->"+response.getBody());
 	     //   assertEquals(expectedOutput, response.getBody());
 	       } 
 	 

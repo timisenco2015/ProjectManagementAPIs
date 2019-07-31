@@ -50,173 +50,213 @@ import org.springframework.dao.CleanupFailureDataAccessException;
 
 	public ApiError	handleDataAccessException(DataAccessException dataAccessException)  {
 			if (dataAccessException instanceof CannotAcquireLockException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			else if (dataAccessException instanceof RecoverableDataAccessException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof ScriptParseException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof ScriptStatementFailedException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof UncategorizedScriptException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof HibernateOptimisticLockingFailureException) {
+				
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof CannotAcquireLockException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CannotSerializeTransactionException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CleanupFailureDataAccessException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CannotAcquireLockException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof DeadlockLoserDataAccessException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof JpaOptimisticLockingFailureException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof QueryTimeoutException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof TransientDataAccessResourceException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof DuplicateKeyException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof IncorrectResultSetColumnCountException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof EmptyResultDataAccessException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof LobRetrievalFailureException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof HibernateObjectRetrievalFailureException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof JpaObjectRetrievalFailureException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof DataSourceLookupFailureException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof InvalidDataAccessApiUsageException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof BadSqlGrammarException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			else if (dataAccessException instanceof CciOperationNotSupportedException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof HibernateQueryException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof IncorrectUpdateSemanticsDataAccessException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof InvalidResultSetAccessException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof RecordTypeNotSupportedException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof TypeMismatchDataAccessException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CannotCreateRecordException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CannotGetCciConnectionException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof CannotGetJdbcConnectionException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof PermissionDeniedDataAccessException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof HibernateJdbcException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof HibernateSystemException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof JpaSystemException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof SQLWarningException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
 			
 			else if (dataAccessException instanceof UncategorizedSQLException) {
+				
 				return new ApiError("Persistence Error", "");
 			}
 			
 			else if (dataAccessException instanceof SqlXmlFeatureNotImplementedException) {
+			
 				return new ApiError("Persistence Error", "");
 			}
 			
@@ -224,7 +264,7 @@ import org.springframework.dao.CleanupFailureDataAccessException;
 			{
 				if(dataAccessException.getCause().getClass().getSimpleName().equalsIgnoreCase("ConstraintViolationException"))
 				{
-					System.out.println("error "+dataAccessException);
+					
 					return new ApiError("Persistence Error", "Constraint error");
 				}
 				else

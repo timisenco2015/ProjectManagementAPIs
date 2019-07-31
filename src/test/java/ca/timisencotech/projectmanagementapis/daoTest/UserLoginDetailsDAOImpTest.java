@@ -25,7 +25,7 @@ public class UserLoginDetailsDAOImpTest<T> {
 	 
  
 	 @Test
-		public void addServiceTest() 
+	 public void addServiceTest() 
 		 {
 		 Date date= new Date();
 			Timestamp timeStamp = new Timestamp(date.getTime());
@@ -36,7 +36,7 @@ public class UserLoginDetailsDAOImpTest<T> {
 			userLoginDetail.setUserEmail("userEmail@gmail.com");
 			userLoginDetail.setPassword("Test@2018");
 			
-
+			
 			 Container<T> userLoginDetailsContainer = userLoginDetailsDAOImp.addUserLoginDetails(userLoginDetail);
 			String typeOfObject = userLoginDetailsContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -51,19 +51,15 @@ public class UserLoginDetailsDAOImpTest<T> {
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
 				ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
-				assertEquals("Constraint error", apiError.getMessage());
+				assertEquals("Constraints error", apiError.getMessage());
 			}
 			
 			
 			
 		 }
 		
-
-
-		 
-
 	 @Test
-	 private void nullConstraintTest()
+	 public void nullAddServiceConstraintTest()
 	 {
 		
 			Date date= new Date();
@@ -93,6 +89,63 @@ public class UserLoginDetailsDAOImpTest<T> {
 			
 	 }
 	 
+	 @Test
+	 public void confirmUserLoginDetailsServiceTest() 
+		 {
 		 
+		 //Test for correct login details
+			UserLoginDetail userLoginDetail = new UserLoginDetail();
+			userLoginDetail.setUserEmail("userEmail@gmail.com");
+			userLoginDetail.setPassword("Test@2018");
+			
+
+			 Container<T> userLoginDetailsContainer = userLoginDetailsDAOImp.confirmdUserLoginDetails(userLoginDetail);
+			String typeOfObject = userLoginDetailsContainer.getObjectType();
+			if(typeOfObject.equalsIgnoreCase("Class Object"))
+			{
+			 
+				UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
+			 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
+			 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
+			// assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+			
+			}
+			else if (typeOfObject.equalsIgnoreCase("Error Object"))
+			{
+				ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+				assertEquals("Constraint error", apiError.getMessage());
+			}
+			
+			//Test for incorrect login details
+			UserLoginDetail incorrectUserLoginDetail = new UserLoginDetail();
+			incorrectUserLoginDetail.setUserEmail("userEmail@gmail.com");
+			incorrectUserLoginDetail.setPassword("Test@2018");
+			
+
+			  userLoginDetailsContainer = userLoginDetailsDAOImp.confirmdUserLoginDetails(incorrectUserLoginDetail);
+			 typeOfObject = userLoginDetailsContainer.getObjectType();
+			if(typeOfObject.equalsIgnoreCase("Class Object"))
+			{
+			 
+				UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
+			 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
+			 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
+			// assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+			
+			}
+			else if (typeOfObject.equalsIgnoreCase("Error Object"))
+			{
+				ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+				assertEquals("Constraint error", apiError.getMessage());
+			}
+			else if (typeOfObject.equalsIgnoreCase("Null Object"))
+			{
+				ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+				assertEquals("Repository returned null", apiError.getStatus());
+			
+			}
+			
+		 }
+	
 
 }

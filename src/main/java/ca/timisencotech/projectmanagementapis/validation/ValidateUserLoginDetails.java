@@ -59,9 +59,7 @@ public class ValidateUserLoginDetails implements Validator
 		    		 if(Character.isDigit(userLoginDetail.getPassword().charAt(i)))
 		    				 {
 		    			       digiCount+=1;
-		    			       System.out.println("--**-> "+userLoginDetail.getPassword().charAt(i));
-		    			       System.out.println("---> "+digiCount);
-		    				 }
+		    			   }
 		    		
 		    		 else if(Character.isLowerCase(userLoginDetail.getPassword().charAt(i)))
 		    		 {
@@ -93,8 +91,7 @@ public class ValidateUserLoginDetails implements Validator
 			}
 		    	 if(lowerCaseCount<=0 || upperCaseCount<=0 || specialCharCount<=0 ||digiCount<=0 || alphabetCount<=0 )
 	    		 {
-		    		 System.out.println(lowerCaseCount+" "+upperCaseCount+" "+specialCharCount+" "+digiCount+" "+alphabetCount);
-			    	 
+		    		
 	    			 errors.rejectValue("password", "Minimum password length must be 8 and maximum must be 15 \n"
 	    	   		+ "Password must have at least one uppercase and one lowercase \n"
 	    	   		+ "Password must have at least one special character e.g. @, &, #, !, e.t.c \n"

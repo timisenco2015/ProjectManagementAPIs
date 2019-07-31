@@ -29,7 +29,7 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 	@Override
 	public <T> Container<T> addNewUser(UserDetail userDetail) {
 		Container<T> genericObject=null; 
-		UserLoginDetails findUserLoginDetails = userLoginDetailsRepository.findByEmail(userDetail.getUserEmail());
+		UserLoginDetails findUserLoginDetails = userLoginDetailsRepository.findByEmail("userEmail@gmail.com");
 		if(findUserLoginDetails==null)
 		{
 			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user email: "+userDetail.getUserEmail()+" in our database"),"Error Object");
