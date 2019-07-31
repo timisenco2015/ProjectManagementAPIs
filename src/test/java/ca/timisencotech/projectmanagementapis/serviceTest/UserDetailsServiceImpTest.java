@@ -23,7 +23,7 @@ public class UserDetailsServiceImpTest<T>
 	
 
 	@Test
-	public void addServiceTest() 
+	public void addNewUserTest() 
 	 {
 		  UserDetail userDetail = new UserDetail();
 		 // userDetail.setCountryPhoneCode("+1");
@@ -62,7 +62,7 @@ public class UserDetailsServiceImpTest<T>
 		 
 	 }
 	 @Test
-		public void addServiceConstraintErrorTest() 
+		public void addNewUserServiceConstraintErrorTest() 
 		 {
 			
 		//checks for field(s) unique test

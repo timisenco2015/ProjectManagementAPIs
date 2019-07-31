@@ -35,6 +35,31 @@ public class UserLoginDetailsRepositoryTest {
 				userLoginDetailsRepository.save(userLoginDetails);
 			 assertNotNull(userLoginDetailsRepository.findByEmail("userEmail@gmail.com"));
 		  }
+		  
+		  @Test
+		  public void findByEmailTest() {
+			  
+				Date date= new Date();
+				Timestamp timeStamp = new Timestamp(date.getTime());
+				
+				UserLoginDetails userLoginDetails = new UserLoginDetails();
+				userLoginDetails.setPassword("Test@2018");
+				userLoginDetails.setLoginTime(timeStamp);
+			 assertNotNull(userLoginDetailsRepository.findByEmail("userEmail@gmail.com"));
+		  }
+		  
+		  
+		  @Test
+		  public void findByEmailAndPasswordTest() {
+			  
+				Date date= new Date();
+				Timestamp timeStamp = new Timestamp(date.getTime());
+				
+				UserLoginDetails userLoginDetails = new UserLoginDetails();
+				userLoginDetails.setPassword("Test@2018");
+				userLoginDetails.setLoginTime(timeStamp);
+			 assertNotNull(userLoginDetailsRepository.findByEmailAndPassword("userEmail@gmail.com","Test@2018"));
+		  }
 	
 	}
 

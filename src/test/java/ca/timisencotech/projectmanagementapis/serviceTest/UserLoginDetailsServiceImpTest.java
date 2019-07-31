@@ -26,7 +26,7 @@ public class UserLoginDetailsServiceImpTest<T>
 	
 
 	@Test
-	public void addServiceTest() 
+	public void addUserLoginDetailsTest() 
 	 {
 		  	Date date= new Date();
 			Timestamp timeStamp = new Timestamp(date.getTime());
@@ -93,6 +93,88 @@ public class UserLoginDetailsServiceImpTest<T>
 				
 				
 		 }
+	 	
+	 	
+	 	 @Test
+		 public void confirmUserLoginDetailsServiceTest() 
+			 {
+			 
+			 //Test for correct login details
+	 		 
+
+				Date date= new Date();
+				Timestamp timeStamp = new Timestamp(date.getTime());
+				
+				UserLoginDetail userLoginDetail = new UserLoginDetail();
+				userLoginDetail.setUserEmail("userEmail@gmail.com");
+				userLoginDetail.setPassword("Test@2018");
+				 DataBinder binder = new DataBinder(userLoginDetail);
+					
+
+				 Container<T> userLoginDetailsContainer = userLoginDetailsService.confirmdUserLoginDetails(userLoginDetail,binder.getBindingResult());
+				String typeOfObject = userLoginDetailsContainer.getObjectType();
+				
+				
+				if(typeOfObject.equalsIgnoreCase("Class Object"))
+				{
+				 
+					UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
+				 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
+				 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
+				assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+				
+				}
+				else if (typeOfObject.equalsIgnoreCase("Error Object"))
+				{
+					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+					assertEquals("Constraint error", apiError.getMessage());
+				}
+				else if (typeOfObject.equalsIgnoreCase("Null Object"))
+				{
+					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+					assertEquals("Repository returned null", apiError.getStatus());
+				
+				}
+				
+			 }
+		 
+		 
+		 @Test
+		 public void updateUserPasswordServiceTest() 
+			 {
+			 
+			 //Test for update user password
+				UserLoginDetail userLoginDetail = new UserLoginDetail();
+				userLoginDetail.setUserEmail("userEmail@gmail.com");
+				userLoginDetail.setPassword("Test@2018");
+				 DataBinder binder = new DataBinder(userLoginDetail);
+					
+
+				 Container<T> userLoginDetailsContainer =  userLoginDetailsService.updateUserPassword(userLoginDetail,binder.getBindingResult());
+				String typeOfObject = userLoginDetailsContainer.getObjectType();
+				if(typeOfObject.equalsIgnoreCase("Class Object"))
+				{
+				 
+					UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
+				 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
+				 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
+				
+				
+				}
+				else if (typeOfObject.equalsIgnoreCase("Error Object"))
+				{
+					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+					assertEquals("Constraint error", apiError.getMessage());
+				}
+				
+				else if (typeOfObject.equalsIgnoreCase("Update Object"))
+				{
+					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
+					assertEquals("Unable to update password", apiError.getStatus());
+				}
+				
+			 }
+		 
 		 
 		
 }
