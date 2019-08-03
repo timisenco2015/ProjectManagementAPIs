@@ -9,7 +9,9 @@ import ca.timisencotech.projectmanagementapis.dto.UserDetails;
 public interface UserDetailsRepository extends CrudRepository<UserDetails, Long> {
 
 
+	
 	@Query(value ="select firstname,middlename,lastname,countryphonecode,phoneno,address,gender,email from userinformationtable where email=?1", nativeQuery = true)
 	UserDetails findUserDetailsByEmail(String email);
+	
 	
 }

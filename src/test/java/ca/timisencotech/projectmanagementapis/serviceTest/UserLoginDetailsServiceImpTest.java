@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.DataBinder;
 import ca.timisencotech.projectmanagementapis.domain.UserLoginDetail;
+import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
+import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
@@ -29,10 +31,10 @@ public class UserLoginDetailsServiceImpTest<T>
 	public void addUserLoginDetailsTest() 
 	 {
 		  	Date date= new Date();
-			Timestamp timeStamp = new Timestamp(date.getTime());
+			Timestamp loginTime = new Timestamp(date.getTime());
 			
 			UserLoginDetail userLoginDetail = new UserLoginDetail();
-			userLoginDetail.setLoginTime(timeStamp);
+			userLoginDetail.setLoginTime(loginTime);
 			userLoginDetail.setUserEmail("userEmail@gmail.com");
 			userLoginDetail.setPassword("Test@2018");
 			
@@ -47,7 +49,7 @@ public class UserLoginDetailsServiceImpTest<T>
 				UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
 				assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
 				assertEquals("Test@2018",resultUserLoginDetail.getPassword());
-				assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+				assertEquals(loginTime, resultUserLoginDetail.getLoginTime());
 				
 			}
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -62,14 +64,14 @@ public class UserLoginDetailsServiceImpTest<T>
 	
 		 
 	 	@Test
-		 private void nullConstraintTest()
+		 private void addUserLoginDetailNullConstraintTest()
 		 {
 			
 				Date date= new Date();
-				Timestamp timeStamp = new Timestamp(date.getTime());
+				Timestamp loginTime = new Timestamp(date.getTime());
 				
 				UserLoginDetail userLoginDetail = new UserLoginDetail();
-				userLoginDetail.setLoginTime(timeStamp);
+				userLoginDetail.setLoginTime(loginTime);
 				userLoginDetail.setUserEmail("userEmail@gmail.com");
 				userLoginDetail.setPassword("Test@2018");
 				
@@ -82,7 +84,7 @@ public class UserLoginDetailsServiceImpTest<T>
 				 
 					UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
 				 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
-				 assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+				 assertEquals(loginTime, resultUserLoginDetail.getLoginTime());
 				
 				}
 				else if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -100,18 +102,18 @@ public class UserLoginDetailsServiceImpTest<T>
 			 {
 			 
 			 //Test for correct login details
-	 		 
-
-				Date date= new Date();
-				Timestamp timeStamp = new Timestamp(date.getTime());
-				
-				UserLoginDetail userLoginDetail = new UserLoginDetail();
-				userLoginDetail.setUserEmail("userEmail@gmail.com");
-				userLoginDetail.setPassword("Test@2018");
-				 DataBinder binder = new DataBinder(userLoginDetail);
+	 		Date date= new Date();
+			Timestamp loginTime = new Timestamp(date.getTime());
+			
+			UserLoginDetail userLoginDetail = new UserLoginDetail();
+			userLoginDetail.setLoginTime(loginTime);
+			userLoginDetail.setUserEmail("userEmail@gmail.com");
+			userLoginDetail.setPassword("Test@2018");
+			
 					
-
-				 Container<T> userLoginDetailsContainer = userLoginDetailsService.confirmdUserLoginDetails(userLoginDetail,binder.getBindingResult());
+			 DataBinder binder = new DataBinder(userLoginDetail);
+				
+				 Container<T> userLoginDetailsContainer = userLoginDetailsService.confirmedUserLoginDetails(userLoginDetail,binder.getBindingResult());
 				String typeOfObject = userLoginDetailsContainer.getObjectType();
 				
 				
@@ -121,7 +123,7 @@ public class UserLoginDetailsServiceImpTest<T>
 					UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
 				 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
 				 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
-				assertEquals(timeStamp, resultUserLoginDetail.getLoginTime());
+				assertEquals(loginTime, resultUserLoginDetail.getLoginTime());
 				
 				}
 				else if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -138,43 +140,5 @@ public class UserLoginDetailsServiceImpTest<T>
 				
 			 }
 		 
-		 
-		 @Test
-		 public void updateUserPasswordServiceTest() 
-			 {
-			 
-			 //Test for update user password
-				UserLoginDetail userLoginDetail = new UserLoginDetail();
-				userLoginDetail.setUserEmail("userEmail@gmail.com");
-				userLoginDetail.setPassword("Test@2018");
-				 DataBinder binder = new DataBinder(userLoginDetail);
-					
-
-				 Container<T> userLoginDetailsContainer =  userLoginDetailsService.updateUserPassword(userLoginDetail,binder.getBindingResult());
-				String typeOfObject = userLoginDetailsContainer.getObjectType();
-				if(typeOfObject.equalsIgnoreCase("Class Object"))
-				{
-				 
-					UserLoginDetail resultUserLoginDetail=	(UserLoginDetail)userLoginDetailsContainer.getObject();
-				 assertEquals("userEmail@gmail.com", resultUserLoginDetail.getUserEmail());
-				 assertEquals("Test@2018", resultUserLoginDetail.getPassword());
-				
-				
-				}
-				else if (typeOfObject.equalsIgnoreCase("Error Object"))
-				{
-					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
-					assertEquals("Constraint error", apiError.getMessage());
-				}
-				
-				else if (typeOfObject.equalsIgnoreCase("Update Object"))
-				{
-					ApiError apiError = (ApiError)userLoginDetailsContainer.getObject();
-					assertEquals("Unable to update password", apiError.getStatus());
-				}
-				
-			 }
-		 
-		 
-		
+	
 }

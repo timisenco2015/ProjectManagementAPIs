@@ -9,14 +9,12 @@ import java.io.Serializable;
 public class UserDetail implements Serializable{
 
 	
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5699186061238687978L;
 
-
-
-	
 	private String email;
 	
 	private String middleName;
@@ -24,7 +22,6 @@ public class UserDetail implements Serializable{
 	private String lastName;
 	private String firstName;
 	private String phoneNo;	
-	private String countryCode;
 	private String address;
 	private String gender;
 	
@@ -142,14 +139,5 @@ public class UserDetail implements Serializable{
 	{
 		return "{email:"+email+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName+ ",  phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
 	}
-	public static class UserDetailsId implements Serializable {
-	    /**
-		 * 
-		 */
-		private static final long serialVersionUID = -7321416499047242338L;
 
-		private String email;
-		
-		
-	}
 }

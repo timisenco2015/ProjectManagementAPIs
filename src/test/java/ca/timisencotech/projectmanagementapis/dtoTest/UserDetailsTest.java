@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.UserDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
+import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 
 
 
@@ -22,8 +23,13 @@ public class UserDetailsTest
 	@Test
 	public void testSettersGetters() 
 	{
+		
+		UserSignUpDetails userSignUpDetails = new UserSignUpDetails();
+		userSignUpDetails.setPassword("Test@2018");
+		userSignUpDetails.setUserEmail("userEmail@gmail.com");
+		
 		UserLoginDetails userLoginDetails = new UserLoginDetails();
-		userLoginDetails.setUserEmail("userEmail@gmail.com");
+		userLoginDetails.setUserSignUpDetails(userSignUpDetails);
 		userLoginDetails.setPassword("Test@2018");
 		Date date= new Date();
 		Timestamp timeStamp = new Timestamp(date.getTime());
@@ -31,15 +37,10 @@ public class UserDetailsTest
 		
 		UserDetails userDetails = new UserDetails();
 		
-		
-		//check setter and getter for phone code
-		//userDetails.setCountryPhoneCode("+1");
-		String testResult1 = "+1";
-	//	assertEquals(testResult1, userDetails.getCountryPhoneCode());
-		
+	
 		//check setter and getter for first name
 		userDetails.setFirstName("Ayobami");
-		 testResult1 = "Ayobami";
+	String	 testResult1 = "Ayobami";
 		assertEquals(testResult1,userDetails.getFirstName());
 		
 		//check setter and getter for last name
@@ -58,19 +59,19 @@ public class UserDetailsTest
 		assertEquals(testResult1, userDetails.getPhoneNo());
 		
 		//check setter and getter for address
-		userDetails.setUserAddress("616 Armitage");
+		userDetails.setAddress("616 Armitage");
 		 testResult1 = "616 Armitage";
-		assertEquals(testResult1, userDetails.getUserAddress());
+		assertEquals(testResult1, userDetails.getAddress());
 		
 		//check setter and getter for email
-		userDetails.setUserLoginDetails(userLoginDetails);;
+		userDetails.setUserSignUpDetails(userSignUpDetails);
 		testResult1 = "userEmail@gmail.com";
-		assertEquals(testResult1, userDetails.getUserLoginDetails().getUserEmail());
+		assertEquals(userSignUpDetails, userDetails.getUserSignUpDetails());
 		
 		//check setter and getter for gender
-		userDetails.setUserGender("Male");
+		userDetails.setGender("Male");
 		testResult1 = "Male";
-		assertEquals(testResult1, userDetails.getUserGender());
+		assertEquals(testResult1, userDetails.getGender());
 		
 	
 
@@ -79,9 +80,9 @@ public class UserDetailsTest
 		assertEquals("Idowu", userDetails.getLastName());
 		assertEquals("O", userDetails.getMiddleName());
 		assertEquals("2049623755", userDetails.getPhoneNo());
-		assertEquals("616 Armitage", userDetails.getUserAddress());
-		assertEquals("userEmail@gmail.com", userDetails.getUserLoginDetails().getUserEmail());
-		assertEquals("Male", userDetails.getUserGender());
+		assertEquals("616 Armitage", userDetails.getAddress());
+		assertEquals(userSignUpDetails, userDetails.getUserSignUpDetails());
+		assertEquals("Male", userDetails.getGender());
 		
 	}
 

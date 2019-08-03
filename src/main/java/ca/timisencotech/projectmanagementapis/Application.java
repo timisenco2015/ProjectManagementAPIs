@@ -21,13 +21,21 @@ import org.springframework.web.client.RestTemplate;
 @EntityScan(basePackageClasses = {
 		ca.timisencotech.projectmanagementapis.dto.Countries.class,
 		ca.timisencotech.projectmanagementapis.dto.StatesProvinces.class,
-		ca.timisencotech.projectmanagementapis.dto.Cities.class
+		ca.timisencotech.projectmanagementapis.dto.Cities.class,
+		ca.timisencotech.projectmanagementapis.dto.UserDetails.class,
+		ca.timisencotech.projectmanagementapis.dto.UserLoginDetails.class,
+		ca.timisencotech.projectmanagementapis.dto.ProjectDetails.class,
+		ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails.class
 		})
 
 @EnableJpaRepositories(basePackageClasses = {
 		ca.timisencotech.projectmanagementapis.repository.CountriesRepository.class,
 		ca.timisencotech.projectmanagementapis.repository.StatesProvincesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.CitiesRepository.class
+		ca.timisencotech.projectmanagementapis.repository.CitiesRepository.class,
+		ca.timisencotech.projectmanagementapis.repository.UserDetailsRepository.class,
+		ca.timisencotech.projectmanagementapis.repository.UserLoginDetailsRepository.class,
+		ca.timisencotech.projectmanagementapis.repository.ProjectDetailsRepository.class,
+		ca.timisencotech.projectmanagementapis.repository.UserSignUpDetailsRepository.class
 		})
 
 public class Application {

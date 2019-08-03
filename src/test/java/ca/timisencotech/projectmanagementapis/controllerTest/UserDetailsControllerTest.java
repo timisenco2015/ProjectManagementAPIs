@@ -56,7 +56,7 @@ public class UserDetailsControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addUser")
+				      .post("/projectmanagement/addNewUser")
 				      .content(asJsonString(userDetail))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

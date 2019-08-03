@@ -12,9 +12,9 @@ public class StateProvince implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2908557998369563387L;
 
-
+	
 	private int stateProvinceId;
 	
 	private String stateProvinceName;

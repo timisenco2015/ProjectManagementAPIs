@@ -6,15 +6,12 @@ import java.sql.Timestamp;
 
 public class UserLoginDetail implements Serializable{
 
-	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1511269801378625193L;
 
-
-
-	
 	private String email;
 	
 	private String password;
@@ -82,14 +79,6 @@ public class UserLoginDetail implements Serializable{
 	{
 		return "{email:"+email+", password:"+password+", loginTime:"+loginTime+"}";
 	}
-	public static class UserDetailsId implements Serializable {
-	    /**
-		 * 
-		 */
-		private static final long serialVersionUID = -7321416499047242338L;
-
-		private String email;
-		
-		
-	}
+	
+	
 }

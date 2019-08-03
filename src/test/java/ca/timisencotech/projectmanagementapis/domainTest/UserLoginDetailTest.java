@@ -26,8 +26,8 @@ public class UserLoginDetailTest
 		userLoginDetail.setUserEmail("userEmail@gmail.com");
 		userLoginDetail.setPassword("Test@2018");
 		Date date= new Date();
-		Timestamp timeStamp = new Timestamp(date.getTime());
-		userLoginDetail.setLoginTime(timeStamp);
+		Timestamp loginTime = new Timestamp(date.getTime());
+		
 		
 	
 		
@@ -42,9 +42,13 @@ public class UserLoginDetailTest
 		assertEquals(testResult1,userLoginDetail.getPassword());
 				
 		//check setter and getter for login time
-		userLoginDetail.setLoginTime(timeStamp);
-		Timestamp testResult2 = timeStamp;
-		assertEquals(testResult2, userLoginDetail.getLoginTime());
+		userLoginDetail.setLoginTime(loginTime);
+		assertEquals(loginTime, userLoginDetail.getLoginTime());
+		
+		
+		assertEquals("userEmail@gmail.com", userLoginDetail.getUserEmail());
+		assertEquals("Test@2018",userLoginDetail.getPassword());
+		assertEquals(loginTime, userLoginDetail.getLoginTime());
 		
 	}
 

@@ -1,11 +1,15 @@
 package ca.timisencotech.projectmanagementapis.domain;
 
+import java.io.Serializable;
 
-
-public class City {
+public class City implements Serializable {
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1135408119007698904L;
 	private int cityId;
 	private String cityName;
 	private int stateId;

@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
+import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 
 
 
@@ -20,8 +21,16 @@ public class UserLoginDetailsTest
 	@Test
 	public void testSettersGetters() 
 	{
+		
+		UserSignUpDetails userSignUpDetails = new UserSignUpDetails();
+		userSignUpDetails.setPassword("Test@2018");
+		userSignUpDetails.setUserEmail("userEmail@gmail.com");
+		
+		
+		
+		
 		UserLoginDetails userLoginDetails = new UserLoginDetails();
-		userLoginDetails.setUserEmail("userEmail@gmail.com");
+	
 		userLoginDetails.setPassword("Test@2018");
 		Date date= new Date();
 		Timestamp timeStamp = new Timestamp(date.getTime());
@@ -31,9 +40,10 @@ public class UserLoginDetailsTest
 		
 		
 		//check setter and getter for user email
-		userLoginDetails.setUserEmail("userEmail@gmail.com");
+		userLoginDetails.setUserSignUpDetails(userSignUpDetails);
+		
 		String testResult1 = "userEmail@gmail.com";
-		assertEquals(testResult1, userLoginDetails.getUserEmail());
+		assertEquals(userSignUpDetails, userLoginDetails.getUserSignUpDetails());
 		
 		//check setter and getter for password
 		userLoginDetails.setPassword("Test@2018");
@@ -48,7 +58,7 @@ public class UserLoginDetailsTest
 		
 		
 
-		assertEquals("userEmail@gmail.com", userLoginDetails.getUserEmail());
+		assertEquals(userSignUpDetails, userLoginDetails.getUserSignUpDetails());
 		assertEquals("Test@2018",userLoginDetails.getPassword());
 		assertEquals(timeStamp, userLoginDetails.getLoginTime());
 		

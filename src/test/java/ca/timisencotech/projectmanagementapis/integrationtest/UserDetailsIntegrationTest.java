@@ -48,7 +48,7 @@ public class UserDetailsIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<UserDetail> entity = new HttpEntity<>(userDetail, headers);
 	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addUser", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addNewUser", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	     assertEquals(HttpStatus.OK, response.getStatusCode());
 	        //assertEquals(MediaType.APPLICATION_JSON, resp   System.out.println("-->"+response.getBody());

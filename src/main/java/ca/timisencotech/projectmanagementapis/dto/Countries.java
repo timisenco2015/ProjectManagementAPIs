@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Bean;
 
 
 @Entity
-@Table(name = "countries",uniqueConstraints=@UniqueConstraint(columnNames="countryid"))
+@Table(name = "countriestable",uniqueConstraints=@UniqueConstraint(columnNames="countryid"))
 @IdClass(Countries.CountriesId.class)
 public class Countries implements Serializable{
 

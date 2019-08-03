@@ -24,7 +24,7 @@ public class UserDetailsController
 	UserDetailsService userDetailsService;
 	
 	
-	@PostMapping("/addUser")
+	@PostMapping("/addNewUser")
 	@ResponseBody
 	public <T> Container<T> addNewUser(@Validated @RequestBody UserDetail userDetail,BindingResult result) { 
 		Application.getLogger().info("User called add user details api. parameters passed is: "+userDetail);

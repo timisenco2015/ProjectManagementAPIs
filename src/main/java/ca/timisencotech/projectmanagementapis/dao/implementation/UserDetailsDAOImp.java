@@ -8,10 +8,10 @@ import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.UserDetailsDAO;
 import ca.timisencotech.projectmanagementapis.domain.UserDetail;
 import ca.timisencotech.projectmanagementapis.dto.UserDetails;
-import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
+import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
 import ca.timisencotech.projectmanagementapis.repository.UserDetailsRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserLoginDetailsRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpDetailsRepository;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -21,7 +21,7 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 	UserDetailsRepository userDetailsRepository;
 	
 	@Autowired
-	UserLoginDetailsRepository userLoginDetailsRepository;
+	UserSignUpDetailsRepository userSignUpDetailsRepository;
 	
 	PersistentException persistentException = new PersistentException();
 
@@ -29,38 +29,37 @@ public class UserDetailsDAOImp implements UserDetailsDAO {
 	@Override
 	public <T> Container<T> addNewUser(UserDetail userDetail) {
 		Container<T> genericObject=null; 
-		UserLoginDetails findUserLoginDetails = userLoginDetailsRepository.findByEmail("userEmail@gmail.com");
+		UserSignUpDetails findUserLoginDetails = userSignUpDetailsRepository.findUserSignUpDetailsByEmail(userDetail.getUserEmail());
+			
 		if(findUserLoginDetails==null)
 		{
 			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user email: "+userDetail.getUserEmail()+" in our database"),"Error Object");
-			Application.getLogger().info("addCities method in Cities DAO Implementation. At this point unable to find foreign key statePronvinceId in the database");
+			Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point unable to find foreign key email in the database");
 			
 		}
 		else
 		{
 		UserDetails newUserDetails = new UserDetails();
-		newUserDetails.setUserLoginDetails(findUserLoginDetails);
+		newUserDetails.setUserSignUpDetails(findUserLoginDetails);
 		newUserDetails.setFirstName(userDetail.getFirstName());
 		newUserDetails.setLastName(userDetail.getLastName());
-		newUserDetails.setUserGender(userDetail.getUserGender());
+		newUserDetails.setGender(userDetail.getUserGender());
 		newUserDetails.setMiddleName(userDetail.getMiddleName());
-		//newUserDetails.setCountryPhoneCode("234");
 		newUserDetails.setPhoneNo(userDetail.getPhoneNo());
-		newUserDetails.setUserAddress(userDetail.getUserAddress());
+		newUserDetails.setAddress(userDetail.getUserAddress());
 		
 		UserDetails responseUserDetails = null;
 			 try {
 				 
 				 responseUserDetails = userDetailsRepository.save(newUserDetails);
 				 UserDetail domainUserDetail = new UserDetail();
-				 //domainUserDetail.setCountryPhoneCode("234");
 				 domainUserDetail.setFirstName(responseUserDetails.getFirstName());
 				 domainUserDetail.setLastName(responseUserDetails.getLastName());
 				 domainUserDetail.setMiddleName(responseUserDetails.getMiddleName());
 				 domainUserDetail.setPhoneNo(responseUserDetails.getPhoneNo());
-				 domainUserDetail.setUserAddress(responseUserDetails.getUserAddress());
+				 domainUserDetail.setUserAddress(responseUserDetails.getAddress());
 				 domainUserDetail.setUserEmail(userDetail.getUserEmail());
-				 domainUserDetail.setUserGender(responseUserDetails.getUserGender());
+				 domainUserDetail.setUserGender(responseUserDetails.getGender());
 				 Application.getLogger().info("addNewUser method in UserDetails DAO Implementation. At this point new user has successful saved to the database. Return userdetails from repo is"+domainUserDetail);
 				 
 				 genericObject = (Container<T>) new Container<UserDetail>(domainUserDetail,"Class Object");

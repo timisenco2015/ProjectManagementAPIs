@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -61,7 +60,11 @@ public class UserDetails implements Serializable{
 	@JoinColumn(name = "email",referencedColumnName="email")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-    private UserLoginDetails userLoginDetails;
+    private UserSignUpDetails userSignUpDetails;
+	
+	
+
+			
 	
 	
 	public  UserDetails()
@@ -69,18 +72,50 @@ public class UserDetails implements Serializable{
 		
 	}
 	
-	@Bean
-	public UserLoginDetails getUserLoginDetails()
-	{
-		return userLoginDetails;
-	}
+	
 	
 	@Bean
-	public void setUserLoginDetails(UserLoginDetails userLoginDetails)
-	{
-		this.userLoginDetails = userLoginDetails;
+	public String getAddress() {
+		return address;
 	}
-	
+
+
+
+	@Bean
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	@Bean
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	@Bean
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+
+	@Bean
+	public UserSignUpDetails getUserSignUpDetails() {
+		return userSignUpDetails;
+	}
+
+
+
+
+	public void setUserSignUpDetails(UserSignUpDetails userSignUpDetails) {
+		this.userSignUpDetails = userSignUpDetails;
+	}
+
+
+
 
 	@Bean
 	public String getMiddleName()
@@ -127,18 +162,6 @@ public class UserDetails implements Serializable{
 	}
 	
 	
-	@Bean
-	public String getUserGender()
-	{
-		return gender;
-	}
-	
-	
-	@Bean
-	public void setUserGender(String gender)
-	{
-		this.gender =gender;
-	}
 	
 	
 	@Bean
@@ -156,22 +179,11 @@ public class UserDetails implements Serializable{
 	
 	
 	
-	@Bean
-	public String getUserAddress()
-	{
-		return address;
-	}
-	
-	@Bean
-	public void setUserAddress(String userAddress)
-	{
-		this.address = userAddress;
-	}
 	
 	@Override
 	public String toString()
 	{
-		return "{email:"+userLoginDetails.getUserEmail()+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName +", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
+		return "{email:"+userSignUpDetails.getUserEmail()+", firstName:"+firstName+", middleName:"+middleName+", lastName:"+lastName +", phoneNo:"+phoneNo+", address:"+address+", gender:"+gender+"}";
 	}
 	
 	

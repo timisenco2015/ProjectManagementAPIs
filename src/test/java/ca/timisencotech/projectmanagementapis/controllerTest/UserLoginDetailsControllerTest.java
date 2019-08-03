@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ca.timisencotech.projectmanagementapis.controller.UserLoginDetailsController;
 import ca.timisencotech.projectmanagementapis.domain.UserLoginDetail;
+import ca.timisencotech.projectmanagementapis.domain.UserSignUpDetail;
 import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
 
 
@@ -65,16 +66,17 @@ public class UserLoginDetailsControllerTest {
 		}
 		
 		
+		
 		@Test
 		public void testConfirmUserLoginDetails() throws Exception
 		{
-			UserLoginDetail  userLoginDetail = new  UserLoginDetail();
-			userLoginDetail.setUserEmail("userEmail@gmail.com");	
-			userLoginDetail.setPassword("Test@2018");
+			UserSignUpDetail  userSignUpDetail = new  UserSignUpDetail();
+			userSignUpDetail.setUserEmail("ayobami.o.idowu@gmail.com");	
+			userSignUpDetail.setPassword("Test@2018");
 	
 			mockMvc.perform( MockMvcRequestBuilders
 				      .post("/projectmanagement/confirmLoginDetails")
-				      .content(asJsonString(userLoginDetail))
+				      .content(asJsonString(userSignUpDetail))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))
 				      .andExpect(status().isOk());
@@ -83,22 +85,6 @@ public class UserLoginDetailsControllerTest {
 		}
 		
 		
-		@Test
-		public void testUpdateUserPassword() throws Exception
-		{
-			UserLoginDetail  userLoginDetail = new  UserLoginDetail();
-			userLoginDetail.setUserEmail("userEmail@gmail.com");	
-			userLoginDetail.setPassword("Test@2026");
-	
-			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/changePassword")
-				      .content(asJsonString(userLoginDetail))
-				      .contentType(MediaType.APPLICATION_JSON)
-				      .accept(MediaType.APPLICATION_JSON))
-				      .andExpect(status().isOk());
-				     
-		
-		}
 		
 		
 		public static String asJsonString(final Object obj) {

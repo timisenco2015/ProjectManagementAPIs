@@ -22,7 +22,7 @@ public class UserDetailsDAOImpTest<T> {
 	 
  
 	 @Test
-		public void addServiceTest() 
+		public void addNewUserServiceTest() 
 		 {
 	
 		 
@@ -42,7 +42,7 @@ public class UserDetailsDAOImpTest<T> {
 			{
 			 
 				UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-			// assertEquals("+1", resultUserDetail.getCountryPhoneCode());
+		
 			 assertEquals("Ayobami", resultUserDetail.getFirstName());
 			 assertEquals("O", resultUserDetail.getMiddleName());
 			 assertEquals("Idowu", resultUserDetail.getLastName());
@@ -64,19 +64,19 @@ public class UserDetailsDAOImpTest<T> {
 
 	 
 	 @Test
-		public void addServiceConstraintErrorTest() 
+		public void addNewUserConstraintErrorTest() 
 		 {
 			
 		//checks for field(s) unique test
-		 uniqueConstraintTest();
+		 addNewUserUniqueConstraintTest();
 		
 		 //checks for field(s) null test
-		 nullConstraintTest();
+		 addNewUserNullConstraintTest();
 			
 		 }
 		 
 
-		 private void nullConstraintTest()
+		 private void addNewUserNullConstraintTest()
 		 {
 			
 			 UserDetail userDetail = new UserDetail();
@@ -113,7 +113,7 @@ public class UserDetailsDAOImpTest<T> {
 				
 		 }
 		 
-		 private void uniqueConstraintTest()
+		 private void addNewUserUniqueConstraintTest()
 		 {
 			
 			 UserDetail userDetail = new UserDetail();
