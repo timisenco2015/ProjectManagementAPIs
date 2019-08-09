@@ -26,7 +26,7 @@ public class ProjectDetailsDAOImpTest<T> {
 	 
  
 	 @Test
-		public void addNewUserServiceTest() 
+		public void addNewProjectServiceTest() 
 		 {
 	
 		 
@@ -77,28 +77,25 @@ public class ProjectDetailsDAOImpTest<T> {
 
 	 
 	 @Test
-		public void addNewUserConstraintErrorTest() 
+		public void addNewProjectConstraintErrorTest() 
 		 {
 			
-		//checks for field(s) unique test
-		 addNewUserUniqueConstraintTest();
+		
 		
 		 //checks for field(s) null test
-		 addNewUserNullConstraintTest();
+		 addNewProjectNullConstraintTest();
 			
 		 }
 		 
 
-		 private void addNewUserNullConstraintTest()
+		 private void addNewProjectNullConstraintTest()
 		 {
 			 ProjectInformation projectInformation = new ProjectInformation();
 			 
 			 projectInformation.setProjectName("Edmonton Project");
 			 
 			 Date date= new Date();
-			Timestamp createdDate = new Timestamp(date.getTime());	
-			 projectInformation.setCreatedDate(createdDate);
-			 
+			
 			 Timestamp startDate = new Timestamp(date.getTime());	
 			 projectInformation.setStartDate(startDate);
 			 
@@ -119,8 +116,7 @@ public class ProjectDetailsDAOImpTest<T> {
 					ProjectInformation resultprojectInformation=	(ProjectInformation)projectInformationContainer.getObject();
 
 					 assertEquals("Edmonton Project", resultprojectInformation.getProjectName());
-					 assertEquals(createdDate, resultprojectInformation.getCreatedDate());
-					 assertEquals(startDate, resultprojectInformation.getStartDate());
+					assertEquals(startDate, resultprojectInformation.getStartDate());
 					 assertEquals(endDate, resultprojectInformation.getEndDate());
 					 assertEquals("userEmail@gmail.com",resultprojectInformation.getCreatedBy());
 					 assertEquals("Description coming soon", resultprojectInformation.getDescription());
@@ -134,50 +130,6 @@ public class ProjectDetailsDAOImpTest<T> {
 				
 		 }
 		 
-		 private void addNewUserUniqueConstraintTest()
-		 {
-			
-			 
-			 ProjectInformation projectInformation = new ProjectInformation();
-			 
-			 projectInformation.setProjectName("Sherwood Project");
-			 
-			 Date date= new Date();
-			Timestamp createdDate = new Timestamp(date.getTime());	
-			 projectInformation.setCreatedDate(createdDate);
-			 
-			 Timestamp startDate = new Timestamp(date.getTime());	
-			 projectInformation.setStartDate(startDate);
-			 
-			 
-			 Timestamp endDate = new Timestamp(date.getTime());	
-			 projectInformation.setEndDate(endDate);
-			 
-			 projectInformation.setCreatedBy("userEmail@gmail.com");
-			 
-			 Container<T> projectInformationContainer = projectDetailsDAOImp.addProjectDetails(projectInformation);
-				String typeOfObject = projectInformationContainer.getObjectType();
-				if(typeOfObject.equalsIgnoreCase("Class Object"))
-				{
-				 
-					ProjectInformation resultprojectInformation=	(ProjectInformation)projectInformationContainer.getObject();
-
-					 assertEquals("Edmonton Project", resultprojectInformation.getProjectName());
-					 assertEquals(createdDate, resultprojectInformation.getCreatedDate());
-					 assertEquals(startDate, resultprojectInformation.getStartDate());
-					 assertEquals(endDate, resultprojectInformation.getEndDate());
-					 assertEquals("userEmail@gmail.com",resultprojectInformation.getCreatedBy());
-					 assertEquals("Description coming soon", resultprojectInformation.getDescription());
-					}
-				else if (typeOfObject.equalsIgnoreCase("Error Object"))
-				{
-					ApiError apiError = (ApiError)projectInformationContainer.getObject();
-					assertEquals("Constraint error", apiError.getMessage());
-				}
-				
-				
-				
-		 }
-		 
+		
 
 }

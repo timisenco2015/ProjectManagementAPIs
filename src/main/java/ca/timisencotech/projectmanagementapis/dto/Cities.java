@@ -25,20 +25,21 @@ public class Cities implements Serializable{
 	
 	
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 9120262668429783082L;
 
 
 
 	@Id
-	@Column(name = "cityid",unique = true, nullable = false,length=20)
+	@Column(name = "cityid",unique = true, nullable = false,length=10)
 	private int cityId;
 	
 	
 	
-	@Column(name = "cityname",unique = true, nullable = false,length=240 )
+	@Column(name = "cityname",unique = true, nullable = false,length=60 )
 	private String cityName;
 	
 
@@ -102,7 +103,10 @@ public class Cities implements Serializable{
 	
 	public static class CitiesId implements Serializable {
 		   
-		private static final long serialVersionUID = -7321416499047242338L;
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1061770618410305279L;
 		private int cityId;
 		
 	}

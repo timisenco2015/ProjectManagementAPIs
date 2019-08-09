@@ -26,8 +26,8 @@ public class CitiesDAOImpTest<T>
 	 {
 		  City city = new City();
 		  city.setCityId(35);
-		  city.setCityName("Ire");
-		  city.setStateId(23);	
+		  city.setCityName("Abeokuta");
+		  city.setStateId(24);	
 
 			 Container<T> cityContainer = citiesDAOImp.addCities(city);
 					
@@ -37,8 +37,8 @@ public class CitiesDAOImpTest<T>
 			 
 				City resultCity=	(City)cityContainer.getObject();
 			 assertEquals(35, resultCity.getCityId());
-			 assertEquals(23, resultCity.getStateId());
-			 assertEquals("Iresi", resultCity.getCityName());
+			 assertEquals(24, resultCity.getStateId());
+			 assertEquals("Abeokuta", resultCity.getCityName());
 			}
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
@@ -50,7 +50,7 @@ public class CitiesDAOImpTest<T>
 		 
 	 }
 	
-/*
+
 	@Test
 	public void addServiceConstraintErrorTest() 
 	 {
@@ -68,9 +68,9 @@ public class CitiesDAOImpTest<T>
 	 {
 		
 		  City city = new City();
-		  city.setCityId(37);
-		  city.setCityName("Iresi");
-		  city.setStateId(23);	
+		  city.setCityId(38);
+		  city.setCityName("Abeokuta");
+		  city.setStateId(24);	
 		  
 		 Container<T> cityContainer = citiesDAOImp.addCities(city);
 			String typeOfObject = cityContainer.getObjectType();
@@ -94,9 +94,9 @@ public class CitiesDAOImpTest<T>
 		
 		 
 		 City city = new City();
-		  city.setCityId(38);
+		  city.setCityId(39);
 		  
-		  city.setStateId(23);	
+		  city.setStateId(24);	
 		  Container<T> cityContainer = citiesDAOImp.addCities(city);
 			String typeOfObject = cityContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -113,5 +113,5 @@ public class CitiesDAOImpTest<T>
 		}
 	 }
 	
-	*/
+	
 }

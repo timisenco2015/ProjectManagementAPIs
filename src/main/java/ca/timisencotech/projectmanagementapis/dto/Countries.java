@@ -2,11 +2,8 @@ package ca.timisencotech.projectmanagementapis.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.UniqueConstraint;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,25 +21,24 @@ import org.springframework.context.annotation.Bean;
 public class Countries implements Serializable{
 
 	
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5484297773439503593L;
 
 	@Id
-	@Column(name = "countryid",unique = true, nullable = false,length=20)
+	@Column(name = "countryid",unique = true, nullable = false,length=10)
 	private int countryId;
 	
-	@Column(name = "sortname",unique = true, nullable = false,length=20)
+	@Column(name = "sortname",unique = true, nullable = false,length=10)
 	private String countryShortCode;
 	
-	@Column(name = "countryname" ,unique = true, nullable = false,length=200)
+	@Column(name = "countryname" ,unique = true, nullable = false,length=60)
 	private String countryName;
 	
 	
 	
-	@Column(name = "phonecode", nullable = false,length=30)
+	@Column(name = "phonecode", nullable = false,length=8)
 	private String phoneCode;
 	
 	
@@ -129,7 +125,10 @@ public class Countries implements Serializable{
 	
 	public static class CountriesId implements Serializable {
 		   
-		private static final long serialVersionUID = -7321416499047242338L;
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 5873692870547986205L;
 		private int countryId;
 		
 	}

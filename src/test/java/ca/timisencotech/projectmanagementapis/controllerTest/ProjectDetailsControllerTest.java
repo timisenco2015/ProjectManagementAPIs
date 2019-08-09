@@ -1,6 +1,10 @@
 package ca.timisencotech.projectmanagementapis.controllerTest;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ca.timisencotech.projectmanagementapis.controller.UserLoginDetailsController;
+import ca.timisencotech.projectmanagementapis.controller.ProjectDetailsController;
 import ca.timisencotech.projectmanagementapis.domain.ProjectInformation;
-import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
+import ca.timisencotech.projectmanagementapis.service.ProjectDetailsService;
 
 
 @RunWith(SpringRunner.class)
@@ -28,22 +32,37 @@ public class ProjectDetailsControllerTest {
 		private MockMvc mockMvc;
 		
 		@Mock
-		private UserLoginDetailsService userLoginDetailsService;
+		private ProjectDetailsService projectDetailsService;
 		
 		@InjectMocks
-		private UserLoginDetailsController userLoginDetailsController;
+		private ProjectDetailsController projectDetailsController;
 		
 		@Before
 		public void setUp() throws Exception
 		{
-			mockMvc = MockMvcBuilders.standaloneSetup(userLoginDetailsController).build();
+			mockMvc = MockMvcBuilders.standaloneSetup(projectDetailsController).build();
 		}
 
 		
 		@Test
 		public void testAddNewUserLoginDetails() throws Exception
 		{
+			Date date= new Date();
+			
 			ProjectInformation projectInformation = new ProjectInformation();
+			projectInformation.setCreatedBy("userEmail@gmail.com");
+			
+			Timestamp createdDate = new Timestamp(date.getTime());
+			projectInformation.setCreatedDate(createdDate);
+			projectInformation.setDescription("fbdfbdfbdfb");
+			
+			Timestamp endDate = new Timestamp(date.getTime());
+			projectInformation.setEndDate(endDate);
+			projectInformation.setProjectName("Edmonton Project");
+			
+			Timestamp startDate = new Timestamp(date.getTime());
+			projectInformation.setStartDate(startDate);
+			
 			
 			mockMvc.perform( MockMvcRequestBuilders
 				      .post("/projectmanagement/addNewProjectDetails")

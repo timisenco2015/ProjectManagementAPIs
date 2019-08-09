@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.implementation.UserDetailsDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.UserDetail;
+import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.exception.ValidationError;
 import ca.timisencotech.projectmanagementapis.service.UserDetailsService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
@@ -43,6 +44,9 @@ public class UserDetailsServiceImpl<T> implements UserDetailsService{
 				validationError.setAllErrorObject(result.getAllErrors());
 	   
 			 genericObject = (Container<T>) new  Container<ValidationError> (validationError,"Error Object");
+			 System.out.println("-+++--> ");
+				
+			 
 			 Application.getLogger().info("New user information validation error. Error info: "+validationError.getMessageObject());
 
 			}
@@ -52,7 +56,9 @@ public class UserDetailsServiceImpl<T> implements UserDetailsService{
 				Application.getLogger().info("addStateProvince method in StatesProvinces Service Implementation. New user has already been added to the database");
 			    
 				genericObject = userDetailsDAOImp.addNewUser(userDetail);
+			
 			}
+			
 		return genericObject;
 	}
 

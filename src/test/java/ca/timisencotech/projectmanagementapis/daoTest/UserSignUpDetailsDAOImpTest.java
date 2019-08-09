@@ -59,7 +59,7 @@ public class UserSignUpDetailsDAOImpTest<T> {
 		 UserSignUpDetail userSignUpDetail = new UserSignUpDetail();
 			
 		 userSignUpDetail.setUserEmail("userEmail@gmail.com");
-		 userSignUpDetail.setPassword("Test@2022");
+		// userSignUpDetail.setPassword("Test@2022");
 			
 			
 		 Container<T> userSignUpDetailContainer = userSignUpDetailsDAOImp.addUserSignUpDetails(userSignUpDetail);

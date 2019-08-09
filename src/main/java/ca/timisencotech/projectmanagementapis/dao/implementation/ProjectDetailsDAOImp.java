@@ -4,6 +4,8 @@ package ca.timisencotech.projectmanagementapis.dao.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.ProjectDetailsDAO;
@@ -85,6 +87,38 @@ public class ProjectDetailsDAOImp implements ProjectDetailsDAO {
 		return genericObject;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	@Override
+	public <T> Container<T> updateProjectDetails(ProjectInformation projectInformation) {
 	
+		Container<T> genericObject=null;
+		int responseProjectDetail = projectDetailsRepository.updateProjectDetails(projectInformation.getCreatedDate(), projectInformation.getStartDate(), projectInformation.getEndDate(), projectInformation.getDescription(), projectInformation.getCreatedBy(),projectInformation.getProjectName());
+			
+		 try { 
+	
+			 	if(responseProjectDetail>0)
+			 	{
+			 		
+					 Application.getLogger().info("updateUserPassword method in ProjectDetails DAO Implementation. At this point user password has successfully been changed in the database. Return userdetails from repo is"+responseProjectDetail);
+					 genericObject = (Container<T>) new Container<ProjectInformation>(projectInformation,"Class Object");
+				    
+			 	}
+			 	else
+			 	{
+			 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Unable to update project details"),"Update Object");
+			 	}
+			 	
+		 }
+		 catch (DataAccessException dataAccessException) {
+			 Application.getLogger().info("updateUserPassword method in ProjectDetails DAO Implementation. At this point there is an error that has prevented updating project details in the database");
+			 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
+	
+		 
+		 }
+		
+		 return genericObject;
+	}
+
 	
 }

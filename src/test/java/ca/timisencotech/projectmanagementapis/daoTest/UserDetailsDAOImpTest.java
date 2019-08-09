@@ -21,20 +21,18 @@ public class UserDetailsDAOImpTest<T> {
 	 UserDetailsDAOImp userDetailsDAOImp;
 	 
  
-	 @Test
-		public void addNewUserServiceTest() 
+	 
+		private void addNewUserServiceTest() 
 		 {
 	
 		 
 		 UserDetail userDetail = new UserDetail();
-		 
-		// userDetail.setCountryPhoneCode("+1");
 		 userDetail.setFirstName("Ayobami");
 		 userDetail.setMiddleName("O");
 		 userDetail.setLastName("Idowu");
 		 userDetail.setPhoneNo("2049623752");
 		 userDetail.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
-		userDetail.setUserEmail("ayobami.o.idowu@gmail.com");	
+		userDetail.setUserEmail("userEmail@gmail.com");	
 		userDetail.setUserGender("Male");
 			 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(userDetail);
 			String typeOfObject = userDetailsContainer.getObjectType();
@@ -48,13 +46,14 @@ public class UserDetailsDAOImpTest<T> {
 			 assertEquals("Idowu", resultUserDetail.getLastName());
 			 assertEquals("2049623752", resultUserDetail.getPhoneNo());
 			 assertEquals("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7", resultUserDetail.getUserAddress());
-			 assertEquals("ayobami.o.idowu@gmail.com", resultUserDetail.getUserEmail());
+			 assertEquals("userEmail@gmail.com", resultUserDetail.getUserEmail());
 			 assertEquals("Male", resultUserDetail.getUserGender());
 			}
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
 				ApiError apiError = (ApiError)userDetailsContainer.getObject();
-				assertEquals("Constraint error", apiError.getMessage());
+				assertEquals("Persistence Error", apiError.getStatus());
+				 
 			}
 			
 			
@@ -67,90 +66,69 @@ public class UserDetailsDAOImpTest<T> {
 		public void addNewUserConstraintErrorTest() 
 		 {
 			
-		//checks for field(s) unique test
-		 addNewUserUniqueConstraintTest();
+		//checks for phone field unique test
+		 addNewUserUniquePhoneConstraintTest();
 		
-		 //checks for field(s) null test
-		 addNewUserNullConstraintTest();
+		 //checks for add new user test
+		 addNewUserServiceTest();
+		 
+		 //checks if user has already sign up
+		 addNewUserEmailNullValueConstraintTest();
 			
 		 }
 		 
 
-		 private void addNewUserNullConstraintTest()
-		 {
-			
-			 UserDetail userDetail = new UserDetail();
-			 
-			// userDetail.setCountryPhoneCode("+1");
-			 userDetail.setFirstName("Ayobami");
-			 userDetail.setMiddleName("O");
-			 userDetail.setLastName("Idowu");
-		
-			 userDetail.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
-			userDetail.setUserEmail("ayobami.o.idowu@gmail.com");	
-			userDetail.setUserGender("Male");
-				 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(userDetail);
-				String typeOfObject = userDetailsContainer.getObjectType();
-				if(typeOfObject.equalsIgnoreCase("Class Object"))
-				{
-				 
-					UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-			//	 assertEquals("+1", resultUserDetail.getCountryPhoneCode());
-				 assertEquals("Ayobami", resultUserDetail.getFirstName());
-				 assertEquals("O", resultUserDetail.getMiddleName());
-				 assertEquals("Idowu", resultUserDetail.getLastName());
-				
-				 assertEquals("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7", resultUserDetail.getUserAddress());
-				 assertEquals("ayobami.o.idowu@gmail.com", resultUserDetail.getUserEmail());
-				 assertEquals("Male", resultUserDetail.getUserGender());
-				}
-				else if (typeOfObject.equalsIgnoreCase("Error Object"))
-				{
-					ApiError apiError = (ApiError)userDetailsContainer.getObject();
-					assertEquals("Constraint error", apiError.getMessage());
-				}
-				
-				
-		 }
+	
 		 
-		 private void addNewUserUniqueConstraintTest()
+		 private void addNewUserUniquePhoneConstraintTest()
 		 {
 			
 			 UserDetail userDetail = new UserDetail();
 			 
-			// userDetail.setCountryPhoneCode("+1");
 			 userDetail.setFirstName("Ayobamii");
 			 userDetail.setMiddleName("O");
 			 userDetail.setLastName("Idowu");
 			 userDetail.setPhoneNo("2049623752");
 			 userDetail.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
-			userDetail.setUserEmail("check.o.idowu@gmail.com");	
+			userDetail.setUserEmail("checkidowu@gmail.com");	
 			userDetail.setUserGender("Male");
 				 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(userDetail);
 				String typeOfObject = userDetailsContainer.getObjectType();
-				if(typeOfObject.equalsIgnoreCase("Class Object"))
-				{
-				 
-					UserDetail resultUserDetail=	(UserDetail)userDetailsContainer.getObject();
-				// assertEquals("+1", resultUserDetail.getCountryPhoneCode());
-				 assertEquals("Ayobamii", resultUserDetail.getFirstName());
-				 assertEquals("O", resultUserDetail.getMiddleName());
-				 assertEquals("Idowu", resultUserDetail.getLastName());
-				 assertEquals("2049623752", resultUserDetail.getPhoneNo());
-				 assertEquals("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7", resultUserDetail.getUserAddress());
-				 assertEquals("ayobami.o.idowu@gmail.com", resultUserDetail.getUserEmail());
-				 assertEquals("Male", resultUserDetail.getUserGender());
-				}
-				else if (typeOfObject.equalsIgnoreCase("Error Object"))
+			 if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{
 				
 					ApiError apiError = (ApiError)userDetailsContainer.getObject();
 					assertEquals("Constraint error", apiError.getMessage());
+				
 				}
 				
 				
 				
 		 }
+		 
+		 
+		 private void addNewUserEmailNullValueConstraintTest()
+		 {
+			
+			 UserDetail userDetail = new UserDetail();
+			 
+			 userDetail.setFirstName("Ayobamii");
+			 userDetail.setMiddleName("O");
+			 userDetail.setLastName("Idowu");
+			 userDetail.setPhoneNo("2049623752");
+			 userDetail.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
+			userDetail.setUserEmail("checkAidowu@gmail.com");	
+			userDetail.setUserGender("Male");
+				 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(userDetail);
+				String typeOfObject = userDetailsContainer.getObjectType();
+				 if (typeOfObject.equalsIgnoreCase("Null Object"))
+					{
+						ApiError apiError = (ApiError)userDetailsContainer.getObject();
+						assertEquals("We dont have this user email: ayoidowu@gmail.com  in our database", apiError.getMessage());
+					}
+			
+		 }
+		 
 		 
 
 }

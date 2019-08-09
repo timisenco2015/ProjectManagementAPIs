@@ -2,9 +2,7 @@ package ca.timisencotech.projectmanagementapis.integrationtest;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.UserLoginDetail;
 import ca.timisencotech.projectmanagementapis.domain.UserSignUpDetail;
 
 

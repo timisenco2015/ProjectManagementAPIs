@@ -46,7 +46,7 @@ public class StatesProvincesRepositoryTest {
 			  statesProvincesRepository.save(statesProvinces);
 			 
 			
-			  assertNotNull(statesProvincesRepository.findByStateprovinceId(26));
+			  assertNotNull(statesProvincesRepository.findByStateProvinceId(26));
 		  }
 		  
 		  

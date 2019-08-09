@@ -34,7 +34,7 @@ public class CitiesDAOImp implements CitiesDAO {
 		Cities newCity = new Cities();
 		newCity.setCityId(city.getCityId());
 		newCity.setCityName(city.getCityName());
-		StatesProvinces findStateProvinces = statesProvincesRepository.findByStateprovinceId(city.getStateId());
+		StatesProvinces findStateProvinces = statesProvincesRepository.findByStateProvinceId(city.getStateId());
 		if(findStateProvinces==null)
 		{
 			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this state or province Id: "+city.getCityId()+" in our database"),"Error Object");

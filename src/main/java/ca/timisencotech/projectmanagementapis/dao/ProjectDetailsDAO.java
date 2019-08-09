@@ -5,4 +5,6 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 public interface ProjectDetailsDAO {
 	public <T> Container<T> addProjectDetails(ProjectInformation projectInformation);
+	public <T> Container<T> updateProjectDetails(ProjectInformation projectInformation);
+		
 }

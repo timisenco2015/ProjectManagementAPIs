@@ -23,7 +23,7 @@ public class UserSignUpDetailsController
 	UserSignUpDetailsService userSignUpDetailsService;
 	
 	
-	@PostMapping("/newUserSignUpDetails")
+	@PostMapping("/newUserSignUp")
 	@ResponseBody
 	public <T> Container<T> addNewUserLoginDetails(@Validated @RequestBody UserSignUpDetail userSignUpDetail,BindingResult result) { 
 		Application.getLogger().info("User called add user sign up details (/newUserSignUpDetails) api. parameters passed is: "+userSignUpDetail);

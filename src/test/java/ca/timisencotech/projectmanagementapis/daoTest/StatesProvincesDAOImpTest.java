@@ -27,7 +27,7 @@ public class StatesProvincesDAOImpTest<T> {
 	
 		 
 		 StateProvince stateProvince = new StateProvince();
-		 stateProvince.setCountryId(3);
+		 stateProvince.setCountryId(5);
 		 stateProvince.setStateProvinceId(24);
 		 stateProvince.setStateProvinceName("Ogun State");
 			 Container<T> stateProvinceContainer = statesProvincesDAOImp.addStatesProvinces(stateProvince);
@@ -36,7 +36,7 @@ public class StatesProvincesDAOImpTest<T> {
 			{
 			 
 				StateProvince resultStateProvince=	(StateProvince)stateProvinceContainer.getObject();
-			 assertEquals(3, resultStateProvince.getCountryId());
+			 assertEquals(5, resultStateProvince.getCountryId());
 			 assertEquals(24, resultStateProvince.getStateProvinceId());
 			 assertEquals("Ogun State", resultStateProvince.getStateProvinceName());
 			}
@@ -68,8 +68,8 @@ public class StatesProvincesDAOImpTest<T> {
 		 {
 			
 			 StateProvince stateProvince = new StateProvince();
-			 stateProvince.setCountryId(3);
-			 stateProvince.setStateProvinceId(27);
+			 stateProvince.setCountryId(5);
+			 stateProvince.setStateProvinceId(25);
 			 stateProvince.setStateProvinceName("Ogun State");
 			 Container<T> stateProvinceContainer =statesProvincesDAOImp.addStatesProvinces(stateProvince);
 				String typeOfObject = stateProvinceContainer.getObjectType();
@@ -95,8 +95,8 @@ public class StatesProvincesDAOImpTest<T> {
 			
 			 
 			 StateProvince stateProvince = new StateProvince();
-			 stateProvince.setCountryId(3);
-			 stateProvince.setStateProvinceId(27);
+			 stateProvince.setCountryId(5);
+			 stateProvince.setStateProvinceId(28);
 			 Container<T> stateProvinceContainer =statesProvincesDAOImp.addStatesProvinces(stateProvince);
 				String typeOfObject = stateProvinceContainer.getObjectType();
 				if(typeOfObject.equalsIgnoreCase("Class Object"))

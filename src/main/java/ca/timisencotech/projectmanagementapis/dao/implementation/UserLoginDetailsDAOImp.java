@@ -41,7 +41,7 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 			
 			if(findUserLoginDetails==null)
 			{
-				genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user email: "+email+" in our database"),"Error Object");
+				genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("Incorrect login details user email: "+email+ " in our database"),"Error Object");
 				Application.getLogger().info("addUserLoginDetails method in UserLoginDetails DAO Implementation. At this point unable to find foreign key email in the database");
 				
 			}
@@ -121,7 +121,9 @@ public class UserLoginDetailsDAOImp implements UserLoginDetailsDAO {
 			 	}
 			 	else
 			 	{
-			 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Repository returned null"),"Null Object");
+			 		genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("Incorrect login details user email: "+userLoginDetail.getUserEmail()+ "and password:"+userLoginDetail.getPassword()),"Null Object");
+					Application.getLogger().info("addUserLoginDetails method in UserLoginDetails DAO Implementation. At this point unable to confirm user email and password");
+				
 			 	}
 		 }
 		 catch (DataAccessException dataAccessException) {

@@ -7,4 +7,5 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 public interface ProjectDetailsService {
 	public <T> Container<T> addProjectpDetails(ProjectInformation projectInformation,BindingResult result);
-}
+	public <T> Container<T> updateProjectDetails(ProjectInformation projectInformation,BindingResult result);
+	}

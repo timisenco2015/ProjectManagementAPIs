@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +33,13 @@ public class ProjectDetailsController
 	    		
 	}
 	
-	
+	@PutMapping("/updateProjectDetails")
+	@ResponseBody
+	public <T> Container<T> updateProjectDetails(@Validated @RequestBody ProjectInformation projectInformation,BindingResult result) { 
+		Application.getLogger().info("User called add new project supervisor details (/newUserSignUpDetails) api. parameters passed is: "+projectInformation);
+	    return  projectDetailsService.updateProjectDetails(projectInformation, result);
+	    		
+	}
 			
 	}
 	

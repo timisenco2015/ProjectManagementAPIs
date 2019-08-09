@@ -33,16 +33,16 @@ public class UserDetails implements Serializable{
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	
-	@Column(name = "middlename", nullable = false,length=40)
+	@Column(name = "middlename", length=20)
 	private String middleName;
 	
-	@Column(name = "lastname", nullable = false,length=40)
+	@Column(name = "lastname", nullable = false,length=20)
 	private String lastName;
 	
-	@Column(name = "firstname", nullable = false,length=40)
+	@Column(name = "firstname", nullable = false,length=20)
 	private String firstName;
 	
-	@Column(name = "phoneno", nullable = false,length=20,unique = true)
+	@Column(name = "phoneno", nullable = false,length=30,unique = true)
 	private String phoneNo;
 	
 	

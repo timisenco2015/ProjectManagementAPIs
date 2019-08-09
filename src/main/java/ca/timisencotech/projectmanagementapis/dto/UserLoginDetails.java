@@ -1,3 +1,4 @@
+
 package ca.timisencotech.projectmanagementapis.dto;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -24,21 +25,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @IdClass(UserLoginDetails.UserLoginDetailsId.class)
-@Table(name = "userlogindetailstable",uniqueConstraints=@UniqueConstraint(columnNames="email"))
+@Table(name = "userloginstable")
 
 public class UserLoginDetails implements Serializable{
 
 	
-	
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8486341599378874546L;
+	private static final long serialVersionUID = -8493852608064987574L;
 
-
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
@@ -47,8 +43,11 @@ public class UserLoginDetails implements Serializable{
 	@Column(name = "password", nullable = false,length=20)
 	private String password;
 	
-	@Column(name = "logintime", nullable = false,length=100)
+	
+
+	@Column(name = "loginstime",length=20,nullable = false)
 	private Timestamp loginTime;
+
 	
 					
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -58,7 +57,8 @@ public class UserLoginDetails implements Serializable{
 	private UserSignUpDetails userSignUpDetails;
 	
 	
-
+	
+	
 
 
 	public  UserLoginDetails()
@@ -123,11 +123,11 @@ public class UserLoginDetails implements Serializable{
 		return "{email:"+userSignUpDetails.getUserEmail()+", password:"+password+", loginTime:"+loginTime+"}";
 	}
 	public static class UserLoginDetailsId implements Serializable {
-	    /**
+	 
+		/**
 		 * 
 		 */
-		private static final long serialVersionUID = -7321416499047242338L;
-
+		private static final long serialVersionUID = -1903673315070721589L;
 		private Long id;
 		
 		

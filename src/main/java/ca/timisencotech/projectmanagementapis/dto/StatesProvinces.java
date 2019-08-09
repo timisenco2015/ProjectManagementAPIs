@@ -29,20 +29,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @IdClass(StatesProvinces.StatesProvincesId.class)
 public class StatesProvinces implements Serializable{
 
-	
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7040580101001440660L;
 
 
 	@Id
-	@Column(name = "stateprovinceid",unique = true, nullable = false,length=20)
-	private int stateprovinceId;
+	@Column(name = "stateprovinceid",unique = true, nullable = false,length=10)
+	private int stateProvinceId;
 	
 	
-	@Column(name = "stateprovincename",unique = true, nullable = false,length=240)
+	@Column(name = "stateprovincename",unique = true, nullable = false,length=60)
 	private String stateprovinceName;
 	
 	
@@ -88,13 +86,13 @@ public class StatesProvinces implements Serializable{
 	@Bean
 	public int getStateProvinceId()
 	{
-		return stateprovinceId;
+		return stateProvinceId;
 	}
 	
 	@Bean
 	public void setStateProvinceId(int stateProvinceId)
 	{
-		this.stateprovinceId = stateProvinceId;
+		this.stateProvinceId = stateProvinceId;
 	}
 	
 	
@@ -114,14 +112,14 @@ public class StatesProvinces implements Serializable{
 	@Override
 	public String toString()
 	{
-		return "{stateprovinceId:"+stateprovinceId+", stateprovinceName:"+stateprovinceName+", country:"+countries+" }";
+		return "{stateprovinceId:"+stateProvinceId+", stateprovinceName:"+stateprovinceName+", country:"+countries+" }";
 	}
 	
 	
 	public static class StatesProvincesId implements Serializable {
 		   
 		private static final long serialVersionUID = -7321416499047242338L;
-		private int stateprovinceId;
+		private int stateProvinceId;
 		
 	}
 

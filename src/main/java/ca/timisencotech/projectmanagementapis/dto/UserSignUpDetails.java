@@ -1,10 +1,8 @@
 package ca.timisencotech.projectmanagementapis.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +18,8 @@ import org.springframework.context.annotation.Bean;
 
 
 @Entity
-@IdClass(UserSignUpDetails.UserLoginDetailsId.class)
-@Table(name = "usersignupetailstable",uniqueConstraints=@UniqueConstraint(columnNames="email"))
+@IdClass(UserSignUpDetails.UserSignUpDetailsId.class)
+@Table(name = "usersignuptable",uniqueConstraints=@UniqueConstraint(columnNames="email"))
 
 public class UserSignUpDetails implements Serializable{
 
@@ -36,13 +34,12 @@ public class UserSignUpDetails implements Serializable{
 
 	
 	@Id
-	@Column(name = "email", unique = true,nullable = false,length=60)
+	@Column(name = "email", unique = true,nullable = false,length=50)
 	private String email;
 	
 	
 	@Column(name = "password", nullable = false,length=20)
 	private String password;
-	
 	
 	
 	@OneToOne(mappedBy = "userSignUpDetails", cascade = CascadeType.ALL,
@@ -56,10 +53,41 @@ public class UserSignUpDetails implements Serializable{
 	@OneToMany(mappedBy = "userSignUpDetails", cascade = CascadeType.ALL,
 	fetch = FetchType.LAZY)
 	private List<UserLoginDetails> userLoginDetails = new ArrayList<UserLoginDetails>();
-			
+		
+	@OneToMany(mappedBy = "statesProvinces")
+	private List<Cities> cities = new ArrayList<Cities>();
 	
 	
 	
+	
+	
+	
+	@OneToMany(mappedBy = "userSignUpDetails", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY)
+	private List<ProjectSupervisorsDetails> projectSupervisorsDetails = new ArrayList<ProjectSupervisorsDetails>();
+	
+	
+	
+	public List<UserLoginDetails> getUserLoginDetails() {
+		return userLoginDetails;
+	}
+
+
+	public void setUserLoginDetails(List<UserLoginDetails> userLoginDetails) {
+		this.userLoginDetails = userLoginDetails;
+	}
+
+
+	public List<ProjectSupervisorsDetails> getProjectSupervisorsDetails() {
+		return projectSupervisorsDetails;
+	}
+
+
+	public void setProjectSupervisorsDetails(List<ProjectSupervisorsDetails> projectSupervisorsDetails) {
+		this.projectSupervisorsDetails = projectSupervisorsDetails;
+	}
+
+
 	public List<ProjectDetails> getProjectDetails() {
 		return projectDetails;
 	}
@@ -83,9 +111,9 @@ public class UserSignUpDetails implements Serializable{
 	}
 	
 	@Bean
-	public void setUserEmail(String userEmail)
+	public void setUserEmail(String email)
 	{
-		this.email = userEmail;
+		this.email = email;
 	}
 	
 	
@@ -128,7 +156,7 @@ public class UserSignUpDetails implements Serializable{
 	{
 		return "{email:"+email+", password:"+password+"}";
 	}
-	public static class UserLoginDetailsId implements Serializable {
+	public static class UserSignUpDetailsId implements Serializable {
 	    /**
 		 * 
 		 */

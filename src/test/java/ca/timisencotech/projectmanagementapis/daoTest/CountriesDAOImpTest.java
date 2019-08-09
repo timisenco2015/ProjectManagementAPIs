@@ -37,9 +37,9 @@ public class CountriesDAOImpTest<T> {
 			 
 			 Country resultCountry=	(Country)countryContainer.getObject();
 			 assertEquals(5, resultCountry.getCountryId());
-			 assertEquals("Mexico", resultCountry.getCountryName());
-			 assertEquals("MX", resultCountry.getCountryShortCode());
-			 assertEquals("238", resultCountry.getphoneCode());
+			 assertEquals("Arizona", resultCountry.getCountryName());
+			 assertEquals("AZ", resultCountry.getCountryShortCode());
+			 assertEquals("239", resultCountry.getphoneCode());
 			}
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
@@ -49,7 +49,7 @@ public class CountriesDAOImpTest<T> {
 			
 		 }
 			 
-	/*
+	
 	 
 	 @Test
 	public void addServiceConstraintErrorTest() 
@@ -70,7 +70,7 @@ public class CountriesDAOImpTest<T> {
 		 country.setCountryId(6);
 		 country.setCountryName("Mexico");
 		 country.setCountryShortCode("MX");
-		 country.setPhoneCode("238");
+		 country.setPhoneCode("239");
 		 Container<T> countryContainer = countriesDAOImp.addCountries(country);
 			String typeOfObject = countryContainer.getObjectType();
 		if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -80,7 +80,7 @@ public class CountriesDAOImpTest<T> {
 		 assertEquals(6, resultCountry.getCountryId());
 		 assertEquals("Mexico", resultCountry.getCountryName());
 		 assertEquals("MX", resultCountry.getCountryShortCode());
-		 assertEquals("238", resultCountry.getphoneCode());
+		 assertEquals("239", resultCountry.getphoneCode());
 		}
 		else if (typeOfObject.equalsIgnoreCase("Error Object"))
 		{
@@ -114,6 +114,6 @@ public class CountriesDAOImpTest<T> {
 		}
 	 }
 		 
-		*/
+	
 
 }

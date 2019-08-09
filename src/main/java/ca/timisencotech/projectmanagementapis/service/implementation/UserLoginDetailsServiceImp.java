@@ -2,7 +2,9 @@ package ca.timisencotech.projectmanagementapis.service.implementation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.dao.implementation.UserLoginDetailsDAOImp;
@@ -13,7 +15,8 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateUserLoginDetails;
 
 
-@Repository
+@Service("UserLoginDetailsService")
+@Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class UserLoginDetailsServiceImp implements UserLoginDetailsService {
 	
 	@Autowired

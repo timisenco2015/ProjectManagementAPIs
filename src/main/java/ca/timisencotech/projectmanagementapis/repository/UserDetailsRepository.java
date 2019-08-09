@@ -1,12 +1,12 @@
 package ca.timisencotech.projectmanagementapis.repository;
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import ca.timisencotech.projectmanagementapis.dto.UserDetails;
 
 
-public interface UserDetailsRepository extends CrudRepository<UserDetails, Long> {
+public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 
 
 	
