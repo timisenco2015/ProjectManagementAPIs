@@ -35,7 +35,7 @@ public class ValidateProjectGroupDetails implements Validator
 			 		boolean invalid = false;
 		            
 		                  for(int i=0; i<projectGroupDetail.getProjectName().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(projectGroupDetail.getProjectName().charAt(i)) && !Character.isDigit(projectGroupDetail.getProjectName().charAt(i)))
+		                      if (!Character.isAlphabetic(projectGroupDetail.getProjectName().charAt(i)) && !Character.isDigit(projectGroupDetail.getProjectName().charAt(i)) && !Character.isWhitespace( projectGroupDetail.getProjectName().charAt(i)))
 		                    		  
 		                      {
 		                          invalid = true;
@@ -120,7 +120,7 @@ public class ValidateProjectGroupDetails implements Validator
 			 		boolean invalid = false;
 		            
 		                  for(int i=0; i< projectGroupDetail.getGroupName().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic( projectGroupDetail.getGroupName().charAt(i)) && !Character.isDigit( projectGroupDetail.getGroupName().charAt(i)))
+		                      if (!Character.isAlphabetic( projectGroupDetail.getGroupName().charAt(i)) && !Character.isDigit( projectGroupDetail.getGroupName().charAt(i))&&!Character.isWhitespace( projectGroupDetail.getGroupName().charAt(i)))
 		                    		  
 		                      {
 		                          invalid = true;
@@ -141,7 +141,7 @@ public class ValidateProjectGroupDetails implements Validator
 		   }
 		 
 	
-		 if ((""+projectGroupDetail.getIsActive() != "true" && ""+projectGroupDetail.getIsActive() != "1") || (""+projectGroupDetail.getIsActive() != "false" && ""+projectGroupDetail.getIsActive() != "0"))
+		 if (projectGroupDetail.getIsActive() != true  &&  projectGroupDetail.getIsActive() != false )
 		 {
 			 errors.rejectValue("isActive", "field required");
 		 }

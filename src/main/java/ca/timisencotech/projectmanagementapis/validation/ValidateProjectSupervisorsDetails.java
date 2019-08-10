@@ -32,7 +32,7 @@ public class ValidateProjectSupervisorsDetails implements Validator
 			 		boolean invalid = false;
 		            
 		                  for(int i=0; i<projectSupervisorsDetail.getProjectName().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(projectSupervisorsDetail.getProjectName().charAt(i)) && !Character.isDigit(projectSupervisorsDetail.getProjectName().charAt(i)))
+		                      if (!Character.isAlphabetic(projectSupervisorsDetail.getProjectName().charAt(i)) && !Character.isDigit(projectSupervisorsDetail.getProjectName().charAt(i))&& !Character.isWhitespace(projectSupervisorsDetail.getProjectName().charAt(i)))
 		                    		  
 		                      {
 		                          invalid = true;

@@ -26,7 +26,7 @@ public class ProjectSupervisorsDetailsController
 	@PostMapping("/newProjectSupervisor")
 	@ResponseBody
 	public <T> Container<T> addNewProjectSupervisorDetails(@Validated @RequestBody ProjectSupervisorsDetail projectSupervisorsDetail,BindingResult result) { 
-		Application.getLogger().info("User called add new project supervisor details (/newUserSignUpDetails) api. parameters passed is: "+projectSupervisorsDetail);
+		Application.getLogger().info("User called add new project supervisor details (/newProjectSupervisor) api. parameters passed is: "+projectSupervisorsDetail);
 	    return  projectSupervisorsDetailsService.addProjectSupervisorsDetails(projectSupervisorsDetail, result);
 	    		
 	}

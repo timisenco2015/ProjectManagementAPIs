@@ -16,13 +16,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.City;
+import ca.timisencotech.projectmanagementapis.domain.ProjectSupervisorsDetail;
+
 
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
-public class CitiesIntegrationTest {
+public class ProjectSupervisorDetailsIntegrationTest {
 	
 	 @Autowired
 	  private TestRestTemplate restTemplate;
@@ -30,29 +31,29 @@ public class CitiesIntegrationTest {
 
 	
 	 @Test
-		public void addCitiesTest() 
+	public void addprojectDetailsTest() 
 		 {
 			
-			 City city = new City();
-			  city.setCityId(16);
-			  city.setCityName("Abeokuta");
-			  city.setStateId(24);
-		  
+			
+		
+		 ProjectSupervisorsDetail projectSupervisorsDetail = new ProjectSupervisorsDetail();
+		 projectSupervisorsDetail.setIsActive(true);
+		 projectSupervisorsDetail.setProjectName("Sherwood Project");	
+		 projectSupervisorsDetail.setSupervisorName("checkidowu@gmail.com");
 		 
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
 		 mediaTypeList.add(MediaType.APPLICATION_JSON);
 		 HttpHeaders headers = new HttpHeaders();
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
-	       HttpEntity<City> entity = new HttpEntity<>(city, headers);
-	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addCity", entity,String.class);
+	       HttpEntity<ProjectSupervisorsDetail> entity = new HttpEntity<>(projectSupervisorsDetail, headers);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/newProjectSupervisor", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
-	       //assertEquals(expectedOutput, response.getBody());
+	     //   assertEquals(expectedOutput, response.getBody());
 	       }
 	 
-	 
-
+	
+	
 }

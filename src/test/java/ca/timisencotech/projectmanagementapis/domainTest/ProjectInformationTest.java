@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.domain.ProjectInformation;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProjectDetailTest 
+public class ProjectInformationTest 
 {
 	@Test
 	public void testSettersGetters() 

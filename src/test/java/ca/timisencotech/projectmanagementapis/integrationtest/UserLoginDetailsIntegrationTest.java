@@ -54,7 +54,6 @@ public class UserLoginDetailsIntegrationTest {
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
-	        System.out.println(response.getBody());
 	     //   assertEquals(expectedOutput, response.getBody());
 	       }
 	 
@@ -81,7 +80,6 @@ public class UserLoginDetailsIntegrationTest {
 	     //  System.out.println("--==>"+entity.getBody());
 	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/confirmLoginDetails", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
-	        System.out.println(response.getBody());
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
 	     //   assertEquals(expectedOutput, response.getBody());

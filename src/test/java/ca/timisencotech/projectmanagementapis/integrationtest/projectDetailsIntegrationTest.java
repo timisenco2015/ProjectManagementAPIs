@@ -25,7 +25,7 @@ import ca.timisencotech.projectmanagementapis.domain.ProjectInformation;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
-public class projectDetailsIntegrationTest {
+public class ProjectDetailsIntegrationTest {
 	
 	 @Autowired
 	  private TestRestTemplate restTemplate;
@@ -64,8 +64,7 @@ public class projectDetailsIntegrationTest {
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
-	        System.out.println(response.getBody());
-	     //   assertEquals(expectedOutput, response.getBody());
+	    //   assertEquals(expectedOutput, response.getBody());
 	       }
 	 
 	

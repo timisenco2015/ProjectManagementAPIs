@@ -65,8 +65,8 @@ public class UserLoginDetailsDAOImpTest<T> {
 	 public void nullAddServiceConstraintTest()
 	 {
 		
-			Date date= new Date();
-			Timestamp timeStamp = new Timestamp(date.getTime());
+			//Date date= new Date();
+			//Timestamp timeStamp = new Timestamp(date.getTime());
 			
 			UserLoginDetail userLoginDetail = new UserLoginDetail();
 			//userLoginDetail.setLoginTime(timeStamp);

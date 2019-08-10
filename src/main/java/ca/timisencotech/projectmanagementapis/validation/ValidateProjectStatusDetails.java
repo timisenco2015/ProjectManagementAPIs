@@ -1,17 +1,13 @@
 package ca.timisencotech.projectmanagementapis.validation;
 
-
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
-
 import org.apache.commons.validator.routines.DoubleValidator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ca.timisencotech.projectmanagementapis.domain.ProjectStatusDetail;
-import ca.timisencotech.projectmanagementapis.domain.ProjectSupervisorsDetail;
 
 
 public class ValidateProjectStatusDetails implements Validator
@@ -37,7 +33,7 @@ public class ValidateProjectStatusDetails implements Validator
 			 		boolean invalid = false;
 		            
 		                  for(int i=0; i<projectStatusDetail.getProjectName().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(projectStatusDetail.getProjectName().charAt(i)) && !Character.isDigit(projectStatusDetail.getProjectName().charAt(i)))
+		                      if (!Character.isAlphabetic(projectStatusDetail.getProjectName().charAt(i)) && !Character.isDigit(projectStatusDetail.getProjectName().charAt(i))&& !Character.isWhitespace(projectStatusDetail.getProjectName().charAt(i)))
 		                    		  
 		                      {
 		                          invalid = true;
