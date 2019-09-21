@@ -1,4 +1,4 @@
-package ca.timisencotech.projectmanagementapis.dto;
+        package ca.timisencotech.projectmanagementapis.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -30,22 +30,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ProjectStatusDetails implements Serializable{
 
 
-	@Bean
-	public ProjectDetails getProjectDetails() {
-		return projectDetails;
-	}
-
-	@Bean
-	public void setProjectDetails(ProjectDetails projectDetails) {
-		this.projectDetails = projectDetails;
-	}
-
-
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2711606711624746038L;
+	private static final long serialVersionUID = -7709309777615237699L;
+
+
+
+
+
 
 
 
@@ -103,7 +96,18 @@ public class ProjectStatusDetails implements Serializable{
 	}
 
 
-	
+	@Bean
+	public ProjectSupervisorsDetails getProjectSupervisorsDetails() {
+		return projectSupervisorsDetails;
+	}
+
+	@Bean
+	public void setProjectSupervisorsDetails(ProjectSupervisorsDetails projectSupervisorsDetails) {
+		this.projectSupervisorsDetails = projectSupervisorsDetails;
+	}
+
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
@@ -114,7 +118,7 @@ public class ProjectStatusDetails implements Serializable{
 	private Timestamp updatedDate;
 	
 	
-	@Column(name = "description", length=400,nullable=false)
+	@Column(name = "description", columnDefinition="LONGTEXT",nullable=false)
 	private String description;
 	
 	@Column(name = "donepercentage", precision=16, scale=2,nullable=false)
@@ -126,10 +130,10 @@ public class ProjectStatusDetails implements Serializable{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "projectname",referencedColumnName="projectname" , nullable = false)
+	@JoinColumn(name = "supervisorid",referencedColumnName="id" , nullable = false,insertable = true, updatable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private ProjectDetails projectDetails;
+	private ProjectSupervisorsDetails projectSupervisorsDetails;
 	
 	
 	
@@ -137,17 +141,17 @@ public class ProjectStatusDetails implements Serializable{
 	@Override
 	public String toString()
 	{
-		return "{projectName:"+projectDetails.getProjectName()+", updatedDate:"+updatedDate+"description:"+ description+", donePercentage:"+donePercentage+", completedDate:"+completedDate+"}";
+		return "{projectName:"+projectSupervisorsDetails.getProjectDetails().getProjectName()+", supervisorName:"+projectSupervisorsDetails.getUserSignUpDetails().getUserEmail()+", updatedDate:"+updatedDate+"description:"+ description+", donePercentage:"+donePercentage+", completedDate:"+completedDate+"}";
 	}
 	
 	
 	public static class ProjectStatusDetailsId implements Serializable {
 	
-		/**
+	/**
 		 * 
 		 */
 		private static final long serialVersionUID = -9071269026613004753L;
-private Long id;
+	private Long id;
 	
 		
 	}

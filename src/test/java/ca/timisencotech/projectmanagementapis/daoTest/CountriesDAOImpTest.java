@@ -41,79 +41,32 @@ public class CountriesDAOImpTest<T> {
 			 assertEquals("AZ", resultCountry.getCountryShortCode());
 			 assertEquals("239", resultCountry.getphoneCode());
 			}
-			else if (typeOfObject.equalsIgnoreCase("Error Object"))
+		
+			
+			//checks for unique constraint
+			
+			country = new  Country();
+			 country.setCountryId(6);
+			 country.setCountryName("Arizona");
+			 country.setCountryShortCode("AZ");
+			 country.setPhoneCode("239");
+			  countryContainer = countriesDAOImp.addCountries(country);
+			typeOfObject = countryContainer.getObjectType();
+		
+			if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
+				
 				ApiError apiError = (ApiError)countryContainer.getObject();
-				assertEquals("Constraint error", apiError.getMessage());
+				assertEquals("Persistence Error", apiError.getStatus());
 			}
+			
+			
 			
 		 }
 			 
 	
 	 
-	 @Test
-	public void addServiceConstraintErrorTest() 
-	 {
-		//checks for field(s) unique test
-		 uniqueConstraintTest();
-		
-		 //checks for field(s) null test
-		 nullConstraintTest();
-		
-	 }
-	 
 	
-	 
-	 private void uniqueConstraintTest()
-	 {
-		 Country country = new  Country();
-		 country.setCountryId(6);
-		 country.setCountryName("Mexico");
-		 country.setCountryShortCode("MX");
-		 country.setPhoneCode("239");
-		 Container<T> countryContainer = countriesDAOImp.addCountries(country);
-			String typeOfObject = countryContainer.getObjectType();
-		if(typeOfObject.equalsIgnoreCase("Class Object"))
-		{
-		 
-		 Country resultCountry=	(Country)countryContainer.getObject();
-		 assertEquals(6, resultCountry.getCountryId());
-		 assertEquals("Mexico", resultCountry.getCountryName());
-		 assertEquals("MX", resultCountry.getCountryShortCode());
-		 assertEquals("239", resultCountry.getphoneCode());
-		}
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError)countryContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
-	 }
-	 
-
-	 private void nullConstraintTest()
-	 {
-		 Country country = new  Country();
-		 country.setCountryId(6);
-		
-		 country.setCountryShortCode("MX");
-		 Container<T> countryContainer = countriesDAOImp.addCountries(country);
-		String typeOfObject = countryContainer.getObjectType();
-		if(typeOfObject.equalsIgnoreCase("Class Object"))
-		{
-		 
-		 Country resultCountry=	(Country)countryContainer.getObject();
-		 assertEquals(6, resultCountry.getCountryId());
-		 assertEquals("Mexico", resultCountry.getCountryName());
-		 assertEquals("MX", resultCountry.getCountryShortCode());
-		 assertEquals("238", resultCountry.getphoneCode());
-		}
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError)countryContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
-	 }
-		 
 	
 
 }

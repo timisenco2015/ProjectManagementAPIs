@@ -46,7 +46,7 @@ public class StatesProvinces implements Serializable{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "countryid",referencedColumnName="countryid", nullable = false)
+	@JoinColumn(name = "countryid",referencedColumnName="countryid", nullable = false,insertable = true, updatable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private Countries countries;

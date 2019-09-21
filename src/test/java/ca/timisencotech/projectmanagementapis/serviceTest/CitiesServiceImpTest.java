@@ -2,6 +2,7 @@ package ca.timisencotech.projectmanagementapis.serviceTest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.DataBinder;
 import ca.timisencotech.projectmanagementapis.domain.City;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
+import ca.timisencotech.projectmanagementapis.exception.ErrorObject;
+import ca.timisencotech.projectmanagementapis.exception.ValidationError;
 import ca.timisencotech.projectmanagementapis.service.CitiesService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
@@ -23,12 +26,12 @@ public class CitiesServiceImpTest<T>
 	
 
 	@Test
-	public void addServiceTest() 
+	public void addServiceTest() throws JSONException 
 	 {
 		  City city = new City();
 		  city.setCityId(29);
-		  city.setCityName("Osogbo");
-		  city.setStateId(23);	
+		  city.setCityName("Ikirun");
+		  city.setStateId(25);	
 
 			 DataBinder binder = new DataBinder(city);
 			 Container<T> cityContainer = citiesService.addCity(city, binder.getBindingResult());
@@ -38,88 +41,62 @@ public class CitiesServiceImpTest<T>
 			 
 				City resultCity=	(City)cityContainer.getObject();
 			 assertEquals(29, resultCity.getCityId());
-			 assertEquals(23, resultCity.getStateId());
-			 assertEquals("Osogbo", resultCity.getCityName());
+			 assertEquals(25, resultCity.getStateId());
+			 assertEquals("Ikirun", resultCity.getCityName());
 			}
-			else if (typeOfObject.equalsIgnoreCase("Error Object"))
-			{
-				ApiError apiError = (ApiError)cityContainer.getObject();
-				assertEquals("Constraint error", apiError.getMessage());
-			}
+		
 			
+			//checks for unique constraint
 			
-		 
-	 }
-	
-	
-	@Test
-	public void addServiceConstraintErrorTest() 
-	 {
-		//checks for field(s) unique test
-		 uniqueConstraintTest();
-		
-		 //checks for field(s) null test
-		 nullConstraintTest();
-		
-	 }
-	 
-	
-	 
-	 private void uniqueConstraintTest()
-	 {
-		
-		  City city = new City();
-		  city.setCityId(27);
-		  city.setCityName("Osogbo");
-		  city.setStateId(26);	
-		  
-		 DataBinder binder = new DataBinder(city);
-		 Container<T> cityContainer = citiesService.addCity(city, binder.getBindingResult());
-			String typeOfObject = cityContainer.getObjectType();
-			if(typeOfObject.equalsIgnoreCase("Class Object"))
-			{
-				 
-				 City resultCity=	(City)cityContainer.getObject();
-				 assertEquals(27, resultCity.getCityId());
-				 assertEquals(26, resultCity.getStateId());
-				 assertEquals("Osogbo", resultCity.getCityName());
-				 
-			}
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError)cityContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
-	 }
-	 
+			  city = new City();
+			  city.setCityId(40);
+			  city.setCityName("Ikirun");
+			  city.setStateId(25);
+			  
+			 binder = new DataBinder(city);
+			 cityContainer = citiesService.addCity(city, binder.getBindingResult());
+			 typeOfObject = cityContainer.getObjectType();
+				if (typeOfObject.equalsIgnoreCase("Error Object"))
+				{
+					ErrorObject errorObject = (ErrorObject) cityContainer.getObject();
+					if(errorObject instanceof ApiError)
+					{
+						ApiError apiError = (ApiError)cityContainer.getObject();
+						assertEquals("Persistence Error", apiError.getStatus());
+			
+					}
+				}
+				
+				
+		//checks for validation errors
+				
+				city = new City();
+				  city.setCityId(28);
+				  
+				  city.setStateId(26);	
+				  
+				binder = new DataBinder(city);
+				cityContainer = citiesService.addCity(city, binder.getBindingResult());
+				typeOfObject = cityContainer.getObjectType();
+				if (typeOfObject.equalsIgnoreCase("Error Object"))
+				{
 
-	 private void nullConstraintTest()
-	 {
-		
-		 
-		 City city = new City();
-		  city.setCityId(28);
-		  
-		  city.setStateId(26);	
-		  
-		 DataBinder binder = new DataBinder(city);
-		 Container<T> cityContainer = citiesService.addCity(city, binder.getBindingResult());
-			String typeOfObject = cityContainer.getObjectType();
-			if(typeOfObject.equalsIgnoreCase("Class Object"))
-		{
-		 
-
-				 City resultCity=	(City)cityContainer.getObject();
-				 assertEquals(28, resultCity.getCityId());
-				 assertEquals(26, resultCity.getStateId());
-				 assertEquals("Osogbo", resultCity.getCityName());
-				 }
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError) cityContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
+					ErrorObject errorObject = (ErrorObject)cityContainer.getObject();
+					
+					 if (errorObject instanceof ValidationError)
+					{
+						ValidationError validationError = (ValidationError)errorObject;
+						assertEquals("Failed", validationError.getMessageObject().getString("errorStatus"));
+						assertEquals("Failed validation test for all or most of the fields", validationError.getMessageObject().getString("message"));
+						
+						
+					}
+				}
 	 }
+	
+	
+	
+
 	
 	
 }

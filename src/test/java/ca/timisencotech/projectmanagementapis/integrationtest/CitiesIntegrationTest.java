@@ -34,9 +34,9 @@ public class CitiesIntegrationTest {
 		 {
 			
 			 City city = new City();
-			  city.setCityId(16);
-			  city.setCityName("Abeokuta");
-			  city.setStateId(24);
+			  city.setCityId(17);
+			  city.setCityName("Ila");
+			  city.setStateId(25);
 		  
 		 
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();

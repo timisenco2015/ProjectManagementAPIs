@@ -47,7 +47,7 @@ public class CityControllerTest {
 			  City city = new City();
 			  city.setCityId(35);
 			  city.setCityName("Iresi");
-			  city.setStateId(23);	
+			  city.setStateId(25);	
 				
 			
 			

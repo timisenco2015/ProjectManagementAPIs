@@ -49,7 +49,8 @@ import org.springframework.dao.CleanupFailureDataAccessException;
 		}
 
 	public ApiError	handleDataAccessException(DataAccessException dataAccessException)  {
-			if (dataAccessException instanceof CannotAcquireLockException) {
+			
+		/*if (dataAccessException instanceof CannotAcquireLockException) {
 			
 				return new ApiError("Persistence Error", "");
 			}
@@ -273,6 +274,8 @@ import org.springframework.dao.CleanupFailureDataAccessException;
 					
 				}
 			}
+			*/
+	return	new ApiError("Persistence Error", dataAccessException.getLocalizedMessage());
 		}
 		
 

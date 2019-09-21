@@ -45,7 +45,7 @@ public class Cities implements Serializable{
 
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "stateprovinceid",referencedColumnName="stateprovinceid" , nullable = false)
+	@JoinColumn(name = "stateprovinceid",referencedColumnName="stateprovinceid" , nullable = false,insertable = true, updatable =true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private StatesProvinces statesProvinces;

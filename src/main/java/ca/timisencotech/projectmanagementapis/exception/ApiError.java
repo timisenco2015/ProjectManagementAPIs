@@ -2,9 +2,8 @@ package ca.timisencotech.projectmanagementapis.exception;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class ApiError {
+public class ApiError extends ErrorObject {
 	
 	 private String status;
 	   private LocalDateTime timestamp;

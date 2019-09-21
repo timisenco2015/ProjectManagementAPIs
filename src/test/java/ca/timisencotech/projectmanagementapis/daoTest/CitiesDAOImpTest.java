@@ -26,8 +26,8 @@ public class CitiesDAOImpTest<T>
 	 {
 		  City city = new City();
 		  city.setCityId(35);
-		  city.setCityName("Abeokuta");
-		  city.setStateId(24);	
+		  city.setCityName("osogbo");
+		  city.setStateId(25);	
 
 			 Container<T> cityContainer = citiesDAOImp.addCities(city);
 					
@@ -37,81 +37,31 @@ public class CitiesDAOImpTest<T>
 			 
 				City resultCity=	(City)cityContainer.getObject();
 			 assertEquals(35, resultCity.getCityId());
-			 assertEquals(24, resultCity.getStateId());
-			 assertEquals("Abeokuta", resultCity.getCityName());
+			 assertEquals(25, resultCity.getStateId());
+			 assertEquals("osogbo", resultCity.getCityName());
 			}
-			else if (typeOfObject.equalsIgnoreCase("Error Object"))
+		
+			
+		//checks for unique constraint	
+			city = new City();
+			  city.setCityId(38);
+			  city.setCityName("Osogbo");
+			  city.setStateId(25);	
+			  
+			cityContainer = citiesDAOImp.addCities(city);
+				typeOfObject = cityContainer.getObjectType();
+
+				if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{
 				ApiError apiError = (ApiError)cityContainer.getObject();
-				assertEquals("Constraint error", apiError.getMessage());
-			}
-			
+				assertEquals("Persistence Error", apiError.getStatus());			}
 			
 		 
 	 }
 	
 
-	@Test
-	public void addServiceConstraintErrorTest() 
-	 {
-		//checks for field(s) unique test
-		 uniqueConstraintTest();
-		
-		 //checks for field(s) null test
-		 nullConstraintTest();
-		
-	 }
-	 
 	
 	 
-	 private void uniqueConstraintTest()
-	 {
-		
-		  City city = new City();
-		  city.setCityId(38);
-		  city.setCityName("Abeokuta");
-		  city.setStateId(24);	
-		  
-		 Container<T> cityContainer = citiesDAOImp.addCities(city);
-			String typeOfObject = cityContainer.getObjectType();
-			if(typeOfObject.equalsIgnoreCase("Class Object"))
-		{
-				City resultCity=	(City)cityContainer.getObject();
-				 assertEquals(37, resultCity.getCityId());
-				 assertEquals(23, resultCity.getStateId());
-				 assertEquals("Iresi", resultCity.getCityName());
-			}
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError)cityContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
-	 }
-	 
-
-	 private void nullConstraintTest()
-	 {
-		
-		 
-		 City city = new City();
-		  city.setCityId(39);
-		  
-		  city.setStateId(24);	
-		  Container<T> cityContainer = citiesDAOImp.addCities(city);
-			String typeOfObject = cityContainer.getObjectType();
-			if(typeOfObject.equalsIgnoreCase("Class Object"))
-		{
-		 
-				City resultCity=	(City)cityContainer.getObject();
-				 assertEquals(38, resultCity.getCityId());
-				 assertEquals(23, resultCity.getStateId());
-			}
-		else if (typeOfObject.equalsIgnoreCase("Error Object"))
-		{
-			ApiError apiError = (ApiError)cityContainer.getObject();
-			assertEquals("Constraint error", apiError.getMessage());
-		}
-	 }
 	
 	
 }

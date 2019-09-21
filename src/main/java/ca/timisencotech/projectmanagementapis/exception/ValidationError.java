@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
-public class ValidationError {
+public class ValidationError extends ErrorObject {
 	
 
 	private JSONObject messageOBject=null;
@@ -40,10 +40,13 @@ public class ValidationError {
 	}
 	
 	
-
+	public JSONObject getMessageObject()
+	{
+		return messageOBject;
+	}
 	
 	
-	public String getMessageObject()
+	public String getStringMessageObject()
 	{
 		return messageOBject.toString();
 	}

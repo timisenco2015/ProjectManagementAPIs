@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @IdClass(UserDetails.UserDetailsId.class)
-@Table(name = "userinformationtable",uniqueConstraints=@UniqueConstraint(columnNames="email"))
+@Table(name = "userinformationtable",uniqueConstraints=@UniqueConstraint(columnNames="usersignupid"))
 
 public class UserDetails implements Serializable{
 /**
@@ -57,7 +57,7 @@ public class UserDetails implements Serializable{
 	
 	
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "email",referencedColumnName="email")
+	@JoinColumn(name = "usersignupid",referencedColumnName="id",nullable=false,insertable = true, updatable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
     private UserSignUpDetails userSignUpDetails;
@@ -147,7 +147,16 @@ public class UserDetails implements Serializable{
 	
 	
 	
-	
+	@Bean
+	public Long getId() {
+		return id;
+	}
+
+
+
+
+
+
 	@Bean
 	public String getFirstName()
 	{

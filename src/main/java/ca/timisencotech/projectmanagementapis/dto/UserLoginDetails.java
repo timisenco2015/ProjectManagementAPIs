@@ -45,13 +45,13 @@ public class UserLoginDetails implements Serializable{
 	
 	
 
-	@Column(name = "loginstime",length=20,nullable = false)
+	@Column(name = "logintime",length=20,nullable = false)
 	private Timestamp loginTime;
 
 	
 					
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "email",referencedColumnName="email" , nullable = false)
+	@JoinColumn(name = "usersignupid",referencedColumnName="id" , nullable = false,insertable = true, updatable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private UserSignUpDetails userSignUpDetails;
@@ -80,12 +80,20 @@ public class UserLoginDetails implements Serializable{
 	}
 	
 	
-	
-	
 
-	
-	
-	
+	@Bean
+	public Long getId() {
+		return id;
+	}
+
+
+	@Bean
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
 	@Bean
 	public String getPassword()
 	{

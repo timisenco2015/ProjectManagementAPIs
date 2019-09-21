@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.ProjectInformation;
+import ca.timisencotech.projectmanagementapis.domain.Project;
 
 
 
@@ -21,53 +21,53 @@ public class ProjectInformationTest
 	@Test
 	public void testSettersGetters() 
 	{
-		ProjectInformation projectInformation = new ProjectInformation();
+		Project project = new Project();
 		
 		
 	
 		//check setter and getter for first name
-		projectInformation.setProjectName("Edmonton Project");
+		project.setProjectName("Edmonton Project");
 		String testResult1 = "Edmonton Project";
-		assertEquals(testResult1,projectInformation.getProjectName());
+		assertEquals(testResult1,project.getProjectName());
 		
 		//check setter and getter for created date
 		Date date= new Date();
 		Timestamp loginTime = new Timestamp(date.getTime());
-		projectInformation.setCreatedDate(loginTime);
-		assertEquals(loginTime, projectInformation.getCreatedDate());
+		project.setCreatedDate(loginTime);
+		assertEquals(loginTime, project.getCreatedDate());
 		
 		//check setter and getter for start date
 	
 		 loginTime = new Timestamp(date.getTime());
-		 projectInformation.setStartDate(loginTime);
-		assertEquals(loginTime, projectInformation.getStartDate());
+		 project.setStartDate(loginTime);
+		assertEquals(loginTime, project.getStartDate());
 		
 		//check setter and getter for end date
 		 loginTime = new Timestamp(date.getTime());
-		 projectInformation.setEndDate(loginTime);
-		assertEquals(loginTime, projectInformation.getEndDate());
+		 project.setEndDate(loginTime);
+		assertEquals(loginTime, project.getEndDate());
 		
 		//check setter and getter for created by
 		testResult1 = "userEmail@gmail.com";
-		projectInformation.setCreatedBy("userEmail@gmail.com");
-		assertEquals(testResult1, projectInformation.getCreatedBy());
+		project.setCreatedBy("userEmail@gmail.com");
+		assertEquals(testResult1, project.getCreatedBy());
 		
 		//check setter and getter for email
-		projectInformation.setDescription("dfdsdsgdsgds");
+		project.setDescription("dfdsdsgdsgds");
 		testResult1 = "dfdsdsgdsgds";
-		assertEquals(testResult1, projectInformation.getDescription());
+		assertEquals(testResult1, project.getDescription());
 		
 		
 		
 	
 
 
-		assertEquals("Edmonton Project",projectInformation.getProjectName());
-		assertEquals(loginTime, projectInformation.getCreatedDate());
-		assertEquals(loginTime, projectInformation.getStartDate());
-		assertEquals(loginTime, projectInformation.getEndDate());
-		assertEquals("userEmail@gmail.com", projectInformation.getCreatedBy());
-		assertEquals("dfdsdsgdsgds",  projectInformation.getDescription());
+		assertEquals("Edmonton Project",project.getProjectName());
+		assertEquals(loginTime, project.getCreatedDate());
+		assertEquals(loginTime, project.getStartDate());
+		assertEquals(loginTime, project.getEndDate());
+		assertEquals("userEmail@gmail.com", project.getCreatedBy());
+		assertEquals("dfdsdsgdsgds",  project.getDescription());
 		
 		
 	}

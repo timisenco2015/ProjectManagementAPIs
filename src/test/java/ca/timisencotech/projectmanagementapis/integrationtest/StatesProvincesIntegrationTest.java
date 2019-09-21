@@ -34,9 +34,9 @@ public class StatesProvincesIntegrationTest {
 		 {
 			
 			StateProvince stateProvince = new StateProvince();
-			 stateProvince.setCountryId(30);
-			 stateProvince.setStateProvinceId(24);
-			 stateProvince.setStateProvinceName("Ogun State"); 
+			 stateProvince.setCountryId(1);
+			 stateProvince.setStateProvinceId(25);
+			 stateProvince.setStateProvinceName("Osun State"); 
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
 		 mediaTypeList.add(MediaType.APPLICATION_JSON);
 		 HttpHeaders headers = new HttpHeaders();
