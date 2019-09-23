@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.ProjectStatus;
 import ca.timisencotech.projectmanagementapis.domain.TaskStatus;
 
 
@@ -34,7 +33,7 @@ public class TaskStatusIntegrationTest {
 
 	
 	 @Test
-	public void addprojectDetailsTest() 
+	public void addTaskStatusTest() 
 		 {
 			
 		 Date date= new Date();
@@ -59,7 +58,7 @@ public class TaskStatusIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<TaskStatus> entity = new HttpEntity<>(taskStatus, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/updateTaskStatus", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/taskstatus/updatetaskstatus", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

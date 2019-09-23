@@ -11,19 +11,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProjectGroupRepositoryTest {
 		 
 		@Autowired
-		ProjectGroupRepository projectGroupRepo;
+		ProjectGroupRepo projectGroupRepo;
 		
 		
 		@Autowired
-		ProjectSupervisorsRepository projectSupervisorsRepo;
+		ProjectSupervisorsRepo projectSupervisorsRepo;
 
 		  @Test
 		  public void saveTest() {

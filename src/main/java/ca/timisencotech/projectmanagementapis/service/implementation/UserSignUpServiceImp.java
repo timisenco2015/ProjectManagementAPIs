@@ -2,7 +2,6 @@ package ca.timisencotech.projectmanagementapis.service.implementation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +14,9 @@ import ca.timisencotech.projectmanagementapis.service.UserSignUpService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateUserSignUp;
 
-@Service("UserSignUpDetailsService")
+@Service("UserSignUpService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
-public class UserSignUpServiceImp implements  UserSignUpService {
+public class UserSignUpServiceImp implements UserSignUpService {
 	
 	@Autowired
 	private UserSignUpDAOImp userSignUpDAOImp;
@@ -48,7 +47,7 @@ public class UserSignUpServiceImp implements  UserSignUpService {
 		{
 			Application.getLogger().info("addUserSignUpDetails method in UserSignUpDetailsServiceImp Service Implementation. add user sign up details");
 		    
-			genericObject=userSignUpDAOImp.addUserSignUpDetails(userSignUp);
+			genericObject=userSignUpDAOImp.addUserSignUp(userSignUp);
 					
 		}
 		return genericObject;

@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 @RunWith(SpringRunner.class)
@@ -25,13 +25,13 @@ import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
 public class TaskRepositoryTest {
 		 
 		@Autowired
-		private ProjectRepository projectRepo;
+		private ProjectRepo projectRepo;
 		
 		@Autowired
-		UserSignUpRepository userSignUpRepo;
+		UserSignUpRepo userSignUpRepo;
 		
 		@Autowired
-		TaskRepository taskRepo;
+		TaskRepo taskRepo;
 
 		  @Test
 		  public void saveTest() {

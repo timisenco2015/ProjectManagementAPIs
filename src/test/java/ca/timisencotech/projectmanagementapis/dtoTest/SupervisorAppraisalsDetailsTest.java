@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorAppraisalsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 
 
 
@@ -24,10 +24,10 @@ import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepos
 public class SupervisorAppraisalsDetailsTest 
 {
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepository;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Test
 	public void testSettersGetters() 
@@ -55,9 +55,9 @@ public class SupervisorAppraisalsDetailsTest
 			supervisorAppraisalsDetails.setStandardIPoint(1);
 			supervisorAppraisalsDetails.setStandardJ("QuestionJ");
 			supervisorAppraisalsDetails.setStandardJPoint(2);
-			TaskAssignedMembersDetails findTaskAssignedMembersDetails = taskAssignedMemberRepository.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
+			TaskAssignedMembersDetails findTaskAssignedMembersDetails = taskAssignedMemberRepo.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
 			supervisorAppraisalsDetails.setTaskAssignedMembersDetails(findTaskAssignedMembersDetails);
-			SupervisorTasksDetails findSupervisorTasksDetails = supervisorTasksRepository.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task1");
+			SupervisorTasksDetails findSupervisorTasksDetails = supervisorTasksRepo.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task1");
 			supervisorAppraisalsDetails.setSupervisorTasksDetails(findSupervisorTasksDetails);
 			
 			

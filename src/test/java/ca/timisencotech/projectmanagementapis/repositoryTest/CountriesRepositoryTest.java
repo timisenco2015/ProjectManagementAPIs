@@ -2,17 +2,14 @@ package ca.timisencotech.projectmanagementapis.repositoryTest;
 
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import ca.timisencotech.projectmanagementapis.dto.Countries;
-import ca.timisencotech.projectmanagementapis.repository.CountriesRepository;
+import ca.timisencotech.projectmanagementapis.repository.CountriesRepo;
 
 
 @RunWith(SpringRunner.class)
@@ -20,7 +17,7 @@ import ca.timisencotech.projectmanagementapis.repository.CountriesRepository;
 public class CountriesRepositoryTest {
 		 
 		@Autowired
-		  private CountriesRepository countriesRepository;
+		  private CountriesRepo countriesRepo;
 
 		  @Test
 		  public void saveTest() {
@@ -32,9 +29,9 @@ public class CountriesRepositoryTest {
 			  countries.setCountryShortCode("NG");
 				countries.setPhoneCode("234");
 				countries.setCountryName("Nigeria");
-				countriesRepository.save(countries);
+				countriesRepo.save(countries);
 				
-				assertNotNull( countriesRepository.findByCountryId(1));
+				assertNotNull( countriesRepo.findByCountryId(1));
 		  }
 		  
 	
@@ -45,7 +42,7 @@ public class CountriesRepositoryTest {
 			  
 			
 				
-				assertNotNull( countriesRepository.findByCountryId(1));
+				assertNotNull( countriesRepo.findByCountryId(1));
 		  }
 
 	}

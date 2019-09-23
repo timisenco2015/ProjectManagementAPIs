@@ -17,18 +17,18 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/city")
 public class CityController 
 {
 	@Autowired
 	CitiesService citiesService;
 	
 	
-	@PostMapping("/addCity")
+	@PostMapping("/addcity")
 	@ResponseBody
 	public <T> Container<T> addNewCity(@Validated @RequestBody City city,BindingResult result) { 
 		
-		 Application.getLogger().info("User called add city details api. parameters passed is: "+city);
+		 Application.getLogger().info("User called add city (/addcity) details api. parameters passed is: "+city);
  return  citiesService.addCity(city,result);
 	    		
 	

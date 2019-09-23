@@ -45,7 +45,7 @@ public class SelfAppraisalControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testNewSelfAppraisal() throws Exception
 		{
 			 Date date= new Date();
 			 SelfAppraisals selfAppraisals=new SelfAppraisals();
@@ -82,7 +82,7 @@ public class SelfAppraisalControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/inidividualAppraisal")
+				      .post("/selfappraisal/appraiseyourself")
 				      .content(asJsonString(selfAppraisals))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

@@ -5,5 +5,5 @@ import ca.timisencotech.projectmanagementapis.domain.ProjectStatus;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 public interface ProjectStatusService {
-	public <T> Container<T> addProjectStatusDetails(ProjectStatus projectStatus,BindingResult result);
+	public <T> Container<T> addProjectStatus(ProjectStatus projectStatus,BindingResult result);
 	}

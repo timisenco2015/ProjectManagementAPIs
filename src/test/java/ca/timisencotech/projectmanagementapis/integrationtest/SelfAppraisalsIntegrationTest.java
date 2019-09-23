@@ -18,11 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.Project;
 import ca.timisencotech.projectmanagementapis.domain.SelfAppraisals;
-import ca.timisencotech.projectmanagementapis.domain.SupervisorTasks;
-import ca.timisencotech.projectmanagementapis.domain.SupervisorsMembers;
-
 
 
 
@@ -77,7 +73,7 @@ public class SelfAppraisalsIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<SelfAppraisals> entity = new HttpEntity<>(selfAppraisals, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/inidividualAppraisal", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/selfappraisal/appraiseyourself", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

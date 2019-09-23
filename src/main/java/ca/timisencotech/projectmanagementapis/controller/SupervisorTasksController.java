@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/supervisortasks")
 public class SupervisorTasksController 
 {
 	
@@ -24,10 +24,10 @@ public class SupervisorTasksController
 	SupervisorsTasksService supervisorsTasksService;
 	
 	
-	@PostMapping("/addTaskToSupervisotTaskList")
+	@PostMapping("/addtasktosupervisottasklist")
 	@ResponseBody
 	public <T> Container<T> addNewSupervisorTask(@Validated @RequestBody SupervisorTasks supervisorTasks,BindingResult result) { 
-		Application.getLogger().info("User called supervisor tasks details (/addTaskToSupervisotTaskList) api. parameters passed is: "+supervisorTasks);
+		Application.getLogger().info("User called supervisor tasks details (/addtasktosupervisottasklist) api. parameters passed is: "+supervisorTasks);
 	    return  supervisorsTasksService.addSupervisorTasks(supervisorTasks, result);
 	    		
 	    		

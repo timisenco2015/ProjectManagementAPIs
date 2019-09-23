@@ -19,21 +19,21 @@ public class ValidateUserSignUp implements Validator
 	public void validate(Object target, Errors errors) {
 		UserSignUp userSignUp = (UserSignUp) target;
 		 // starting from line 23 to line 40 checks for valid email address 
-		 if(userSignUp.getUserEmail()!=null&& userSignUp.getUserEmail().length()>0 && !Character.isWhitespace(userSignUp.getUserEmail().charAt(0)))
+		 if(userSignUp.getEmail()!=null&& userSignUp.getEmail().length()>0 && !Character.isWhitespace(userSignUp.getEmail().charAt(0)))
 	     {
 			String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+"[a-zA-Z0-9_+&*-]+)*@" +
 		                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
 		                "A-Z]{2,7}$";
 			 
 			 Pattern pat = Pattern.compile(emailRegex);
-		       if(!pat.matcher(userSignUp.getUserEmail()).matches())
+		       if(!pat.matcher(userSignUp.getEmail()).matches())
 		       {
-		    	   errors.rejectValue("userEmail", "email address is invalid");
+		    	   errors.rejectValue("email", "email address is invalid");
 		       }
 	     }
 		 else
 		 {
-			 errors.rejectValue("userEmail", "field required");
+			 errors.rejectValue("email", "field required");
 	     }
 		 
 		 

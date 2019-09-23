@@ -54,7 +54,7 @@ public class TaskServiceImpTest<T>
 		  	
 
 			 DataBinder binder = new DataBinder(task);
-			 Container<T> taskContainer = taskService.addTaskDetails(task, binder.getBindingResult());
+			 Container<T> taskContainer = taskService.addTask(task, binder.getBindingResult());
 					
 			String typeOfObject = taskContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -92,7 +92,7 @@ public class TaskServiceImpTest<T>
 			  	
 
 				 binder = new DataBinder(task);
-				 taskContainer = taskService.addTaskDetails(task, binder.getBindingResult());
+				 taskContainer = taskService.addTask(task, binder.getBindingResult());
 						
 				 typeOfObject = taskContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -130,7 +130,7 @@ public class TaskServiceImpTest<T>
 				  	
 
 					 binder = new DataBinder(task);
-					 taskContainer = taskService.addTaskDetails(task, binder.getBindingResult());
+					 taskContainer = taskService.addTask(task, binder.getBindingResult());
 							
 					 typeOfObject = taskContainer.getObjectType();
 					if (typeOfObject.equalsIgnoreCase("Error Object"))

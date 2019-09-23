@@ -50,7 +50,7 @@ public class ProjectDAOImpTest<T> {
 		 project.setDescription("Description coming soon");
 		 
 	
-			 Container<T> projectInformationContainer = projectDAOImp.addProjectDetails(project);
+			 Container<T> projectInformationContainer = projectDAOImp.addProject(project);
 			String typeOfObject = projectInformationContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
@@ -89,7 +89,7 @@ public class ProjectDAOImpTest<T> {
 			 
 			 project.setDescription("Description coming soon");
 			 
-			 	projectInformationContainer = projectDAOImp.addProjectDetails(project);
+			 	projectInformationContainer = projectDAOImp.addProject(project);
 				typeOfObject = projectInformationContainer.getObjectType();
 			 if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{

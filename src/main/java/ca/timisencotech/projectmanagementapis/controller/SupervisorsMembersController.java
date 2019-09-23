@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/supervisormembers")
 public class SupervisorsMembersController 
 {
 	
@@ -24,10 +24,10 @@ public class SupervisorsMembersController
 	SupervisorsMembersService supervisorsMembersService;
 	
 	
-	@PostMapping("/assignMemberToSupervisor")
+	@PostMapping("/assignmembertosupervisor")
 	@ResponseBody
 	public <T> Container<T> addMemberToSupervisor(@Validated @RequestBody SupervisorsMembers supervisorsMembers,BindingResult result) { 
-		Application.getLogger().info("User called supervisor members details api (/assignMemberToSupervisor). parameters passed is: "+supervisorsMembers);
+		Application.getLogger().info("User called supervisor members details api (/assignmembertosupervisor). parameters passed is: "+supervisorsMembers);
 	    return  supervisorsMembersService.addSupervisorMember(supervisorsMembers, result);
 	    		
 	

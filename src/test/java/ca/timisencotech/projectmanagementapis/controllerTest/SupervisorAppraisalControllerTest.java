@@ -82,7 +82,7 @@ public class SupervisorAppraisalControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/supervisorAppraisal")
+				      .post("/supervisorappraisal/appraiseprojectmember")
 				      .content(asJsonString(supervisorAppraisals))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

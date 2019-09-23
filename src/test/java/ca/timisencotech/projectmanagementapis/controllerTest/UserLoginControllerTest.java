@@ -2,9 +2,6 @@ package ca.timisencotech.projectmanagementapis.controllerTest;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,9 +17,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ca.timisencotech.projectmanagementapis.controller.UserLoginController;
-import ca.timisencotech.projectmanagementapis.domain.UserLogin;
 import ca.timisencotech.projectmanagementapis.domain.UserSignUp;
-import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
+import ca.timisencotech.projectmanagementapis.service.UserLoginService;
 
 
 @RunWith(SpringRunner.class)
@@ -33,7 +29,7 @@ public class UserLoginControllerTest {
 		private MockMvc mockMvc;
 		
 		@Mock
-		private UserLoginDetailsService userLoginDetailsService;
+		private UserLoginService userLoginService;
 		
 		@InjectMocks
 		private UserLoginController userLoginController;
@@ -49,14 +45,14 @@ public class UserLoginControllerTest {
 		
 		
 		@Test
-		public void testConfirmUserLoginDetails() throws Exception
+		public void testConfirmUserLogin() throws Exception
 		{
 			UserSignUp  userSignUp = new  UserSignUp();
-			userSignUp.setUserEmail("userEmail@gmail.com");	
+			userSignUp.setEmail("userEmail@gmail.com");	
 			userSignUp.setPassword("Test@2022");
 	
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/confirmLoginDetails")
+				      .post("/userlogin/confirmlogindetails")
 				      .content(asJsonString(userSignUp))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

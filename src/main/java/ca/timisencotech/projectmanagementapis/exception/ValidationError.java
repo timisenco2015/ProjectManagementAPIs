@@ -1,30 +1,30 @@
 package ca.timisencotech.projectmanagementapis.exception;
 
 import java.util.List;
-
-import org.json.JSONObject;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+
+import ca.timisencotech.projectmanagementapis.validation.CustomJSONObject;
 
 public class ValidationError extends ErrorObject {
 	
 
-	private JSONObject messageOBject=null;
+	private CustomJSONObject customJSONObject=null;
 
 	
 	public ValidationError()
 	{
-		messageOBject = new JSONObject();
+		customJSONObject = new CustomJSONObject();
 	}
 	
 	public void setErrorStatus(String status)
 	{
-		messageOBject.put("errorStatus", status);
+		customJSONObject.put("errorStatus", status);
 	}
 	
 	public void setMessage(String message)
 	{
-		messageOBject.put("message", message);
+		customJSONObject.put("message", message);
 		
 	}
 	
@@ -34,21 +34,22 @@ public class ValidationError extends ErrorObject {
 		for(ObjectError obj:ObjectErrorList)
 		{
 			FieldError fieldErrorObject = (FieldError)obj;
-			messageOBject.put(fieldErrorObject.getField(), fieldErrorObject.getCode());	
+			customJSONObject.put(fieldErrorObject.getField(), fieldErrorObject.getCode());	
 		}
 		
 	}
 	
 	
-	public JSONObject getMessageObject()
+	public CustomJSONObject getMessageObject()
 	{
-		return messageOBject;
+		return customJSONObject;
 	}
 	
-	
+	/*
 	public String getStringMessageObject()
 	{
 		return messageOBject.toString();
 	}
+	*/
 	
 }

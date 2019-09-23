@@ -29,7 +29,7 @@ public class UserIntegrationTest {
 	 
 
 	 @Test
-	 public void addUserDetailsTest() 
+	 public void addNewUserTest() 
 		 {
 			
 		 User user = new User();
@@ -48,7 +48,7 @@ public class UserIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<User> entity = new HttpEntity<>(user, headers);
 	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addNewUser", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/users/addnewuser", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	     assertEquals(HttpStatus.OK, response.getStatusCode());
 	     assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

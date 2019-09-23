@@ -29,7 +29,7 @@ public class ProjectServiceImpTest<T>
 	
 
 	@Test
-	public void addProjectDetailsTest() throws JSONException 
+	public void addProjectTest() throws JSONException 
 	 {
 		Date date= new Date();
 		Timestamp loginTime = new Timestamp(date.getTime());

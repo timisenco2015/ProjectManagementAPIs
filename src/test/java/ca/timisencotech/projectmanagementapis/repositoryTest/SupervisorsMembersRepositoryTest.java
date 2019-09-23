@@ -10,22 +10,22 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorsMembersDetails;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SupervisorsMembersRepositoryTest {
 		 
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	@Autowired
 	ProjectGroupMemberRepo projectGroupMemberRepo;
 	
 		@Autowired
-		SupervisorsMembersRepository supervisorsMembersRepository;
+		SupervisorsMembersRepo supervisorsMembersRepo;
 
 		  @Test
 		  public void saveTest() {
@@ -33,20 +33,20 @@ public class SupervisorsMembersRepositoryTest {
 
 				SupervisorsMembersDetails supervisorsMembersDetails = new  SupervisorsMembersDetails();
 				
-				ProjectSupervisorsDetails findProjectSupervisorsDetails =  projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Winnipeg Project","userEmail@gmail.com");
+				ProjectSupervisorsDetails findProjectSupervisorsDetails =  projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Winnipeg Project","userEmail@gmail.com");
 				ProjectGroupMemberDetails findProjectGroupMemberDetails =  projectGroupMemberRepo.findProjectMemberByProjectname("Winnipeg Project","userACAGEmail@gmail.com");
 				supervisorsMembersDetails.setProjectGroupMemberDetails(findProjectGroupMemberDetails);
 				supervisorsMembersDetails.setProjectSupervisorsDetails(findProjectSupervisorsDetails);
 				
-				supervisorsMembersRepository.save(supervisorsMembersDetails);
-				assertNotNull(supervisorsMembersRepository.findSupervisorsMembersDetails("Winnipeg Project","userEmail@gmail.com","userACAGEmail@gmail.com"));
+				supervisorsMembersRepo.save(supervisorsMembersDetails);
+				assertNotNull(supervisorsMembersRepo.findSupervisorsMembersDetails("Winnipeg Project","userEmail@gmail.com","userACAGEmail@gmail.com"));
 		  }
 		  
 		  
 		  @Test
 		  public void findProjectSupervisorByProjectAndSupervisorNameTest() {
 			  
-				assertNotNull(supervisorsMembersRepository.findSupervisorsMembersDetails("Winnipeg Project","userEmail@gmail.com","userACAGEmail@gmail.com"));
+				assertNotNull(supervisorsMembersRepo.findSupervisorsMembersDetails("Winnipeg Project","userEmail@gmail.com","userACAGEmail@gmail.com"));
 				    }
 	
 	}

@@ -39,7 +39,7 @@ public class ProjectSupervisorsDAOImpTest<T> {
 			
 
 
-		 Container<T>projectSupervisorsContainer = projectSupervisorsDAOImp.addProjectSupervisorsDetails(projectSupervisors);
+		 Container<T>projectSupervisorsContainer = projectSupervisorsDAOImp.addProjectSupervisors(projectSupervisors);
 		String typeOfObject = projectSupervisorsContainer.getObjectType();
 		
 		if(typeOfObject.equalsIgnoreCase("Class Object"))

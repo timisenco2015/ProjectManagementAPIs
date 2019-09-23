@@ -14,7 +14,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateProjectGroup;
 
 
-@Service("ProjectGroupDetailsService")
+@Service("ProjectGroupService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class ProjectGroupServiceImpl<T> implements ProjectGroupService{
 	
@@ -26,7 +26,7 @@ public class ProjectGroupServiceImpl<T> implements ProjectGroupService{
 	
 	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
-	public <T> Container<T> addProjectGroupDetails(ProjectGroup projectGroup,BindingResult result) {
+	public <T> Container<T> addProjectGroup(ProjectGroup projectGroup,BindingResult result) {
 		
   
 		Container<T> genericObject=null;
@@ -47,9 +47,9 @@ public class ProjectGroupServiceImpl<T> implements ProjectGroupService{
 			
 			else
 			{
-				Application.getLogger().info("addProjectGroupDetails method in ProjectGroupDetails Service Implementation. New project group has already been updated in the database");
+				Application.getLogger().info("addProjectGroup method in ProjectGroup Service Implementation. New project group has already been updated in the database");
 			    
-				genericObject = projectGroupDAOImp.addProjectGroupDetails(projectGroup);
+				genericObject = projectGroupDAOImp.addProjectGroup(projectGroup);
 					
 			}
 		return genericObject;

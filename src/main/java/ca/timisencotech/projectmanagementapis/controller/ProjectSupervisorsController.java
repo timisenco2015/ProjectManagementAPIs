@@ -16,18 +16,18 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/projectsupervisor")
 public class ProjectSupervisorsController 
 {
 	@Autowired
 	ProjectSupervisorsService projectSupervisorsService;
 	
 	
-	@PostMapping("/newProjectSupervisor")
+	@PostMapping("/newprojectsupervisor")
 	@ResponseBody
-	public <T> Container<T> addNewProjectSupervisorDetails(@Validated @RequestBody ProjectSupervisors projectSupervisors,BindingResult result) { 
-		Application.getLogger().info("User called add new project supervisor details (/newProjectSupervisor) api. parameters passed is: "+projectSupervisors);
-	    return  projectSupervisorsService.addProjectSupervisorsDetails(projectSupervisors, result);
+	public <T> Container<T> addNewProjectSupervisor(@Validated @RequestBody ProjectSupervisors projectSupervisors,BindingResult result) { 
+		Application.getLogger().info("User called add new project supervisor (/newprojectsupervisor) api. parameters passed is: "+projectSupervisors);
+	    return  projectSupervisorsService.addProjectSupervisors(projectSupervisors, result);
 	    		
 	}
 	

@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 
 
 
@@ -22,7 +22,7 @@ import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepos
 public class ProjectGroupDetailsTest 
 {
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	@Test
@@ -49,7 +49,7 @@ public class ProjectGroupDetailsTest
 		projectGroupDetails.setIsActive(true);
 		assertTrue(projectGroupDetails.getIsActive());
 		
-		ProjectSupervisorsDetails findProjectSupervisorsDetails= projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userEmail@gmail.com");
+		ProjectSupervisorsDetails findProjectSupervisorsDetails= projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userEmail@gmail.com");
 		projectGroupDetails.setProjectSupervisorsDetails(findProjectSupervisorsDetails);
 		assertEquals(findProjectSupervisorsDetails,projectGroupDetails.getProjectSupervisorsDetails());
 		

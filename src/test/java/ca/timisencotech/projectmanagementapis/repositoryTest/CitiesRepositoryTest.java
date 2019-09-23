@@ -15,14 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.Cities;
 import ca.timisencotech.projectmanagementapis.dto.Countries;
 import ca.timisencotech.projectmanagementapis.dto.StatesProvinces;
-import ca.timisencotech.projectmanagementapis.repository.CitiesRepository;
+import ca.timisencotech.projectmanagementapis.repository.CitiesRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CitiesRepositoryTest {
 		 
 		@Autowired
-		  private CitiesRepository citiesRepository;
+		  private CitiesRepo citiesRepo;
 
 		  @Test
 		  public void saveTest() {
@@ -48,8 +48,8 @@ public class CitiesRepositoryTest {
 			  cities.setCityId(1);
 			  cities.setCityName("Port Blair");
 			cities.setStatesProvinces(statesProvinces);
-			  citiesRepository.save(cities);
-			 assertNotNull(citiesRepository.findByCityId(1));
+			  citiesRepo.save(cities);
+			 assertNotNull(citiesRepo.findByCityId(1));
 		  }
 		  
 		  @Test
@@ -77,7 +77,7 @@ public class CitiesRepositoryTest {
 				  
 				
 				DataIntegrityViolationException exception = Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-					citiesRepository.save(cities1);
+					citiesRepo.save(cities1);
 				   });
 				
 				assertTrue(exception.getMostSpecificCause().toString().contains("Duplicate entry 'Port Blair'"));
@@ -114,7 +114,7 @@ public class CitiesRepositoryTest {
 					cities1.setStatesProvinces(statesProvinces);
 					  
 					 InvalidDataAccessApiUsageException exception = Assertions.assertThrows( InvalidDataAccessApiUsageException.class, () -> {
-					  citiesRepository.save(cities1);
+					  citiesRepo.save(cities1);
 			    });
 			assertTrue(exception.getMostSpecificCause().toString().contains("Not-null property references a transient value"));
 				
@@ -127,7 +127,7 @@ public class CitiesRepositoryTest {
 			  
 			
 			  DataIntegrityViolationException  exception1 = Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-				  citiesRepository.save(cities2);
+				  citiesRepo.save(cities2);
 			    });
 				assertTrue(exception1.getMostSpecificCause().toString().contains("Column 'cityname' cannot be null"));
 				
@@ -139,7 +139,7 @@ public class CitiesRepositoryTest {
 			  cities3.setCityId(2);
 			  cities3.setCityName("Port Blair");
 				  DataIntegrityViolationException   exception2 = Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-					  citiesRepository.save(cities3);
+					  citiesRepo.save(cities3);
 				    });
 				 assertTrue(exception2.getMostSpecificCause().toString().contains("Column 'stateprovinceid' cannot be null"));
 				

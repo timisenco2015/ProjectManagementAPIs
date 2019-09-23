@@ -31,7 +31,7 @@ public class ProjectSupervisorIntegrationTest {
 
 	
 	 @Test
-	public void addprojectDetailsTest() 
+	public void addNewProjectSupervisorTest() 
 		 {
 			
 			
@@ -47,7 +47,7 @@ public class ProjectSupervisorIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<ProjectSupervisors> entity = new HttpEntity<>(projectSupervisors, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/newProjectSupervisor", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectsupervisor/newprojectsupervisor", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

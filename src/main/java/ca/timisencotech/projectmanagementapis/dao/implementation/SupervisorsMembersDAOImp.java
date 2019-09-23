@@ -12,21 +12,21 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorsMembersDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class SupervisorsMembersDAOImp implements SupervisorsMembersDAO {
 	
 	@Autowired
-	SupervisorsMembersRepository supervisorsMembersRepository;
+	SupervisorsMembersRepo supervisorsMembersRepo;
 	
 	@Autowired
 	ProjectGroupMemberRepo projectGroupMemberRepo;
 	
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	
@@ -44,7 +44,7 @@ public class SupervisorsMembersDAOImp implements SupervisorsMembersDAO {
 		
 		
 		ProjectGroupMemberDetails findProjectGroupMember = projectGroupMemberRepo.findProjectMemberByProjectname(projectName, memberName);
-		ProjectSupervisorsDetails findProjectSupervisors =  projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName(projectName, supervisorName);
+		ProjectSupervisorsDetails findProjectSupervisors =  projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName(projectName, supervisorName);
 		
 	
 		if(findProjectGroupMember==null)
@@ -67,7 +67,7 @@ public class SupervisorsMembersDAOImp implements SupervisorsMembersDAO {
 			newSupervisorsMembersDetails.setProjectSupervisorsDetails(findProjectSupervisors);
 			 try {
 				 
-				 SupervisorsMembersDetails responseSupervisorsMembersDetails = supervisorsMembersRepository.save(newSupervisorsMembersDetails);
+				 SupervisorsMembersDetails responseSupervisorsMembersDetails = supervisorsMembersRepo.save(newSupervisorsMembersDetails);
 				 SupervisorsMembers domainSupervisorsMembers = new SupervisorsMembers();
 				 domainSupervisorsMembers.setMemberName(memberName);
 				 domainSupervisorsMembers.setProjectName(projectName);

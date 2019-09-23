@@ -42,7 +42,7 @@ public class CityControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddNewCity() throws Exception
 		{
 			  City city = new City();
 			  city.setCityId(35);
@@ -52,7 +52,7 @@ public class CityControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addCity")
+				      .post("/city/addcity")
 				      .content(asJsonString(city))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

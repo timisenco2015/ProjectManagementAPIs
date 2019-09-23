@@ -10,29 +10,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProjectSupervisorRepositoryTest {
 		 
 		@Autowired
-		ProjectRepository projectRepository;
+		ProjectRepo projectRepo;
 		
 		@Autowired
-		UserSignUpRepository userSignUpRepository;
+		UserSignUpRepo userSignUpRepo;
 		
 		@Autowired
-		ProjectSupervisorsRepository projectSupervisorsRepository;
+		ProjectSupervisorsRepo projectSupervisorsRepo;
 
 		  @Test
 		  public void saveTest() {
 			  
 			
-				UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail("userAEmail@gmail.com");
-				ProjectDetails findProjectDetails = projectRepository.findProjectDetailsByProjectName("Sherwood Project");
+				UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail("userAEmail@gmail.com");
+				ProjectDetails findProjectDetails = projectRepo.findProjectDetailsByProjectName("Sherwood Project");
 				
 					
 				
@@ -42,8 +42,8 @@ public class ProjectSupervisorRepositoryTest {
 			
 	
 			  
-	projectSupervisorsRepository.save(projectSupervisorsDetails);
-			 assertNotNull(projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com"));
+	projectSupervisorsRepo.save(projectSupervisorsDetails);
+			 assertNotNull(projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com"));
 		  }
 		  
 		  
@@ -51,7 +51,7 @@ public class ProjectSupervisorRepositoryTest {
 		  public void findProjectSupervisorByProjectAndSupervisorNameTest() {
 			  
 			
-				 assertNotNull(projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com"));
+				 assertNotNull(projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com"));
 	}
 	
 	}

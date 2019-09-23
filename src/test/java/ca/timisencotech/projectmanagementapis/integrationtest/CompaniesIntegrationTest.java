@@ -15,9 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import ca.timisencotech.projectmanagementapis.domain.Companies;
-import ca.timisencotech.projectmanagementapis.domain.Country;
+import ca.timisencotech.projectmanagementapis.domain.Company;
 
 
 @RunWith(SpringRunner.class)
@@ -30,26 +28,26 @@ public class CompaniesIntegrationTest<T> {
 
 	
 	 @Test
-		public void addCountryTest() 
+		public void addRegiterCompanyTest() 
 		 {
-			Companies companies = new  Companies();
-			companies.setAddress("616 Armitgae Crescent");
-			companies.setCity("Sherwood Park");
-			companies.setCompanyName("TestTech");
-			companies.setCountry("Canada");
-			companies.setPhoneNumber("2059634577");
-			companies.setPostalCode("T8H 0T7");
-			companies.setRegisterBy("userAAEmail@gmail.com");
-			companies.setStateProvince("Edmonton");
+			Company company = new  Company();
+			company.setAddress("616 Armitgae Crescent");
+			company.setCity("Sherwood Park");
+			company.setCompanyName("TestTech");
+			company.setCountry("Canada");
+			company.setPhoneNumber("2059634577");
+			company.setPostalCode("T8H 0T7");
+			company.setRegisterBy("userAAEmail@gmail.com");
+			company.setStateProvince("Edmonton");
 		 
 		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
 		 mediaTypeList.add(MediaType.APPLICATION_JSON);
 		 HttpHeaders headers = new HttpHeaders();
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
-	       HttpEntity<Companies> entity = new HttpEntity<>(companies, headers);
+	       HttpEntity<Company> entity = new HttpEntity<>(company, headers);
 	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/registerCompany", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/company/registercompany", entity,String.class);
 	       // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

@@ -26,7 +26,7 @@ public class StatesProvincesServiceImpTest<T> {
 	 
 	 
 	 @Test
-		public void addServiceTest() throws JSONException 
+		public void addStateProvinceTest() throws JSONException 
 		 {
 	
 		 

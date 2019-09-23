@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskRepo;
 
 
 
@@ -21,18 +21,18 @@ import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
 public class SupervisorTasksDetailsTest 
 {
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	@Autowired
-	TaskRepository taskRepository;
+	TaskRepo taskRepo;
 	
 	@Test
 	public void testSettersGetters() 
 	{
 
-		ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
+		ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
 		
-		TaskDetails findTaskDetails = taskRepository.findByTaskNameAndProjectName("Sherwood Project","Sub Task2");
+		TaskDetails findTaskDetails = taskRepo.findByTaskNameAndProjectName("Sherwood Project","Sub Task2");
 		
 		SupervisorTasksDetails supervisorTasksDetails = new  SupervisorTasksDetails();
 		

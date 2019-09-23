@@ -10,7 +10,7 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorsMembersDetails;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 
 
 
@@ -21,7 +21,7 @@ import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepos
 public class SupervisorsMembersDetailsTest 
 {
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	@Autowired
 	ProjectGroupMemberRepo projectGroupMemberRepo;
@@ -32,7 +32,7 @@ public class SupervisorsMembersDetailsTest
 
 		SupervisorsMembersDetails supervisorsMembersDetails = new  SupervisorsMembersDetails();
 		
-		ProjectSupervisorsDetails findProjectSupervisorsDetails =  projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Winnipeg Project","userEmail@gmail.com");
+		ProjectSupervisorsDetails findProjectSupervisorsDetails =  projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Winnipeg Project","userEmail@gmail.com");
 		ProjectGroupMemberDetails findProjectGroupMemberDetails =  projectGroupMemberRepo.findProjectMemberByProjectname("Winnipeg Project","userACAFEmail@gmail.com");
 		
 		

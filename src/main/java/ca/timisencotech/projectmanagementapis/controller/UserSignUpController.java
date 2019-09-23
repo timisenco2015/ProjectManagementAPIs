@@ -16,17 +16,17 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/usersignup")
 public class UserSignUpController 
 {
 	@Autowired
 	UserSignUpService userSignUpService;
 	
 	
-	@PostMapping("/newUserSignUp")
+	@PostMapping("/newusersignup")
 	@ResponseBody
-	public <T> Container<T> addNewUserLoginDetails(@Validated @RequestBody UserSignUp userSignUp,BindingResult result) { 
-		Application.getLogger().info("User called add user sign up details (/newUserSignUpDetails) api. parameters passed is: "+userSignUp);
+	public <T> Container<T> addNewUserLogin(@Validated @RequestBody UserSignUp userSignUp,BindingResult result) { 
+		Application.getLogger().info("User called add user sign up details (/newusersignup) api. parameters passed is: "+userSignUp);
 	    return  userSignUpService.addUserSignUpDetails(userSignUp, result);
 	    		
 	}

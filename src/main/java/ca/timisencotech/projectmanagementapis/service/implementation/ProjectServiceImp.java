@@ -14,7 +14,7 @@ import ca.timisencotech.projectmanagementapis.service.ProjectService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateProject;
 
-@Service("ProjectDetailsService")
+@Service("ProjectService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class ProjectServiceImp implements  ProjectService {
 	
@@ -45,9 +45,9 @@ public class ProjectServiceImp implements  ProjectService {
 		
 		else
 		{
-			Application.getLogger().info("addProjectpDetails method in ProjectDetailsServiceImp Service Implementation. add project details");
+			Application.getLogger().info("addProjectp method in ProjectDetails Service Implementation. add project");
 		    
-			genericObject=projectDAOImp.addProjectDetails(project);
+			genericObject=projectDAOImp.addProject(project);
 					
 		}
 		return genericObject;
@@ -74,9 +74,9 @@ public class ProjectServiceImp implements  ProjectService {
 		
 		else
 		{
-			Application.getLogger().info("updateProjectDetails method in ProjectDetailsServiceImp Service Implementation. update project details");
+			Application.getLogger().info("updateProject method in Project Service Implementation. update project");
 		    
-			genericObject=projectDAOImp.addProjectDetails(project);
+			genericObject=projectDAOImp.addProject(project);
 					
 		}
 		return genericObject;

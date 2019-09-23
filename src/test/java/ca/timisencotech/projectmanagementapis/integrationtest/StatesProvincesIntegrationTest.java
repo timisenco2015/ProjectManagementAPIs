@@ -30,7 +30,7 @@ public class StatesProvincesIntegrationTest {
 
 	
 	 @Test
-		public void addStatesProvincesTest() 
+		public void addNewStateProvinceTest() 
 		 {
 			
 			StateProvince stateProvince = new StateProvince();
@@ -44,7 +44,7 @@ public class StatesProvincesIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<StateProvince> entity = new HttpEntity<>(stateProvince, headers);
 	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addStateProvince", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/stateprovince/addstateprovince", entity,String.class);
 	        //String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

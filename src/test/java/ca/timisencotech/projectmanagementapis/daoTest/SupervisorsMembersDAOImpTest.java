@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dao.implementation.SupervisorsMembersDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.SupervisorsMembers;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -21,7 +21,7 @@ public class SupervisorsMembersDAOImpTest<T> {
 	 SupervisorsMembersDAOImp supervisorsMembersDAOImp;
 	 
 	 @Autowired
-	 SupervisorsMembersRepository supervisorsMembersRepository;
+	 SupervisorsMembersRepo supervisorsMembersRepo;
  
 	
 	

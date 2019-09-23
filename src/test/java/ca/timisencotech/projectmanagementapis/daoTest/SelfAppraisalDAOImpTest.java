@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dao.implementation.SelfAppraisalsDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.SelfAppraisals;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -22,7 +22,7 @@ public class SelfAppraisalDAOImpTest<T> {
 	 SelfAppraisalsDAOImp selfAppraisalsDAOImp;
 	 
 	 @Autowired
-	 SupervisorAppraisalsRepository supervisorAppraisalsRepo;
+	 SupervisorAppraisalsRepo supervisorAppraisalsRepo;
  
 	
 	

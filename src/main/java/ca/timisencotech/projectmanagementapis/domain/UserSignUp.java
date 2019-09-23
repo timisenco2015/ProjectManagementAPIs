@@ -28,13 +28,13 @@ public class UserSignUp implements Serializable{
 
 	
 	
-	public String getUserEmail()
+	public String getEmail()
 	{
 		return email;
 	}
 	
 	
-	public void setUserEmail(String userEmail)
+	public void setEmail(String userEmail)
 	{
 		this.email = userEmail;
 	}

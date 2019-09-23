@@ -15,8 +15,8 @@ import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -27,10 +27,10 @@ public class TaskAssignedMembersDAOImp implements TaskAssignedMembersDAO {
 	ProjectGroupMemberRepo projectGroupMemberRepo;
 	
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepository;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
@@ -50,12 +50,12 @@ public class TaskAssignedMembersDAOImp implements TaskAssignedMembersDAO {
 				boolean isActive = taskAssignedMembers.getIsActive();
 				
 				
-				SupervisorTasksDetails findSupervisorTasksDetails= supervisorTasksRepository.findSupervisorsByProjectnameAndSupervisorNameAndTaskName(projectName, supervisorName, taskName);
+				SupervisorTasksDetails findSupervisorTasksDetails= supervisorTasksRepo.findSupervisorsByProjectnameAndSupervisorNameAndTaskName(projectName, supervisorName, taskName);
 				 ProjectGroupMemberDetails findProjectGroupMemberDetails= projectGroupMemberRepo.findProjectMemberByProjectname(projectName,memberName);
 				 if(findSupervisorTasksDetails==null)
 					{
 						genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user supervisor name: "+supervisorName+" in supervisor list for the project name "+projectName),"Error Object");
-						Application.getLogger().info("addTaskDetails method in ProjectDetails DAO Implementation. At this point unable to find supervisor email in the supervisor list for this project in the database");
+						Application.getLogger().info("assignedTaskToMemberss method in TaskAssignedMembers DAO Implementation. At this point unable to find supervisor email in the supervisor list for this project in the database");
 						
 					}
 				 if(findProjectGroupMemberDetails==null)
@@ -76,7 +76,7 @@ public class TaskAssignedMembersDAOImp implements TaskAssignedMembersDAO {
 					 newTaskAssignedMembersDetails.setSupervisorTasksDetails(findSupervisorTasksDetails);
 					 
 					 
-					 TaskAssignedMembersDetails responseTaskAssignedMembersDetails = taskAssignedMemberRepository.save(newTaskAssignedMembersDetails);
+					 TaskAssignedMembersDetails responseTaskAssignedMembersDetails = taskAssignedMemberRepo.save(newTaskAssignedMembersDetails);
 				
 					 TaskAssignedMembers domainTaskAssignedMembers = new TaskAssignedMembers();
 					 domainTaskAssignedMembers.setActive(isActive);

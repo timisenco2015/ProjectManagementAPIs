@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskStatusDetails;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 
 
 
@@ -22,7 +22,7 @@ import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepos
 public class TaskStatusDetailsTest 
 {
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 
 	
@@ -33,7 +33,7 @@ public class TaskStatusDetailsTest
 		Date date= new Date();
 		
 		
-		TaskAssignedMembersDetails findTaskAssignedMembersDetails =  taskAssignedMemberRepository.findTaskAssignedMember("Sherwood Project","userACEmail@gmail.com","Sub Task1");
+		TaskAssignedMembersDetails findTaskAssignedMembersDetails =  taskAssignedMemberRepo.findTaskAssignedMember("Sherwood Project","userACEmail@gmail.com","Sub Task1");
 		
 		
 		

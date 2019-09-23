@@ -16,18 +16,18 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/stateprovince")
 public class StateProvinceController {
 	
 	@Autowired
 	StatesProvincesService statesProvincesService;
 	
 	
-	@PostMapping("/addStateProvince")
+	@PostMapping("/addstateprovince")
 	@ResponseBody
 	public <T> Container<T> addNewStateProvince(@Validated @RequestBody StateProvince stateProvince,BindingResult result) { 
 		 
-		 Application.getLogger().info("User called add state or province details api. parameters passed is: "+stateProvince);
+		 Application.getLogger().info("User called add state or province details (/addstateprovince) api. parameters passed is: "+stateProvince);
 
 		return  statesProvincesService.addStateProvince(stateProvince,result);
 	    		

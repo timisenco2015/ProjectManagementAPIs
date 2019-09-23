@@ -12,25 +12,25 @@ import ca.timisencotech.projectmanagementapis.domain.ProjectGroup;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class ProjectGroupDAOImp implements  ProjectGroupDAO {
 	
 	@Autowired
-	ProjectGroupRepository projectGroupRepository;
+	ProjectGroupRepo projectGroupRepo;
 	
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	PersistentException persistentException = new PersistentException();
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> addProjectGroupDetails(ProjectGroup projectGroup) {
+	public <T> Container<T> addProjectGroup(ProjectGroup projectGroup) {
 		Container<T> genericObject=null; 
 	
 		String createdBy = projectGroup.getCreatedBy();
@@ -41,37 +41,37 @@ public class ProjectGroupDAOImp implements  ProjectGroupDAO {
 		String projectName = projectGroup.getProjectName();
 		try {
 			
-			ProjectSupervisorsDetails findProjectSupervisorsDetails =  projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName(projectName,createdBy);
-			if(findProjectSupervisorsDetails!=null)
+			ProjectSupervisorsDetails findProjectSupervisors =  projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName(projectName,createdBy);
+			if(findProjectSupervisors!=null)
 			{
-				ProjectGroupDetails newProjectGroupDetails = new ProjectGroupDetails();
-				newProjectGroupDetails.setDescription(description);
-				newProjectGroupDetails.setGroupCreatedDate(createdDate);
-				newProjectGroupDetails.setGroupName(groupName);
-				newProjectGroupDetails.setIsActive(isActive);
-				newProjectGroupDetails.setProjectSupervisorsDetails(findProjectSupervisorsDetails);
+				ProjectGroupDetails newProjectGroup = new ProjectGroupDetails();
+				newProjectGroup.setDescription(description);
+				newProjectGroup.setGroupCreatedDate(createdDate);
+				newProjectGroup.setGroupName(groupName);
+				newProjectGroup.setIsActive(isActive);
+				newProjectGroup.setProjectSupervisorsDetails(findProjectSupervisors);
 				
-				ProjectGroupDetails responseProjectGroupDetails = projectGroupRepository.save(newProjectGroupDetails);
+				ProjectGroupDetails responseProjectGroup = projectGroupRepo.save(newProjectGroup);
 				
 				ProjectGroup domainProjectGroup = new ProjectGroup();
 				domainProjectGroup.setCreatedBy(createdBy);
-				domainProjectGroup.setCreatedDate(responseProjectGroupDetails.getGroupCreatedDate());
-				domainProjectGroup.setDescription(responseProjectGroupDetails.getDescription());
-				domainProjectGroup.setGroupName(responseProjectGroupDetails.getGroupName());
-				domainProjectGroup.setIsActive(responseProjectGroupDetails.getIsActive());
+				domainProjectGroup.setCreatedDate(responseProjectGroup.getGroupCreatedDate());
+				domainProjectGroup.setDescription(responseProjectGroup.getDescription());
+				domainProjectGroup.setGroupName(responseProjectGroup.getGroupName());
+				domainProjectGroup.setIsActive(responseProjectGroup.getIsActive());
 				domainProjectGroup.setProjectName(projectName);
 				
-				Application.getLogger().info("addProjectGroupDetails method in ProjectGroupDetails DAO Implementation. At this point new project group has successfully saved to the database. Return ProjectGroupDetail from repo is"+domainProjectGroup);
+				Application.getLogger().info("addProjectGroup method in ProjectGroup DAO Implementation. At this point new project group has successfully saved to the database. Return ProjectGroup from repo is"+domainProjectGroup);
 				genericObject = (Container<T>) new Container<ProjectGroup>(domainProjectGroup,"Class Object");
 				  
 			
 			}
 			
-			else if(findProjectSupervisorsDetails==null)
+			else if(findProjectSupervisors==null)
 				{
 					
 				 		genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this supervisor name: "+projectGroup.getProjectName()+" in our database"),"Null Object");
-						Application.getLogger().info("addProjectGroupDetails method in ProjectGroupDetails DAO Implementation. At this point unable to find foreign key projectName in the database");
+						Application.getLogger().info("addProjectGroup method in ProjectGroup DAO Implementation. At this point unable to find foreign key projectName in the database");
 						
 				}
 			
@@ -79,7 +79,7 @@ public class ProjectGroupDAOImp implements  ProjectGroupDAO {
 		}
 			 
 			 catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("addProjectGroupDetails method in ProjectGroupDetails DAO Implementation. At this point there is an error that has prevented saving new project group details to the database error details "+dataAccessException.getMessage());
+				 Application.getLogger().info("addProjectGroup method in ProjectGroup DAO Implementation. At this point there is an error that has prevented saving new project group to the database error details "+dataAccessException.getMessage());
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 		
 			 

@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 
@@ -22,11 +22,11 @@ public class ProjectGroupMemberDetailsTest
 {
 	
 	@Autowired
-	ProjectGroupRepository projectGroupRepository;
+	ProjectGroupRepo projectGroupRepo;
 	
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	
 	@Test
@@ -35,8 +35,8 @@ public class ProjectGroupMemberDetailsTest
 		 ProjectGroupMemberDetails  projectGroupMemberDetails = new  ProjectGroupMemberDetails();
 		
 		
-		ProjectGroupDetails findProjectGroupDetails = projectGroupRepository.findProjectGroupDetailsByGroupName("Sherwood Project","Group 3");
-		UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail("userBEmail@gmail.com");
+		ProjectGroupDetails findProjectGroupDetails = projectGroupRepo.findProjectGroupDetailsByGroupName("Sherwood Project","Group 3");
+		UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail("userBEmail@gmail.com");
 
 		//check setter and getter for activities update
 		

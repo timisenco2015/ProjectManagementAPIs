@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.dao.implementation.CountriesDAOImp;
+import ca.timisencotech.projectmanagementapis.dao.implementation.CountryDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.Country;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.validation.Container;
@@ -17,11 +17,11 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 public class CountriesDAOImpTest<T> {
 	
 	 @Autowired
-	 CountriesDAOImp countriesDAOImp;
+	 CountryDAOImp countryDAOImp;
 	
 	 
 	 @Test
-		public void addServiceTest() 
+		public void addCountryTest() 
 		 {
 			//checks that add service can call country repo save method
 		 	// and save new country to database
@@ -30,7 +30,7 @@ public class CountriesDAOImpTest<T> {
 			 country.setCountryName("Arizona");
 			 country.setCountryShortCode("AZ");
 			 country.setPhoneCode("239");
-			 Container<T> countryContainer = countriesDAOImp.addCountries(country);
+			 Container<T> countryContainer = countryDAOImp.addCountry(country);
 			String typeOfObject = countryContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
@@ -50,7 +50,7 @@ public class CountriesDAOImpTest<T> {
 			 country.setCountryName("Arizona");
 			 country.setCountryShortCode("AZ");
 			 country.setPhoneCode("239");
-			  countryContainer = countriesDAOImp.addCountries(country);
+			  countryContainer = countryDAOImp.addCountry(country);
 			typeOfObject = countryContainer.getObjectType();
 		
 			if (typeOfObject.equalsIgnoreCase("Error Object"))

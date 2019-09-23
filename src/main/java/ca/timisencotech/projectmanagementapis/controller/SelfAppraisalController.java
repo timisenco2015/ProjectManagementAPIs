@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/selfappraisal")
 public class SelfAppraisalController 
 {
 	
@@ -24,10 +24,10 @@ public class SelfAppraisalController
 	SelfAppraisalsService selfAppraisalsService;
 	
 	
-	@PostMapping("/inidividualAppraisal")
+	@PostMapping("/appraiseyourself")
 	@ResponseBody
 	public <T> Container<T> addNewSelfAppraisal(@Validated @RequestBody SelfAppraisals selfAppraisals,BindingResult result) { 
-		Application.getLogger().info("User called self appraisals details api. parameters passed is: "+selfAppraisals);
+		Application.getLogger().info("User called self appraisals details (/appraiseyourself) api. parameters passed is: "+selfAppraisals);
 	    return  selfAppraisalsService.addSelfAppraisals(selfAppraisals, result);
 	    		
 	

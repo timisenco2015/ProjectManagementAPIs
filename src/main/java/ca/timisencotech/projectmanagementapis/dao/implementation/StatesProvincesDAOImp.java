@@ -11,17 +11,17 @@ import ca.timisencotech.projectmanagementapis.dto.Countries;
 import ca.timisencotech.projectmanagementapis.dto.StatesProvinces;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.CountriesRepository;
-import ca.timisencotech.projectmanagementapis.repository.StatesProvincesRepository;
+import ca.timisencotech.projectmanagementapis.repository.CountriesRepo;
+import ca.timisencotech.projectmanagementapis.repository.StatesProvincesRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 @Repository
 public class StatesProvincesDAOImp implements StatesProvincesDAO {
 	
 	@Autowired
-	CountriesRepository countriesRepository;
+	CountriesRepo countriesRepo;
 	
 	@Autowired
-	StatesProvincesRepository statesProvincesRepository;
+	StatesProvincesRepo statesProvincesRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
@@ -29,7 +29,7 @@ public class StatesProvincesDAOImp implements StatesProvincesDAO {
 	@Override
 	public <T> Container<T> addStatesProvinces(StateProvince stateProvince) {
 		Container<T> genericObject=null; 
-		Countries findCountries = countriesRepository.findByCountryId(stateProvince.getCountryId());
+		Countries findCountries = countriesRepo.findByCountryId(stateProvince.getCountryId());
 		if(findCountries==null)
 		{
 			Application.getLogger().info("addStatesProvinces method in StatesProvinces DAO Implementation. At this point unable to find foreign key countryId in the database");
@@ -46,7 +46,7 @@ public class StatesProvincesDAOImp implements StatesProvincesDAO {
 		StatesProvinces statesProvinces = null;
 			 try {
 				 
-				 statesProvinces = statesProvincesRepository.save(newStateProvince);
+				 statesProvinces = statesProvincesRepo.save(newStateProvince);
 				 StateProvince responseStateProvince = new StateProvince();
 				 
 				 responseStateProvince.setCountryId(stateProvince.getCountryId());

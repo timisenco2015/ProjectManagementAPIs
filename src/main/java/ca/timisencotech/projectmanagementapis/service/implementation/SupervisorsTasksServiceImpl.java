@@ -13,7 +13,7 @@ import ca.timisencotech.projectmanagementapis.service.SupervisorsTasksService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateSupervisorsTasks;
 
-@Service("SupervisorsTasksDetailsService")
+@Service("SupervisorsTasksService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class SupervisorsTasksServiceImpl implements SupervisorsTasksService {
 

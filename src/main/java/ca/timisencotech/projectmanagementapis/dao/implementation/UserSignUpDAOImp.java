@@ -10,27 +10,27 @@ import ca.timisencotech.projectmanagementapis.dao.UserSignUpDAO;
 import ca.timisencotech.projectmanagementapis.domain.UserSignUp;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.UserLoginRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserLoginRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class UserSignUpDAOImp implements  UserSignUpDAO {
 	
 	@Autowired
-	UserLoginRepository userLoginRepository;
+	UserLoginRepo userLoginRepo;
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> addUserSignUpDetails(UserSignUp userSignUp) {
+	public <T> Container<T> addUserSignUp(UserSignUp userSignUp) {
 		Container<T> genericObject=null; 
 	
-		String email = userSignUp.getUserEmail();
+		String email = userSignUp.getEmail();
 		String password = userSignUp.getPassword();
 		try {
 			
@@ -38,14 +38,14 @@ public class UserSignUpDAOImp implements  UserSignUpDAO {
 			UserSignUpDetails newUserSignUpDetails = new UserSignUpDetails();
 			newUserSignUpDetails.setUserEmail(email);
 			newUserSignUpDetails.setPassword(password);
-			UserSignUpDetails responseUserSignUpDetails = userSignUpRepository.save(newUserSignUpDetails);
+			UserSignUpDetails responseUserSignUpDetails = userSignUpRepo.save(newUserSignUpDetails);
 			 
 			
 
 			UserSignUp domainUserSignUpDetail = new UserSignUp();
 		
 			domainUserSignUpDetail.setPassword(responseUserSignUpDetails.getPassword());
-			domainUserSignUpDetail.setUserEmail(responseUserSignUpDetails.getUserEmail());
+			domainUserSignUpDetail.setEmail(responseUserSignUpDetails.getUserEmail());
 			Application.getLogger().info("addUserSignUpDetails method in UserSignUpDetails DAO Implementation. At this point new user has successful saved to the database. Return UserLoginDetails from repo is"+domainUserSignUpDetail);
 			genericObject = (Container<T>) new Container<UserSignUp>(domainUserSignUpDetail,"Class Object");
 			    
@@ -73,7 +73,7 @@ public class UserSignUpDAOImp implements  UserSignUpDAO {
 	public <T> Container<T> updateUserPassword(UserSignUp userSignUp) {
 	
 		Container<T> genericObject=null;
-		int responseUserSignUpDetail = userSignUpRepository.updatePassword(userSignUp.getPassword(),userSignUp.getUserEmail());
+		int responseUserSignUpDetail = userSignUpRepo.updatePassword(userSignUp.getPassword(),userSignUp.getEmail());
 			
 		 try { 
 	

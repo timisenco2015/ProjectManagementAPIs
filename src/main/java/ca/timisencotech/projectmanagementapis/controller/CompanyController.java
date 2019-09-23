@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import ca.timisencotech.projectmanagementapis.Application;
-import ca.timisencotech.projectmanagementapis.domain.Companies;
-import ca.timisencotech.projectmanagementapis.service.CompaniesService;
+import ca.timisencotech.projectmanagementapis.domain.Company;
+import ca.timisencotech.projectmanagementapis.service.CompanyService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/company")
 public class CompanyController 
 {
 	@Autowired
-	CompaniesService companiesService;
+	CompanyService companyService;
 	
 	
-	@PostMapping("/registerCompany")
+	@PostMapping("/registercompany")
 	@ResponseBody
-	public <T> Container<T> addCompanies(@Validated @RequestBody Companies companies,BindingResult result) { 
+	public <T> Container<T> registerNewCompany(@Validated @RequestBody Company company,BindingResult result) { 
 		
-		 Application.getLogger().info("User called add company details api. parameters passed is: "+companies);
-		 return  companiesService.addCompanies(companies,result);
+		 Application.getLogger().info("User called add company details (/registercompany) api. parameters passed is: "+company);
+		 return  companyService.addCompany(company,result);
 	    		
 	
 	}

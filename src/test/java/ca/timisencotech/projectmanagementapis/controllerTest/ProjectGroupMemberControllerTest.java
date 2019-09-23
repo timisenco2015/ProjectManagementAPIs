@@ -42,7 +42,7 @@ public class ProjectGroupMemberControllerTest {
 
 		
 		@Test
-		public void testaddUserToProjectGroup() throws Exception
+		public void testAddMemberToProjectGroup() throws Exception
 		{
 			
 			ProjectGroupMembers projectGroupMembers = new ProjectGroupMembers();
@@ -58,7 +58,7 @@ public class ProjectGroupMemberControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addUserToProjectGroup")
+				      .post("/projectgroupmember/addmembertoprojectgroup")
 				      .content(asJsonString(projectGroupMembers))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

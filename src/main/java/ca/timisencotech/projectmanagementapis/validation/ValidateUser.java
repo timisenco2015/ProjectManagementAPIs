@@ -30,12 +30,12 @@ public class ValidateUser  implements Validator{
 				 Pattern pat = Pattern.compile(emailRegex);
 			       if(!pat.matcher(user.getUserEmail()).matches())
 			       {
-			    	   errors.rejectValue("userEmail", "email address is invalid");
+			    	   errors.rejectValue("email", "email address is invalid");
 			       }
 		     }
 			 else
 			 {
-				 errors.rejectValue("userEmail", "field required");
+				 errors.rejectValue("email", "field required");
 		     }
 			 
 			 

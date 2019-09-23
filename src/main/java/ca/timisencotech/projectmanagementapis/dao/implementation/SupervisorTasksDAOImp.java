@@ -11,22 +11,22 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class SupervisorTasksDAOImp implements SupervisorTasksDAO {
 	
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepository;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Autowired
-	TaskRepository taskRepository;
+	TaskRepo taskRepo;
 	
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	PersistentException persistentException = new PersistentException();
@@ -39,15 +39,15 @@ public class SupervisorTasksDAOImp implements SupervisorTasksDAO {
 		String taskName = supervisorTasks.getTaskName();
 		String projectName=supervisorTasks.getProjectName();
 		String supervisorName =supervisorTasks.getSupervisorName();
-	TaskDetails findTaskDetails = taskRepository.findByTaskNameAndProjectName(projectName,taskName);
+	TaskDetails findTaskDetails = taskRepo.findByTaskNameAndProjectName(projectName,taskName);
 		
-	ProjectSupervisorsDetails findProjectSupervisors =  projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName(projectName, supervisorName);
+	ProjectSupervisorsDetails findProjectSupervisors =  projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName(projectName, supervisorName);
 		
 		
 		if(findTaskDetails==null)
 		{
 			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have either  or project name: "+projectName+" taskName:"+taskName+" in our database"),"Error Object");
-			Application.getLogger().info("addSupervisorTask method in SupervisorTasksDetails DAO Implementation. Can't find taskdetails using projectName and taskName");
+			Application.getLogger().info("addSupervisorTask method in SupervisorTasks DAO Implementation. Can't find task using projectName and taskName");
 			
 		}
 		if(findProjectSupervisors==null)
@@ -65,13 +65,13 @@ public class SupervisorTasksDAOImp implements SupervisorTasksDAO {
 			
 			try {
 				 
-				SupervisorTasksDetails responseSupervisorTasksDetails = supervisorTasksRepository.save(newSupervisorTasksDetails);
+				SupervisorTasksDetails responseSupervisorTasksDetails = supervisorTasksRepo.save(newSupervisorTasksDetails);
 				SupervisorTasks domainSupervisorTasks = new SupervisorTasks();
 				domainSupervisorTasks.setProjectName(projectName); 
 				domainSupervisorTasks.setSupervisorName(supervisorName);
 				domainSupervisorTasks.setTaskName(taskName);
 				
-				Application.getLogger().info("addSupervisorTask method in SupervisorTasksDetails DAO Implementation. At this point this task has been added to the supervisor task list and has successful saved to the database. Return supervisor tasks from repo is"+domainSupervisorTasks);
+				Application.getLogger().info("addSupervisorTask method in SupervisorTasks DAO Implementation. At this point this task has been added to the supervisor task list and has successful saved to the database. Return supervisor tasks from repo is"+domainSupervisorTasks);
 					 
 				  genericObject = (Container<T>) new Container<SupervisorTasks>(domainSupervisorTasks,"Class Object");
 			    } 
@@ -80,7 +80,7 @@ public class SupervisorTasksDAOImp implements SupervisorTasksDAO {
 			 
 			 catch (DataAccessException dataAccessException) {
 			    	
-				 Application.getLogger().info("addSupervisorTask method in SupervisorTasksDetails DAO Implementation. At this point there is an error that as prevented assigning this task to the supervisor task list and saving it to the database");
+				 Application.getLogger().info("addSupervisorTask method in SupervisorTasks DAO Implementation. At this point there is an error that as prevented assigning this task to the supervisor task list and saving it to the database");
 				 
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 		

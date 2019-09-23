@@ -46,7 +46,7 @@ public class UserLoginDAOImpTest<T> {
 		 userLogin.setPassword("Test@2022");
 		 userLogin.setLoginTime(loginTime);
 		 
-		 Container<T> userLoginDetailsContainer =  userLoginDAOImp.confirmedUserLoginDetails(userLogin);
+		 Container<T> userLoginDetailsContainer =  userLoginDAOImp.confirmedUserLogin(userLogin);
 			String typeOfObject = userLoginDetailsContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
@@ -66,7 +66,7 @@ public class UserLoginDAOImpTest<T> {
 			incorrectUserLoginDetail.setPassword("Test@2024");
 			
 
-			  userLoginDetailsContainer = userLoginDAOImp.confirmedUserLoginDetails(incorrectUserLoginDetail);
+			  userLoginDetailsContainer = userLoginDAOImp.confirmedUserLogin(incorrectUserLoginDetail);
 			 typeOfObject = userLoginDetailsContainer.getObjectType();
 		 if (typeOfObject.equalsIgnoreCase("Null Object"))
 			{

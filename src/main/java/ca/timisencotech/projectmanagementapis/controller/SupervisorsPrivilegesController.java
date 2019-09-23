@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/supervisorprivileges")
 public class SupervisorsPrivilegesController 
 {
 	
@@ -24,7 +24,7 @@ public class SupervisorsPrivilegesController
 	SupervisorsPrivilegesService SupervisorsPrivilegesService;
 	
 	
-	@PostMapping("/assignPrivilegesToSupervisor")
+	@PostMapping("/assignprivilegestosupervisor")
 	@ResponseBody
 	public <T> Container<T> addPrivilegesToSupervisor(@Validated @RequestBody SupervisorsPrivileges supervisorsPrivileges,BindingResult result) { 
 		Application.getLogger().info("User called supervisor privileges details api (/assignPrivilegesToSupervisor). parameters passed is: "+supervisorsPrivileges);

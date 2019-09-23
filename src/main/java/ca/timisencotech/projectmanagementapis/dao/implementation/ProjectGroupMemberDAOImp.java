@@ -10,9 +10,9 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -22,10 +22,10 @@ public class ProjectGroupMemberDAOImp implements  ProjectGroupMemberDAO {
 	ProjectGroupMemberRepo projectGroupMemberRepo;
 	
 	@Autowired
-	ProjectGroupRepository projectGroupRepository;
+	ProjectGroupRepo projectGroupRepo;
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 
 	PersistentException persistentException = new PersistentException();
 
@@ -45,8 +45,8 @@ public class ProjectGroupMemberDAOImp implements  ProjectGroupMemberDAO {
 			if(findProjectGroupMemberDetails==null || findProjectGroupMemberDetails.getProjectGroupDetails().getGroupName().equalsIgnoreCase(groupName))
 			{
 				
-				ProjectGroupDetails findProjectGroupDetails =	projectGroupRepository.findProjectGroupDetailsByGroupName( projectName, groupName);		
-				UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail(memberName);
+				ProjectGroupDetails findProjectGroupDetails =	projectGroupRepo.findProjectGroupDetailsByGroupName( projectName, groupName);		
+				UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail(memberName);
 				if(findProjectGroupDetails!=null && findUserSignUpDetails!=null)
 				{
 					ProjectGroupMemberDetails newProjectGroupMemberDetails =new ProjectGroupMemberDetails();
@@ -61,8 +61,7 @@ public class ProjectGroupMemberDAOImp implements  ProjectGroupMemberDAO {
 					domainProjectGroupMember.setMemberName(memberName);
 					domainProjectGroupMember.setProjectName(projectName);
 					domainProjectGroupMember.setActivitiesUpdate(responseProjectGroupMemberDetails.getActivitiesUpdate());
-					Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupMemberDetails DAO Implementation. At this point new member has been added to the project group and successfully saved to the database. Return ProjectGroupMemberDetails from repo is"+domainProjectGroupMember);
-					System.out.println("dfdsfdsf+++ ---> "+domainProjectGroupMember);
+					Application.getLogger().info("addProjectGroupMember method in ProjectGroupMember DAO Implementation. At this point new member has been added to the project group and successfully saved to the database. Return ProjectGroupMemberDetails from repo is"+domainProjectGroupMember);
 					genericObject = (Container<T>) new Container<ProjectGroupMembers>(domainProjectGroupMember,"Class Object");
 				}
 				
@@ -71,14 +70,14 @@ public class ProjectGroupMemberDAOImp implements  ProjectGroupMemberDAO {
 					if(findProjectGroupMemberDetails==null)
 					{
 					 		genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this project name: "+projectName+" in our database"),"Null Object");
-							Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupDetails DAO Implementation. At this point unable to find foreign key projectName in the database");	
+							Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupMember DAO Implementation. At this point unable to find foreign key projectName in the database");	
 					}
 					
 					if(findUserSignUpDetails==null) 
 					{
 						
 					 		genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have this user email: "+memberName+" in our database"),"Null Object");
-							Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupMemberDetails DAO Implementation. At this point unable to find foreign key email in the database");
+							Application.getLogger().info("addProjectGroupMember method in ProjectGroupMember DAO Implementation. At this point unable to find foreign key email in the database");
 							
 					}
 				}			
@@ -86,13 +85,13 @@ public class ProjectGroupMemberDAOImp implements  ProjectGroupMemberDAO {
 			else
 			{
 		 		genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("Member can only belong one project group"),"Unique Object");
-				Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupDetails DAO Implementation. At this point member already belong to a project group"
+				Application.getLogger().info("addProjectGroupMember method in ProjectGroupMember DAO Implementation. At this point member already belong to a project group"
 						+ "");	
 		
 			}
 		} 
 			 catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("addMemberToProjectGroup method in ProjectGroupMemberDetails DAO Implementation. At this point there is an error that has prevented saving new project group member details to the database error details "+dataAccessException.getLocalizedMessage());
+				 Application.getLogger().info("addMemberToProjectGroup method in ProjectGroupMember DAO Implementation. At this point there is an error that has prevented saving new project group member to the database error details "+dataAccessException.getLocalizedMessage());
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");		 
 			 }
 		return genericObject;
@@ -113,13 +112,13 @@ try {
 			int updated =   projectGroupMemberRepo.updateProjectMemberGroup(groupName, projectName, memberName);
 			if(updated>0)
 			{
-				Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMemberDetails DAO Implementation. At this point member project group has been changed and successfully saved to the database. Return ProjectGroupMemberDetails from repo is"+projectGroupMembers);
+				Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMember DAO Implementation. At this point member project group has been changed and successfully saved to the database. Return ProjectGroupMember from repo is"+projectGroupMembers);
 				genericObject = (Container<T>) new Container<ProjectGroupMembers>(projectGroupMembers,"Class Object");
 			
 			}
 }
 			 catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMemberDetails DAO Implementation. At this point there is an error that has prevented changing member project group and saving it to the database. error details "+dataAccessException.getMessage());
+				 Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMember DAO Implementation. At this point there is an error that has prevented changing member project group and saving it to the database. error details "+dataAccessException.getMessage());
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");		 
 			 }	
 		
@@ -141,7 +140,7 @@ try {
 			int updated =   projectGroupMemberRepo.deleteProjectGroupMember(isActive,projectName, memberName);
 			if(updated>0)
 			{
-				Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMemberDetails DAO Implementation. At this point member has been removed from  project group and has been successfully saved to the database. Return ProjectGroupMemberDetails from repo is"+projectGroupMembers);
+				Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMember DAO Implementation. At this point member has been removed from  project group member and has been successfully saved to the database. Return ProjectGroupMember from repo is"+projectGroupMembers);
 				genericObject = (Container<T>) new Container<ProjectGroupMembers>(projectGroupMembers,"Class Object");
 			
 			}
@@ -149,7 +148,7 @@ try {
 		}	
 			
 			catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMemberDetails DAO Implementation. At this point there is an error that has prevented removing member from project group. error details "+dataAccessException.getMessage());
+				 Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMember DAO Implementation. At this point there is an error that has prevented removing member from project group. error details "+dataAccessException.getMessage());
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");		 
 			 }	
 		return genericObject;

@@ -44,7 +44,7 @@ public class StatesProvincesControllerTest
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testNewStateProvince() throws Exception
 		{
 			StateProvince stateProvince = new StateProvince();
 			 stateProvince.setCountryId(3);
@@ -54,7 +54,7 @@ public class StatesProvincesControllerTest
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addStateProvince")
+				      .post("/stateprovince/addstateprovince")
 				      .content(asJsonString(stateProvince))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

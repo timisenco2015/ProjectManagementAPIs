@@ -9,45 +9,45 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SupervisorTasksRepositoryTest {
 		 
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	@Autowired
-	TaskRepository taskRepository;
+	TaskRepo taskRepo;
 	
 		
 		@Autowired
-		SupervisorTasksRepository supervisorTasksRepository;
+		SupervisorTasksRepo supervisorTasksRepo;
 
 		  @Test
 		  public void saveTest() {
 			  
-			  ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
+			  ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
 				
-				TaskDetails findTaskDetails = taskRepository.findByTaskNameAndProjectName("Sherwood Project","Sub Task3");
+				TaskDetails findTaskDetails = taskRepo.findByTaskNameAndProjectName("Sherwood Project","Sub Task3");
 				
 				SupervisorTasksDetails supervisorTasksDetails = new  SupervisorTasksDetails();
 				
 				supervisorTasksDetails.setProjectSupervisorsDetails(findProjectSupervisorsDetails);
 				supervisorTasksDetails.setTaskDetails(findTaskDetails);
 				
-				supervisorTasksRepository.save(supervisorTasksDetails);
-				assertNotNull(supervisorTasksRepository.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task3"));
+				supervisorTasksRepo.save(supervisorTasksDetails);
+				assertNotNull(supervisorTasksRepo.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task3"));
 		  }
 		  
 		  
 		  @Test
 		  public void findProjectSupervisorByProjectAndSupervisorNameTest() {
 			  
-				assertNotNull(supervisorTasksRepository.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task3"));
+				assertNotNull(supervisorTasksRepo.findSupervisorsByProjectnameAndSupervisorNameAndTaskName("Sherwood Project", "userAEmail@gmail.com", "Sub Task3"));
 				    }
 	
 	}

@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import ca.timisencotech.projectmanagementapis.Application;
-import ca.timisencotech.projectmanagementapis.dao.implementation.UserDetailsDAOImp;
+import ca.timisencotech.projectmanagementapis.dao.implementation.UserDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.User;
 import ca.timisencotech.projectmanagementapis.exception.ValidationError;
 import ca.timisencotech.projectmanagementapis.service.UserService;
@@ -22,7 +22,7 @@ public class UserServiceImpl<T> implements UserService{
 	
 	
 	@Autowired
-	private UserDetailsDAOImp userDetailsDAOImp;
+	private UserDAOImp userDAOImp;
 	
 	
 	
@@ -43,9 +43,6 @@ public class UserServiceImpl<T> implements UserService{
 				validationError.setAllErrorObject(result.getAllErrors());
 	   
 			 genericObject = (Container<T>) new  Container<ValidationError> (validationError,"Error Object");
-			 System.out.println("-+++--> ");
-				
-			 
 			 Application.getLogger().info("New user information validation error. Error info: "+validationError.getMessageObject());
 
 			}
@@ -54,7 +51,7 @@ public class UserServiceImpl<T> implements UserService{
 			{
 				Application.getLogger().info("addStateProvince method in StatesProvinces Service Implementation. New user has already been added to the database");
 			    
-				genericObject = userDetailsDAOImp.addNewUser(user);
+				genericObject = userDAOImp.addNewUser(user);
 			
 			}
 			

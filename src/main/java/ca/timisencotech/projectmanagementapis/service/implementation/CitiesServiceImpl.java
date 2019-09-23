@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import ca.timisencotech.projectmanagementapis.Application;
-import ca.timisencotech.projectmanagementapis.dao.implementation.CitiesDAOImp;
+import ca.timisencotech.projectmanagementapis.dao.implementation.CityDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.City;
 import ca.timisencotech.projectmanagementapis.service.CitiesService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
@@ -21,7 +21,7 @@ public class CitiesServiceImpl implements CitiesService{
 	
 	
 	@Autowired
-	private CitiesDAOImp citiesDAOImp;
+	private CityDAOImp cityDAOImp;
 	
 	
 	@Override
@@ -29,7 +29,7 @@ public class CitiesServiceImpl implements CitiesService{
 		
 		Application.getLogger().info("addCity method in Cities Service.");
 	    
-		return citiesDAOImp.addCities(city);
+		return cityDAOImp.addCity(city);
 	}
 
 }

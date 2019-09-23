@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/users")
 public class UserController 
 {
 	
@@ -24,10 +24,10 @@ public class UserController
 	UserService userService;
 	
 	
-	@PostMapping("/addNewUser")
+	@PostMapping("/addnewuser")
 	@ResponseBody
 	public <T> Container<T> addNewUser(@Validated @RequestBody User user,BindingResult result) { 
-		Application.getLogger().info("User called add user details api. parameters passed is: "+user);
+		Application.getLogger().info("User called add user details (/addnewuser) api. parameters passed is: "+user);
 	    return  userService.addNewUser(user, result);
 	    		
 	

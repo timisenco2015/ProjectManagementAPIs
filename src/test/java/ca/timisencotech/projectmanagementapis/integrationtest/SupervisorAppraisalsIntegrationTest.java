@@ -76,7 +76,7 @@ public class SupervisorAppraisalsIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<SupervisorAppraisals> entity = new HttpEntity<>(supervisorAppraisals, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/supervisorAppraisal", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/supervisorappraisal/appraiseprojectmember", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

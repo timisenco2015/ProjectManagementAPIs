@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.Task;
 import ca.timisencotech.projectmanagementapis.domain.TaskAssignedMembers;
 
 
@@ -34,7 +33,7 @@ public class TaskAssignedMembersIntegrationTest {
 
 	
 	 @Test
-	public void assignedTaskToMembersTest() 
+	public void assignMemberTaskTest() 
 		 {
 			
 		 Date date= new Date();
@@ -57,7 +56,7 @@ public class TaskAssignedMembersIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<TaskAssignedMembers> entity = new HttpEntity<>(taskAssignedMembers, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/assignTaskToMember", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/taskassignedmembers/assigntasktomember", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

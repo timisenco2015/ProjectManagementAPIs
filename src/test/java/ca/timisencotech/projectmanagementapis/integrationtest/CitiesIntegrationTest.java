@@ -46,7 +46,7 @@ public class CitiesIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<City> entity = new HttpEntity<>(city, headers);
 	       
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addCity", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/city/addcity", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

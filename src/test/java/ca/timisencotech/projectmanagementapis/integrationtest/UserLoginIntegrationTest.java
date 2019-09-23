@@ -34,7 +34,7 @@ public class UserLoginIntegrationTest {
 	 
 	
 	 @Test
-	public void confirmUserLoginDetailsTest() 
+	public void confirmUserLoginTest() 
 		 {
 			
 		 Date date= new Date();
@@ -53,7 +53,7 @@ public class UserLoginIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<UserLogin> entity = new HttpEntity<>(userLogin, headers);
 	     //  System.out.println("--==>"+entity.getBody());
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/confirmLoginDetails", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/userlogin/confirmlogindetails", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

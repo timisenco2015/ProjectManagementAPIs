@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ca.timisencotech.projectmanagementapis.domain.Companies;
+import ca.timisencotech.projectmanagementapis.domain.Company;
 
 
 public class ValidateCompanies implements Validator
@@ -14,25 +14,25 @@ public class ValidateCompanies implements Validator
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		  return Companies.class.equals(clazz);
+		  return Company.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		Companies companies = (Companies) target;
+		Company company = (Company) target;
 		 // starting from line 23 to line 40 checks for valid email address 
 
 		// starting from line 42 to line 69 checks for valid firstName 
 		
 		
 		
-		 if(companies.getAddress()!=null && companies.getAddress().length()>0 && !Character.isWhitespace(companies.getAddress().charAt(0)))
+		 if(company.getAddress()!=null && company.getAddress().length()>0 && !Character.isWhitespace(company.getAddress().charAt(0)))
 	     {
 			 boolean invalid = false;
-			 for(int i=0; i<companies.getAddress().length() && !invalid; i++) 
+			 for(int i=0; i<company.getAddress().length() && !invalid; i++) 
 	         {
 
-				 if (!Character.isDigit(companies.getAddress().charAt(i)) && !Character.isAlphabetic(companies.getAddress().charAt(i)) && !Character.isWhitespace(companies.getAddress().charAt(i)) && companies.getAddress().charAt(i)!='.' && companies.getAddress().charAt(i)!=','&& companies.getAddress().charAt(i)!='-')
+				 if (!Character.isDigit(company.getAddress().charAt(i)) && !Character.isAlphabetic(company.getAddress().charAt(i)) && !Character.isWhitespace(company.getAddress().charAt(i)) && company.getAddress().charAt(i)!='.' && company.getAddress().charAt(i)!=','&& company.getAddress().charAt(i)!='-')
 	             {
 					 invalid = true;
 					 errors.rejectValue("address", "field contains invalid characters");
@@ -41,7 +41,7 @@ public class ValidateCompanies implements Validator
 	           }
 			 if(!invalid)
                 {
-                	if(companies.getAddress().length()<10 || companies.getAddress().length()>100)
+                	if(company.getAddress().length()<10 || company.getAddress().length()>100)
                 	{
                 		 errors.rejectValue("address", "field length must be between 10 and 80");
    	                  
@@ -57,15 +57,15 @@ public class ValidateCompanies implements Validator
 		
 		
 		
-		if(companies.getCompanyName()!=null && companies.getCompanyName().length()>0)
+		if(company.getCompanyName()!=null && company.getCompanyName().length()>0)
 		 {
 			
-			 if (!Character.isWhitespace(companies.getCompanyName().charAt(0)) && !Character.isDigit(companies.getCompanyName().charAt(0)))
+			 if (!Character.isWhitespace(company.getCompanyName().charAt(0)) && !Character.isDigit(company.getCompanyName().charAt(0)))
 			 {
 			 		boolean invalid = false;
 		            
-		                  for(int i=0; i<companies.getCompanyName().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(companies.getCompanyName().charAt(i)) && !Character.isDigit(companies.getCompanyName().charAt(i)))
+		                  for(int i=0; i<company.getCompanyName().length() && !invalid; i++) {
+		                      if (!Character.isAlphabetic(company.getCompanyName().charAt(i)) && !Character.isDigit(company.getCompanyName().charAt(i)))
 		                    		  
 		                      {
 		                          invalid = true;
@@ -87,15 +87,15 @@ public class ValidateCompanies implements Validator
 
 		
 	
-		if(companies.getCity()!=null && companies.getCity().length()>0)
+		if(company.getCity()!=null && company.getCity().length()>0)
 		 {
 		      
-			 if (!Character.isWhitespace(companies.getCity().charAt(0)) && !Character.isDigit(companies.getCity().charAt(0)))
+			 if (!Character.isWhitespace(company.getCity().charAt(0)) && !Character.isDigit(company.getCity().charAt(0)))
 			 {
 			 		boolean invalid = false;
 		            
-		                  for(int i=0; i<companies.getCity().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(companies.getCity().charAt(i)) && !Character.isWhitespace(companies.getCity().charAt(i)) && companies.getCity().charAt(i)!='_' && companies.getCity().charAt(i)!='-')
+		                  for(int i=0; i<company.getCity().length() && !invalid; i++) {
+		                      if (!Character.isAlphabetic(company.getCity().charAt(i)) && !Character.isWhitespace(company.getCity().charAt(i)) && company.getCity().charAt(i)!='_' && company.getCity().charAt(i)!='-')
 		                    		  
 		                      {
 		                          invalid = true;
@@ -117,15 +117,15 @@ public class ValidateCompanies implements Validator
 		
 		
 		
-		if(companies.getStateProvince()!=null && companies.getStateProvince().length()>0)
+		if(company.getStateProvince()!=null && company.getStateProvince().length()>0)
 		 {
 		      
-			 if (!Character.isWhitespace(companies.getStateProvince().charAt(0)) && !Character.isDigit(companies.getStateProvince().charAt(0)))
+			 if (!Character.isWhitespace(company.getStateProvince().charAt(0)) && !Character.isDigit(company.getStateProvince().charAt(0)))
 			 {
 			 		boolean invalid = false;
 		            
-		                  for(int i=0; i<companies.getStateProvince().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(companies.getStateProvince().charAt(i)) && !Character.isWhitespace(companies.getStateProvince().charAt(i)) && companies.getStateProvince().charAt(i)!='_' && companies.getStateProvince().charAt(i)!='-')
+		                  for(int i=0; i<company.getStateProvince().length() && !invalid; i++) {
+		                      if (!Character.isAlphabetic(company.getStateProvince().charAt(i)) && !Character.isWhitespace(company.getStateProvince().charAt(i)) && company.getStateProvince().charAt(i)!='_' && company.getStateProvince().charAt(i)!='-')
 		                    		  
 		                      {
 		                          invalid = true;
@@ -147,15 +147,15 @@ public class ValidateCompanies implements Validator
 		
 		
 		
-		if(companies.getCountry()!=null && companies.getCountry().length()>0)
+		if(company.getCountry()!=null && company.getCountry().length()>0)
 		 {
 		      
-			 if (!Character.isWhitespace(companies.getCountry().charAt(0)) && !Character.isDigit(companies.getCountry().charAt(0)))
+			 if (!Character.isWhitespace(company.getCountry().charAt(0)) && !Character.isDigit(company.getCountry().charAt(0)))
 			 {
 			 		boolean invalid = false;
 		            
-		                  for(int i=0; i<companies.getCountry().length() && !invalid; i++) {
-		                      if (!Character.isAlphabetic(companies.getCountry().charAt(i)) && !Character.isWhitespace(companies.getCountry().charAt(i)) && companies.getCountry().charAt(i)!='_' && companies.getCountry().charAt(i)!='-')
+		                  for(int i=0; i<company.getCountry().length() && !invalid; i++) {
+		                      if (!Character.isAlphabetic(company.getCountry().charAt(i)) && !Character.isWhitespace(company.getCountry().charAt(i)) && company.getCountry().charAt(i)!='_' && company.getCountry().charAt(i)!='-')
 		                    		  
 		                      {
 		                          invalid = true;
@@ -179,12 +179,12 @@ public class ValidateCompanies implements Validator
 		
 		
 		
-		 if(companies.getPhoneNumber()!=null&& companies.getPhoneNumber().length()>0 && !Character.isWhitespace(companies.getPhoneNumber().charAt(0)))
+		 if(company.getPhoneNumber()!=null&& company.getPhoneNumber().length()>0 && !Character.isWhitespace(company.getPhoneNumber().charAt(0)))
 	     {
 			String phoneNoRegex = "(\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{4})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?";
 		
 			 Pattern pat = Pattern.compile(phoneNoRegex);
-		       if(!pat.matcher(companies.getPhoneNumber()).matches())
+		       if(!pat.matcher(company.getPhoneNumber()).matches())
 		       {
 		    	   errors.rejectValue("phoneNo", "ePhone number is invalid");
 		       }
@@ -199,14 +199,14 @@ public class ValidateCompanies implements Validator
 		 
 		 
 		// starting from line 23 to line 40 checks for valid email address 
-		 if(companies.getRegisterBy()!=null&& companies.getRegisterBy().length()>0)
+		 if(company.getRegisterBy()!=null&& company.getRegisterBy().length()>0)
 	     {
 			String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+"[a-zA-Z0-9_+&*-]+)*@" +
 		                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
 		                "A-Z]{2,7}$";
 			 
 			 Pattern pat = Pattern.compile(emailRegex);
-		       if(!pat.matcher(companies.getRegisterBy()).matches())
+		       if(!pat.matcher(company.getRegisterBy()).matches())
 		       {
 		    	   errors.rejectValue("registerBy", "email address is invalid");
 		       }

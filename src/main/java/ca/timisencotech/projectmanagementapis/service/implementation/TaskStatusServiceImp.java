@@ -14,7 +14,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateTaskStatus;
 
 
-@Service("ProjectTaskStatusDetailsService")
+@Service("TaskStatusService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class TaskStatusServiceImp<T> implements TaskStatusService{
 	
@@ -26,7 +26,7 @@ public class TaskStatusServiceImp<T> implements TaskStatusService{
 	
 	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
-	public <T> Container<T> addTaskStatusDetails(TaskStatus taskStatus,BindingResult result) {
+	public <T> Container<T> addTaskStatus(TaskStatus taskStatus,BindingResult result) {
 		
   
 		Container<T> genericObject=null;
@@ -47,9 +47,9 @@ public class TaskStatusServiceImp<T> implements TaskStatusService{
 			
 			else
 			{
-				Application.getLogger().info("addTaskStatusDetails method in TaskStatusDetailsService Service Implementation. New project task status has already been updated in the database");
+				Application.getLogger().info("addTaskStatus method in TaskStatusService Service Implementation. New project task status has already been updated in the database");
 			    
-				genericObject = taskStatusDAOImp.addTaskStatusDetails(taskStatus);
+				genericObject = taskStatusDAOImp.addTaskStatus(taskStatus);
 					
 			}
 		return genericObject;

@@ -10,18 +10,18 @@ import ca.timisencotech.projectmanagementapis.domain.SelfAppraisals;
 import ca.timisencotech.projectmanagementapis.dto.SelfAppraisalsDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.SelfAppraisalsRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.SelfAppraisalsRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class SelfAppraisalsDAOImp implements SelfAppraisalsDAO {
 	
 	@Autowired
-	SelfAppraisalsRepository selfAppraisalsDetailsRepo;
+	SelfAppraisalsRepo selfAppraisalsDetailsRepo;
 	
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberDetailsRepo;
+	TaskAssignedMemberRepo taskAssignedMemberDetailsRepo;
 	
 	
 	PersistentException persistentException = new PersistentException();
@@ -40,7 +40,7 @@ public class SelfAppraisalsDAOImp implements SelfAppraisalsDAO {
 		if(findTaskAssignedMembersDetails==null)
 		{
 			genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleSearchReturnNull("We dont have either  or project name: "+projectName+" member name:"+memberName+"task name:"+taskName+" in our database"),"Error Object");
-			Application.getLogger().info("addSelfAppraisals method in SelfAppraisalsDetails DAO Implementation. It seems that you have not been assigned to this task yet");
+			Application.getLogger().info("addSelfAppraisals method in SelfAppraisals DAO Implementation. It seems that you have not been assigned to this task yet");
 			
 		}
 		else
@@ -103,7 +103,6 @@ public class SelfAppraisalsDAOImp implements SelfAppraisalsDAO {
 				 domainSelfAppraisals.setSubordinateMember(memberName);
 				 domainSelfAppraisals.setTaskName(taskName);
 				
-				  Application.getLogger().info("addSelfAppraisals method in SelfAppraisalsDetails DAO Implementation. At this point new self appraisal has successful saved to the database. Return self appraisal from repo is"+domainSelfAppraisals);
 					 
 				  genericObject = (Container<T>) new Container<SelfAppraisals>(domainSelfAppraisals,"Class Object");
 			    } 
@@ -112,7 +111,7 @@ public class SelfAppraisalsDAOImp implements SelfAppraisalsDAO {
 			 
 			 catch (DataAccessException dataAccessException) {
 			    	
-				 Application.getLogger().info("addSelfAppraisals method in SelfAppraisalsDetails DAO Implementation. At this point there is an error that as prevented saving your self appraisal to the database");
+				 Application.getLogger().info("addSelfAppraisals method in SelfAppraisals DAO Implementation. At this point there is an error that as prevented saving your self appraisal to the database");
 				 
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 		

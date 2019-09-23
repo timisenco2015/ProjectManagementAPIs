@@ -2,9 +2,7 @@ package ca.timisencotech.projectmanagementapis.integrationtest;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.Project;
-import ca.timisencotech.projectmanagementapis.domain.SupervisorTasks;
 import ca.timisencotech.projectmanagementapis.domain.SupervisorsMembers;
 
 
@@ -35,7 +31,7 @@ public class SupervisorsMembersIntegrationTest {
 
 	
 	 @Test
-	public void addSupervisorTasksTest() 
+	public void addAddMemberToSupervisorTest() 
 		 {
 		 SupervisorsMembers supervisorsMembers = new SupervisorsMembers();
 			supervisorsMembers.setMemberName("userACAHEmail@gmail.com");
@@ -49,7 +45,7 @@ public class SupervisorsMembersIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<SupervisorsMembers> entity = new HttpEntity<>(supervisorsMembers, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/assignMemberToSupervisor", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/supervisormembers/assignmembertosupervisor", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

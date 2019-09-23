@@ -52,7 +52,7 @@ public class ProjectStatusDAOImpTest<T> {
 
 
 
-		 Container<T> projectStatusContainer = projectStatusDAOImp.addProjectStatusDetails(projectStatus);
+		 Container<T> projectStatusContainer = projectStatusDAOImp.addProjectStatus(projectStatus);
 		String typeOfObject = projectStatusContainer.getObjectType();
 		
 		if(typeOfObject.equalsIgnoreCase("Class Object"))

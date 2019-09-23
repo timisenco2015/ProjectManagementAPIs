@@ -33,7 +33,7 @@ public class ProjectStatusIntegrationTest {
 
 	
 	 @Test
-	public void addprojectDetailsTest() 
+	public void addProjectStatusTest() 
 		 {
 			
 		 Date date= new Date();
@@ -58,7 +58,7 @@ public class ProjectStatusIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<ProjectStatus> entity = new HttpEntity<>(projectStatus, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/updateProjectStatus", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectstatus/updateprojectstatus", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dao.implementation.SupervisorTasksDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.SupervisorTasks;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -20,10 +19,7 @@ public class SupervisorTasksDAOImpTest<T> {
 	 @Autowired
 	 SupervisorTasksDAOImp supervisorTasksDAODAOImp;
 	 
-	 @Autowired
-	 SupervisorTasksRepository supervisorTasksRepository;
- 
-	
+	 
 	
 	
 	
@@ -31,7 +27,7 @@ public class SupervisorTasksDAOImpTest<T> {
 	 
 	 
 	 @Test
-	 public void addSupervisorTasksServiceTest() 
+	 public void addSupervisorTasksTest() 
 	 {
 
 	

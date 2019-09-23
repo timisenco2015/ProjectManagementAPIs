@@ -11,18 +11,18 @@ import ca.timisencotech.projectmanagementapis.domain.UserLogin;
 import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.UserLoginRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserLoginRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class UserLoginDAOImp implements UserLoginDAO {
 	
 	@Autowired
-	UserLoginRepository userLoginRepository;
+	UserLoginRepo userLoginRepo;
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
@@ -31,7 +31,7 @@ public class UserLoginDAOImp implements UserLoginDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> confirmedUserLoginDetails(UserLogin userLogin) {
+	public <T> Container<T> confirmedUserLogin(UserLogin userLogin) {
 	
 		Container<T> genericObject=null;
 		String email =userLogin.getUserEmail();
@@ -39,7 +39,7 @@ public class UserLoginDAOImp implements UserLoginDAO {
 		Timestamp loginTime = userLogin.getLoginTime();
 		
 		
-		UserSignUpDetails responseUserSignUpDetails = userSignUpRepository.findByEmailAndPassword(email,password);
+		UserSignUpDetails responseUserSignUpDetails = userSignUpRepo.findByEmailAndPassword(email,password);
 			
 
 		 try { 
@@ -56,7 +56,7 @@ public class UserLoginDAOImp implements UserLoginDAO {
 			 		
 			 		
 			 		
-			 		UserLoginDetails responseUserLoginDetails= userLoginRepository.save(newUserLoginDetails);
+			 		UserLoginDetails responseUserLoginDetails= userLoginRepo.save(newUserLoginDetails);
 			 		
 			 		
 			 		UserLogin domainUserLoginDetail = new UserLogin();

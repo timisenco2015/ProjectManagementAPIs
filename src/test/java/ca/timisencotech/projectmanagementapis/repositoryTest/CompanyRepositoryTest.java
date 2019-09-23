@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.CompaniesDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.CompaniesRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.CompaniesRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 @RunWith(SpringRunner.class)
@@ -17,10 +17,10 @@ import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
 public class CompanyRepositoryTest {
 		 
 		@Autowired
-		  private CompaniesRepository companiesRepository;
+		  private CompaniesRepo companiesRepo;
 		
 		@Autowired
-		UserSignUpRepository userSignUpRepository;
+		UserSignUpRepo userSignUpRepo;
 
 		  @Test
 		  public void saveTest() {
@@ -34,12 +34,12 @@ public class CompanyRepositoryTest {
 			companiesDetails.setPhoneNumber("2059634577");
 			companiesDetails.setPostalCode("T8H 0T7");
 			
-			UserSignUpDetails findUserSignUpDetails= userSignUpRepository.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
+			UserSignUpDetails findUserSignUpDetails= userSignUpRepo.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
 			
 			companiesDetails.setUserSignUpDetails(findUserSignUpDetails);
 			companiesDetails.setStateProvince("Edmonton");
-			companiesRepository.save(companiesDetails);
-			assertNotNull(companiesRepository.findCompaniesDetails("AyoTech"));
+			companiesRepo.save(companiesDetails);
+			assertNotNull(companiesRepo.findCompaniesDetails("AyoTech"));
 		  }
 		  
 	
@@ -47,7 +47,7 @@ public class CompanyRepositoryTest {
 		  
 		  @Test
 		  public void findByCountryIdTest() {
-			  assertNotNull(companiesRepository.findCompaniesDetails("AyoTech"));
+			  assertNotNull(companiesRepo.findCompaniesDetails("AyoTech"));
 			   }
 
 	}

@@ -13,8 +13,8 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 
 
 @RunWith(SpringRunner.class)
@@ -22,13 +22,13 @@ import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepos
 public class TaskAssignedMembersRepositoryTest {
 		 
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepo;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Autowired
 	ProjectGroupMemberRepo projectGroupMemberRepo;
 		
 	@Autowired
-	TaskAssignedMemberRepository TaskAssignedMemberRepo;
+	TaskAssignedMemberRepo TaskAssignedMemberRepo;
 
 		  @Test
 		  public void saveTest() {

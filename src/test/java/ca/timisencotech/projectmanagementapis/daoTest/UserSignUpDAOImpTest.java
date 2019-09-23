@@ -29,17 +29,17 @@ public class UserSignUpDAOImpTest<T> {
 		
 		 UserSignUp userSignUp = new UserSignUp();
 			
-		 userSignUp.setUserEmail("userEmail@gmail.com");
+		 userSignUp.setEmail("userEmail@gmail.com");
 		 userSignUp.setPassword("Test@2022");
 			
 			
-			 Container<T> userSignUpDetailContainer = userSignUpDAOImp.addUserSignUpDetails(userSignUp);
+			 Container<T> userSignUpDetailContainer = userSignUpDAOImp.addUserSignUp(userSignUp);
 			String typeOfObject = userSignUpDetailContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
 			 
 				UserSignUp resultUserSignUpDetail=	(UserSignUp)userSignUpDetailContainer.getObject();
-			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getEmail());
 			 assertEquals("Test@2022", resultUserSignUpDetail.getPassword());
 			}
 			else if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -58,17 +58,17 @@ public class UserSignUpDAOImpTest<T> {
 		
 		 UserSignUp userSignUp = new UserSignUp();
 			
-		 userSignUp.setUserEmail("userEmail@gmail.com");
+		 userSignUp.setEmail("userEmail@gmail.com");
 		// userSignUpDetail.setPassword("Test@2022");
 			
 			
-		 Container<T> userSignUpDetailContainer = userSignUpDAOImp.addUserSignUpDetails(userSignUp);
+		 Container<T> userSignUpDetailContainer = userSignUpDAOImp.addUserSignUp(userSignUp);
 			String typeOfObject = userSignUpDetailContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
 			 
 				UserSignUp resultUserSignUpDetail=	(UserSignUp)userSignUpDetailContainer.getObject();
-			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getEmail());
 			
 			
 			}
@@ -93,7 +93,7 @@ public class UserSignUpDAOImpTest<T> {
 		 
 			UserSignUp userSignUp = new UserSignUp();
 			
-			 userSignUp.setUserEmail("userEmail@gmail.com");
+			 userSignUp.setEmail("userEmail@gmail.com");
 			 userSignUp.setPassword("Test@2018");
 			
 
@@ -103,7 +103,7 @@ public class UserSignUpDAOImpTest<T> {
 			{
 			 
 				UserSignUp resultUserSignUpDetail=(UserSignUp)userSignUpDetailsContainer.getObject();
-			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+			 assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getEmail());
 			 assertEquals("Test@2018", resultUserSignUpDetail.getPassword());
 			
 			}

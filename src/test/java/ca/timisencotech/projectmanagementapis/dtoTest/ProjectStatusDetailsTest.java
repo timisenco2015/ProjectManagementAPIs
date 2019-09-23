@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectStatusDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 
 
 
@@ -22,12 +22,12 @@ import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepos
 public class ProjectStatusDetailsTest 
 {
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	@Test
 	public void testSettersGetters() 
 	{
-		ProjectSupervisorsDetails findProjectSupervisorsDetails =projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
+		ProjectSupervisorsDetails findProjectSupervisorsDetails =projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
 		
 		
 		Date date= new Date();

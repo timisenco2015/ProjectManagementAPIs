@@ -10,18 +10,18 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProjectGroupMemberRepositoryTest {
 		 
 	@Autowired
-	ProjectGroupRepository projectGroupRepository;
+	ProjectGroupRepo projectGroupRepo;
 	
 		@Autowired
-		UserSignUpRepository userSignUpRepository;
+		UserSignUpRepo userSignUpRepo;
 		
 		@Autowired
 		ProjectGroupMemberRepo projectGroupMemberRepo;
@@ -33,8 +33,8 @@ public class ProjectGroupMemberRepositoryTest {
 			ProjectGroupMemberDetails  projectGroupMemberDetails = new  ProjectGroupMemberDetails();
 			
 			
-			ProjectGroupDetails findProjectGroupDetails = projectGroupRepository.findProjectGroupDetailsByGroupName("Sherwood Project","Group 3");
-			UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail("userABEmail@gmail.com");
+			ProjectGroupDetails findProjectGroupDetails = projectGroupRepo.findProjectGroupDetailsByGroupName("Sherwood Project","Group 3");
+			UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail("userABEmail@gmail.com");
 
 			projectGroupMemberDetails.setActivitiesUpdate("ddasdsvdvdsvsv");
 	

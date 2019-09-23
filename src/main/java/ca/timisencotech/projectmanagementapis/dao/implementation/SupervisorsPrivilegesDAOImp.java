@@ -11,18 +11,18 @@ import ca.timisencotech.projectmanagementapis.dto.Privileges;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorsPrivilegesDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorsPrivilegesRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorsPrivilegesRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class SupervisorsPrivilegesDAOImp implements SupervisorsPrivilegesDAO {
 	
 	@Autowired
-	SupervisorsPrivilegesRepository supervisorsPrivilegesRepository;
+	SupervisorsPrivilegesRepo supervisorsPrivilegesRepo;
 	
 	@Autowired
-	ProjectSupervisorsRepository projectSupervisorsRepository;
+	ProjectSupervisorsRepo projectSupervisorsRepo;
 	
 	
 	
@@ -38,7 +38,7 @@ public class SupervisorsPrivilegesDAOImp implements SupervisorsPrivilegesDAO {
 		Privileges privileges = supervisorsPrivileges.getPrivileges();
 		String supervisorName = supervisorsPrivileges.getSupervisorName();
 		
-		ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName(projectName,supervisorName);
+		ProjectSupervisorsDetails findProjectSupervisorsDetails = projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName(projectName,supervisorName);
 		
 		if(findProjectSupervisorsDetails==null)
 		{
@@ -56,7 +56,7 @@ public class SupervisorsPrivilegesDAOImp implements SupervisorsPrivilegesDAO {
 			
 			try {
 				 
-				SupervisorsPrivilegesDetails responseSupervisorsPrivilegesDetails = supervisorsPrivilegesRepository.save(newSupervisorsPrivilegesDetails);
+				SupervisorsPrivilegesDetails responseSupervisorsPrivilegesDetails = supervisorsPrivilegesRepo.save(newSupervisorsPrivilegesDetails);
 				SupervisorsPrivileges domainSupervisorsPrivileges = new SupervisorsPrivileges();
 				domainSupervisorsPrivileges.setProjectName(projectName);;
 				domainSupervisorsPrivileges.setSupervisorName(supervisorName);;

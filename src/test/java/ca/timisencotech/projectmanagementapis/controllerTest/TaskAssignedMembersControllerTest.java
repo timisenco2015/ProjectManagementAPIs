@@ -1,10 +1,8 @@
 package ca.timisencotech.projectmanagementapis.controllerTest;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import java.sql.Timestamp;
 import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +18,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ca.timisencotech.projectmanagementapis.controller.TaskAssignedMemberController;
-import ca.timisencotech.projectmanagementapis.domain.City;
 import ca.timisencotech.projectmanagementapis.domain.TaskAssignedMembers;
 import ca.timisencotech.projectmanagementapis.service.TaskAssignedMembersService;
 
@@ -46,7 +43,7 @@ public class TaskAssignedMembersControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAssignMemberTask() throws Exception
 		{
 			Date date= new Date();
 			Timestamp dateAssigned = new Timestamp(date.getTime());
@@ -64,7 +61,7 @@ public class TaskAssignedMembersControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/assignTaskToMember")
+				      .post("/taskassignedmembers/assigntasktomember")
 				      .content(asJsonString(taskAssignedMembers))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

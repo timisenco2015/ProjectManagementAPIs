@@ -19,14 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import ca.timisencotech.projectmanagementapis.controller.TaskController;
 import ca.timisencotech.projectmanagementapis.controller.TaskStatusController;
-import ca.timisencotech.projectmanagementapis.controller.UserSignUpController;
 import ca.timisencotech.projectmanagementapis.domain.TaskStatus;
-import ca.timisencotech.projectmanagementapis.domain.UserSignUp;
 import ca.timisencotech.projectmanagementapis.service.TaskStatusService;
-import ca.timisencotech.projectmanagementapis.service.UserSignUpService;
 
 
 @RunWith(SpringRunner.class)
@@ -50,7 +45,7 @@ public class TaskStatusControllerTest {
 
 		
 		@Test
-		public void testaddTaskStatus() throws Exception
+		public void testAddTaskStatus() throws Exception
 		{
 			Date date= new Date();
 			
@@ -70,7 +65,7 @@ public class TaskStatusControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/updateTaskStatus")
+				      .post("/taskstatus/updatetaskstatus")
 				      .content(asJsonString(taskStatus))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

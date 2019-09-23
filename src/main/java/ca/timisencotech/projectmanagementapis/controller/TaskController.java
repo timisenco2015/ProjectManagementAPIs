@@ -17,28 +17,28 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/task")
 public class TaskController 
 {
 	@Autowired
 	TaskService taskService;
 	
 	
-	@PostMapping("/createNewTask")
+	@PostMapping("/createnewtask")
 	@ResponseBody
 	public <T> Container<T> addNewTask(@Validated @RequestBody Task task ,BindingResult result) { 
-		Application.getLogger().info("User called add task details (/createNewTask) api. parameters passed is: "+task);
-	    return taskService.addTaskDetails(task, result);
+		Application.getLogger().info("User called add task details (/createnewtask) api. parameters passed is: "+task);
+	    return taskService.addTask(task, result);
 	    	
 	    	
 	    		
 	}
 	
-	@PutMapping("/updateTaskDetails")
+	@PutMapping("/updatetaskdetails")
 	@ResponseBody
 	public <T> Container<T> updateProjectDetails(@Validated @RequestBody Task task ,BindingResult result) { 
-		Application.getLogger().info("User called update task (/updateTaskDetails) api. parameters passed is: "+task);
-	    return  taskService.updateTaskDetails(task, result);
+		Application.getLogger().info("User called update task (/updatetaskdetails) api. parameters passed is: "+task);
+	    return  taskService.updateTask(task, result);
 	    		
 	    		
 	}

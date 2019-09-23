@@ -16,18 +16,18 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/taskstatus")
 public class TaskStatusController 
 {
 	@Autowired
 	TaskStatusService taskStatusService;
 	
 	
-	@PostMapping("/updateTaskStatus")
+	@PostMapping("/updatetaskstatus")
 	@ResponseBody
 	public <T> Container<T> addTaskStatus(@Validated @RequestBody TaskStatus taskStatus,BindingResult result) { 
-		Application.getLogger().info("User called update task status details (/updateTaskStatus) api. parameters passed is: "+taskStatus);
-	    return taskStatusService.addTaskStatusDetails(taskStatus, result);
+		Application.getLogger().info("User called update task status details (/updatetaskstatus) api. parameters passed is: "+taskStatus);
+	    return taskStatusService.addTaskStatus(taskStatus, result);
 	    		
 	    		
 	}

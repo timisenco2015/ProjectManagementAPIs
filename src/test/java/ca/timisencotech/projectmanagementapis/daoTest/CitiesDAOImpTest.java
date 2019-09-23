@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.dao.implementation.CitiesDAOImp;
+import ca.timisencotech.projectmanagementapis.dao.implementation.CityDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.City;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
 import ca.timisencotech.projectmanagementapis.validation.Container;
@@ -18,18 +18,18 @@ public class CitiesDAOImpTest<T>
 {
 	
 	 @Autowired
-	 CitiesDAOImp citiesDAOImp;
+	 CityDAOImp cityDAOImp;
 	
 
 	@Test
-	public void addCitiesTest() 
+	public void addCityTest() 
 	 {
 		  City city = new City();
 		  city.setCityId(35);
 		  city.setCityName("osogbo");
 		  city.setStateId(25);	
 
-			 Container<T> cityContainer = citiesDAOImp.addCities(city);
+			 Container<T> cityContainer = cityDAOImp.addCity(city);
 					
 			String typeOfObject = cityContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -48,7 +48,7 @@ public class CitiesDAOImpTest<T>
 			  city.setCityName("Osogbo");
 			  city.setStateId(25);	
 			  
-			cityContainer = citiesDAOImp.addCities(city);
+			cityContainer = cityDAOImp.addCity(city);
 				typeOfObject = cityContainer.getObjectType();
 
 				if (typeOfObject.equalsIgnoreCase("Error Object"))

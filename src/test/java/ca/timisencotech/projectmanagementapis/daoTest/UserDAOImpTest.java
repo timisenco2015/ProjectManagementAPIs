@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.dao.implementation.UserDetailsDAOImp;
+import ca.timisencotech.projectmanagementapis.dao.implementation.UserDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.User;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
@@ -19,7 +19,7 @@ public class UserDAOImpTest<T> {
 	
 	
 	 @Autowired
-	 UserDetailsDAOImp userDetailsDAOImp;
+	 UserDAOImp userDAOImp;
 	 
  
 	 
@@ -36,7 +36,7 @@ public class UserDAOImpTest<T> {
 		user.setUserEmail("userEmail@gmail.com");	
 		user.setUserGender("Male");
 		
-			 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(user);
+			 Container<T> userDetailsContainer = userDAOImp.addNewUser(user);
 			String typeOfObject = userDetailsContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
@@ -94,7 +94,7 @@ public class UserDAOImpTest<T> {
 			 user.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
 			user.setUserEmail("checkidowu@gmail.com");	
 			user.setUserGender("Male");
-				 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(user);
+				 Container<T> userDetailsContainer = userDAOImp.addNewUser(user);
 				String typeOfObject = userDetailsContainer.getObjectType();
 			 if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{
@@ -121,7 +121,7 @@ public class UserDAOImpTest<T> {
 			 user.setUserAddress("616 Armitgae Crescent, Sherwood Park, Alberta. T8H 0T7");
 			user.setUserEmail("checkAidowu@gmail.com");	
 			user.setUserGender("Male");
-				 Container<T> userDetailsContainer = userDetailsDAOImp.addNewUser(user);
+				 Container<T> userDetailsContainer = userDAOImp.addNewUser(user);
 				String typeOfObject = userDetailsContainer.getObjectType();
 				 if (typeOfObject.equalsIgnoreCase("Null Object"))
 					{

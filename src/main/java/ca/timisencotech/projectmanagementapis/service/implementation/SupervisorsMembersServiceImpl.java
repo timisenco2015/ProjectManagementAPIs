@@ -44,7 +44,7 @@ public class SupervisorsMembersServiceImpl implements SupervisorsMembersService 
 			{
 				
 				genericObject = supervisorsMembersDAOImp.addSupervisorMember(supervisorsMembers);
-				Application.getLogger().info("addSupervisorMember method in SupervisorsMembersDetails Service Implementation. Member  has already been added to supervisor member list in the database");
+				Application.getLogger().info("addSupervisorMember method in SupervisorsMembers Service Implementation. Member  has already been added to supervisor member list in the database");
 			    
 			}
 		return genericObject;}

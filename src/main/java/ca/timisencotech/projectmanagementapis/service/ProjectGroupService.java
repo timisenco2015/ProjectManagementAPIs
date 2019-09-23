@@ -5,5 +5,5 @@ import ca.timisencotech.projectmanagementapis.domain.ProjectGroup;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 public interface ProjectGroupService {
-	public <T> Container<T> addProjectGroupDetails(ProjectGroup projectGroup,BindingResult result);
+	public <T> Container<T> addProjectGroup(ProjectGroup projectGroup,BindingResult result);
 	}

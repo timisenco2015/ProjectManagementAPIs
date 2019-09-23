@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dao.implementation.ProjectGroupDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.ProjectGroup;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -26,13 +26,13 @@ public class ProjectGroupDAOImpTest<T> {
 	 ProjectGroupDAOImp projectGroupDAOImp;
 	 
 	 @Autowired
-	 ProjectSupervisorsRepository projectSupervisorsRepository;
+	 ProjectSupervisorsRepo projectSupervisorsRepo;
  
 		
 
 	 
 	 @Test
-	 public void addNewProjectGroupServiceTest() 
+	 public void addNewProjectGroupTest() 
 	 {
 
 	
@@ -48,7 +48,7 @@ public class ProjectGroupDAOImpTest<T> {
 	 projectGroup.setProjectName("Sherwood Project");
 	 projectGroup.setCreatedBy("userAEmail@gmail.com");
 	
-		 Container<T> projectGroupContainer = projectGroupDAOImp.addProjectGroupDetails(projectGroup);
+		 Container<T> projectGroupContainer = projectGroupDAOImp.addProjectGroup(projectGroup);
 		String typeOfObject =  projectGroupContainer.getObjectType();
 		
 		if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -75,7 +75,7 @@ public class ProjectGroupDAOImpTest<T> {
 		 projectGroup.setProjectName("Winnipeg Project");
 		 projectGroup.setCreatedBy("userACAFEmail@gmail.com");
 		
-		 projectGroupContainer = projectGroupDAOImp.addProjectGroupDetails(projectGroup);
+		 projectGroupContainer = projectGroupDAOImp.addProjectGroup(projectGroup);
 		typeOfObject =  projectGroupContainer.getObjectType();
 			
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -105,7 +105,7 @@ public class ProjectGroupDAOImpTest<T> {
 		 projectGroup.setProjectName("Sherwood Project");
 		 projectGroup.setCreatedBy("userAEmail@gmail.com");
 		
-		 projectGroupContainer = projectGroupDAOImp.addProjectGroupDetails(projectGroup);
+		 projectGroupContainer = projectGroupDAOImp.addProjectGroup(projectGroup);
 		typeOfObject =  projectGroupContainer.getObjectType();
 		 if (typeOfObject.equalsIgnoreCase("Error Object"))
 			{

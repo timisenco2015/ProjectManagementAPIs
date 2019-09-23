@@ -47,7 +47,7 @@ public class TaskStatusDAOImpTest<T> {
 			taskStatus.setUpdatedDate(updatedDate);
 
 	
-		 Container<T> taskStatusContainer = taskStatusDAOImp.addTaskStatusDetails(taskStatus);
+		 Container<T> taskStatusContainer = taskStatusDAOImp.addTaskStatus(taskStatus);
 				
 		String typeOfObject = taskStatusContainer.getObjectType();
 		

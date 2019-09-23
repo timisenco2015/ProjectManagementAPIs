@@ -13,8 +13,8 @@ import ca.timisencotech.projectmanagementapis.domain.Project;
 import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -22,21 +22,21 @@ public class ProjectDAOImp implements ProjectDAO {
 	
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectRepo projectRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> addProjectDetails(Project project) {
+	public <T> Container<T> addProject(Project project) {
 		Container<T> genericObject=null; 
 			 try {
 				 
 				 String email = project.getCreatedBy();
-				 UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail(email);
+				 UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail(email);
 				 
 				 if(findUserSignUpDetails==null)
 					{
@@ -55,7 +55,7 @@ public class ProjectDAOImp implements ProjectDAO {
 					newProjectDetails.setDescription(project.getDescription());
 					newProjectDetails.setUserSignUpDetails(findUserSignUpDetails);
 					
-					ProjectDetails responseProjectDetails = projectRepository.save(newProjectDetails);
+					ProjectDetails responseProjectDetails = projectRepo.save(newProjectDetails);
 				 
 					Project doaminProject = new Project();
 					doaminProject.setProjectName(responseProjectDetails.getProjectName());
@@ -76,7 +76,7 @@ public class ProjectDAOImp implements ProjectDAO {
 		
 			 
 			 catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("aaddProjectDetails method in ProjectDetails DAO Implementation. At this point there is an error that has prevented saving new user to the database");
+				 Application.getLogger().info("aaddProject method in Project DAO Implementation. At this point there is an error that has prevented saving new project to the database");
 				 
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 		
@@ -90,23 +90,23 @@ public class ProjectDAOImp implements ProjectDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	@Override
-	public <T> Container<T> updateProjectDetails(Project project) {
+	public <T> Container<T> updateProject(Project project) {
 	
 		Container<T> genericObject=null;
-		int responseProjectDetail = projectRepository.updateProjectDetails(project.getCreatedDate(), project.getStartDate(), project.getEndDate(), project.getDescription(), project.getProjectName());
+		int responseProjectDetail = projectRepo.updateProjectDetails(project.getCreatedDate(), project.getStartDate(), project.getEndDate(), project.getDescription(), project.getProjectName());
 			
 		 try { 
 	
 			 	if(responseProjectDetail>0)
 			 	{
 			 		
-					 Application.getLogger().info("updateUserPassword method in ProjectDetails DAO Implementation. At this point user password has successfully been changed in the database. Return userdetails from repo is"+responseProjectDetail);
+					 Application.getLogger().info("updateProject method in Project DAO Implementation. At this point user has successfully updated this project in the database. Return userdetails from repo is"+responseProjectDetail);
 					 genericObject = (Container<T>) new Container<Project>(project,"Class Object");
 				    
 			 	}
 			 	else
 			 	{
-			 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Unable to update project details"),"Update Object");
+			 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Unable to update project"),"Update Object");
 			 	}
 			 	
 		 }

@@ -10,24 +10,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectStatusDetails;
 import ca.timisencotech.projectmanagementapis.dto.ProjectSupervisorsDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectStatusRepository;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectStatusRepo;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProjectStatusRepositoryTest {
 		 
 		@Autowired
-		ProjectStatusRepository projectStatusRepository;
+		ProjectStatusRepo projectStatusRepo;
 		
 		
 		@Autowired
-		ProjectSupervisorsRepository projectSupervisorsRepository;
+		ProjectSupervisorsRepo projectSupervisorsRepo;
 
 		  @Test
 		  public void saveTest() {
 			  
-			  ProjectSupervisorsDetails findProjectSupervisorsDetails =projectSupervisorsRepository.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
+			  ProjectSupervisorsDetails findProjectSupervisorsDetails =projectSupervisorsRepo.findProjectSupervisorByProjectAndSupervisorName("Sherwood Project","userAEmail@gmail.com");
 				
 			  Date date= new Date();
 				
@@ -51,8 +51,8 @@ public class ProjectStatusRepositoryTest {
 			
 	
 			  
-				projectStatusRepository.save(projectStatusDetails);
-				assertNotNull(projectStatusRepository.findProjectStatusDetails("Sherwood Project","userAEmail@gmail.com"));
+				projectStatusRepo.save(projectStatusDetails);
+				assertNotNull(projectStatusRepo.findProjectStatusDetails("Sherwood Project","userAEmail@gmail.com"));
 		  }
 		  
 		  
@@ -60,7 +60,7 @@ public class ProjectStatusRepositoryTest {
 		  public void findProjectSupervisorByProjectAndSupervisorNameTest() {
 			  
 			
-				assertNotNull(projectStatusRepository.findProjectStatusDetails("Sherwood Project","userAEmail@gmail.com"));
+				assertNotNull(projectStatusRepo.findProjectStatusDetails("Sherwood Project","userAEmail@gmail.com"));
 				  }
 	
 	}

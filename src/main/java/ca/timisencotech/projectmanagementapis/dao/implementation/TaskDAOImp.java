@@ -15,9 +15,9 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -25,19 +25,19 @@ public class TaskDAOImp implements TaskDAO {
 	
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	@Autowired
-	TaskRepository taskRepository;
+	TaskRepo taskRepo;
 	
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectRepo projectRepo;
 	
 	PersistentException persistentException = new PersistentException();
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> addTaskDetails(Task task) {
+	public <T> Container<T> addTask(Task task) {
 		Container<T> genericObject=null; 
 			 try {
 				 
@@ -49,8 +49,8 @@ public class TaskDAOImp implements TaskDAO {
 				Timestamp endDate = task.getEndDate();
 				Timestamp startDate = task.getStartDate();
 				
-				ProjectDetails findProjectDetails= projectRepository.findProjectDetailsByProjectName (projectName);
-				 UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail(createdBy);
+				ProjectDetails findProjectDetails= projectRepo.findProjectDetailsByProjectName (projectName);
+				 UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail(createdBy);
 				 
 				 if(findUserSignUpDetails==null)
 					{
@@ -78,7 +78,7 @@ public class TaskDAOImp implements TaskDAO {
 					newTaskDetails.setUserSignUpDetails(findUserSignUpDetails);
 					
 				
-					TaskDetails responseTaskDetails = taskRepository.save(newTaskDetails);
+					TaskDetails responseTaskDetails = taskRepo.save(newTaskDetails);
 				 
 					Task domainTask = new Task();
 					
@@ -116,11 +116,11 @@ public class TaskDAOImp implements TaskDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	@Override
-	public <T> Container<T> updateTaskDetails(Task task) {
+	public <T> Container<T> updateTask(Task task) {
 	
 		Container<T> genericObject=null;
 		
-		int responseTaskDetail = taskRepository.updateTaskDetails(task.getCreatedDate(), task.getStartDate(), task.getEndDate(), task.getDescription(), task.getCreatedBy(), task.getProjectName());
+		int responseTaskDetail = taskRepo.updateTaskDetails(task.getCreatedDate(), task.getStartDate(), task.getEndDate(), task.getDescription(), task.getCreatedBy(), task.getProjectName());
 				
 		 try { 
 	

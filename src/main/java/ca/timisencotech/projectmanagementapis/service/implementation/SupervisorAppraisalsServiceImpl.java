@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.ValidateSupervisorAppra
 
 
 
-@Service("SupervisorAppraisalsDetailsService")
+@Service("SupervisorAppraisalsService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class SupervisorAppraisalsServiceImpl implements SupervisorAppraisalsService{
 	
@@ -47,7 +47,7 @@ public class SupervisorAppraisalsServiceImpl implements SupervisorAppraisalsServ
 			
 			else
 			{
-				Application.getLogger().info("addSupervisorAppraisals method in SupervisorAppraisalsDetails Service Implementation. New SupervisorAppraisalDetails has already been saved into the database");
+				Application.getLogger().info("addSupervisorAppraisals method in SupervisorAppraisals Service Implementation. New SupervisorAppraisal has already been saved into the database");
 			    
 				genericObject = supervisorAppraisalsDAOImp.addSupervisorAppraisals(supervisorAppraisals);
 					

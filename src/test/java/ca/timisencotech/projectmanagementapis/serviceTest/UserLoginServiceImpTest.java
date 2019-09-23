@@ -12,10 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.DataBinder;
 import ca.timisencotech.projectmanagementapis.domain.UserLogin;
-import ca.timisencotech.projectmanagementapis.dto.UserLoginDetails;
-import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
-import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
+import ca.timisencotech.projectmanagementapis.service.UserLoginService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -24,13 +22,13 @@ public class UserLoginServiceImpTest<T>
 {
 	
 	 @Autowired
-	 UserLoginDetailsService userLoginDetailsService;
+	 UserLoginService userLoginService;
 	
 
 	 	
 	 	
 	 	 @Test
-		 public void confirmUserLoginDetailsServiceTest() 
+		 public void confirmUserLoginServiceTest() 
 			 {
 			 
 			 //Test for correct login details
@@ -45,7 +43,7 @@ public class UserLoginServiceImpTest<T>
 					
 			 DataBinder binder = new DataBinder(userLogin);
 				
-				 Container<T> userLoginDetailsContainer = userLoginDetailsService.confirmedUserLoginDetails(userLogin,binder.getBindingResult());
+				 Container<T> userLoginDetailsContainer = userLoginService.confirmedUserLogin(userLogin,binder.getBindingResult());
 				String typeOfObject = userLoginDetailsContainer.getObjectType();
 				
 				

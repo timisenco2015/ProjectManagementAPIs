@@ -43,7 +43,7 @@ public class ProjectSupervisorsControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddNewProjectSupervisor() throws Exception
 		{
 			ProjectSupervisors projectSupervisors = new  ProjectSupervisors();
 			
@@ -55,7 +55,7 @@ public class ProjectSupervisorsControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/newProjectSupervisor")
+				      .post("/projectsupervisor/newprojectsupervisor")
 				      .content(asJsonString(projectSupervisors))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

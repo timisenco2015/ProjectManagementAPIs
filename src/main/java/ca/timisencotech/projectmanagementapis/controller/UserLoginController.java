@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import ca.timisencotech.projectmanagementapis.Application;
 import ca.timisencotech.projectmanagementapis.domain.UserLogin;
-import ca.timisencotech.projectmanagementapis.service.UserLoginDetailsService;
+import ca.timisencotech.projectmanagementapis.service.UserLoginService;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/userlogin")
 public class UserLoginController 
 {
 	@Autowired
-	UserLoginDetailsService userLoginDetailsService;
+	UserLoginService userLoginService;
 	
 
 	
 	
-	@PostMapping("/confirmLoginDetails")
+	@PostMapping("/confirmlogindetails")
 	@ResponseBody
-	public <T> Container<T> confirmdUserLoginDetail(@Validated @RequestBody UserLogin userLogin,BindingResult result) { 
+	public <T> Container<T> confirmdUserLogin(@Validated @RequestBody UserLogin userLogin,BindingResult result) { 
 		Application.getLogger().info("User called confirmed user details (/confirmLoginDetails) api. parameters passed is: "+userLogin);
-	    return  userLoginDetailsService.confirmedUserLoginDetails(userLogin, result);
+	    return  userLoginService.confirmedUserLogin(userLogin, result);
 	    			
 	}
 }

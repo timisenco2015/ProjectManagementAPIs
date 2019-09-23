@@ -14,7 +14,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateProjectSupervisors;
 
 
-@Service("ProjectSupervisorsDetailsService")
+@Service("ProjectSupervisorsService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class ProjectSupervisorsServiceImpl<T> implements ProjectSupervisorsService{
 	
@@ -26,7 +26,7 @@ public class ProjectSupervisorsServiceImpl<T> implements ProjectSupervisorsServi
 	
 	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
-	public <T> Container<T> addProjectSupervisorsDetails(ProjectSupervisors projectSupervisors,BindingResult result) {
+	public <T> Container<T> addProjectSupervisors(ProjectSupervisors projectSupervisors,BindingResult result) {
 		
   
 		Container<T> genericObject=null;
@@ -41,15 +41,15 @@ public class ProjectSupervisorsServiceImpl<T> implements ProjectSupervisorsServi
 				validationError.setAllErrorObject(result.getAllErrors());
 	   
 			 genericObject = (Container<T>) new  Container<ValidationError> (validationError,"Error Object");
-			 Application.getLogger().info("New uproject supervisor validation error. Error info: "+validationError.getMessageObject());
+			 Application.getLogger().info("New project supervisor validation error. Error info: "+validationError.getMessageObject());
 
 			}
 			
 			else
 			{
-				Application.getLogger().info("addStateProvince method in StatesProvinces Service Implementation. New user has already been added to the database");
+				Application.getLogger().info("addProjectSupervisors method in ProjectSupervisors Service Implementation. Supervisor has already been added to project supervisors and updated in the database");
 			    
-				genericObject = projectSupervisorsDAOImp.addProjectSupervisorsDetails(projectSupervisors);
+				genericObject = projectSupervisorsDAOImp.addProjectSupervisors(projectSupervisors);
 			}
 		return genericObject;
 	}

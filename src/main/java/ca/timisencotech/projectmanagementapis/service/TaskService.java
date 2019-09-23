@@ -6,7 +6,7 @@ import ca.timisencotech.projectmanagementapis.domain.Task;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 public interface TaskService {
-	public <T> Container<T> addTaskDetails(Task tasks,BindingResult result);
-	public <T> Container<T> updateTaskDetails(Task task,BindingResult result);	
+	public <T> Container<T> addTask(Task tasks,BindingResult result);
+	public <T> Container<T> updateTask(Task task,BindingResult result);	
 
 }

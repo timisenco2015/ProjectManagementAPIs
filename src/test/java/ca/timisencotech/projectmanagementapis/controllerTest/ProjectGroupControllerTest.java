@@ -45,7 +45,7 @@ public class ProjectGroupControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddProjectGroupTest() throws Exception
 		{
 			Date date= new Date();
 			
@@ -63,7 +63,7 @@ public class ProjectGroupControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/createProjectGroup")
+				      .post("/projectgroup/createprojectgroup")
 				      .content(asJsonString(projectGroup))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

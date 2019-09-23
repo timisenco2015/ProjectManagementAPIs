@@ -27,7 +27,7 @@ public class ProjectStatusServiceImpTest<T>
 	
 
 	@Test
-	public void addProjectStatusDetailsTest() throws JSONException 
+	public void addProjectStatusTest() throws JSONException 
 	 {
 		 Date date= new Date();
 			
@@ -44,7 +44,7 @@ public class ProjectStatusServiceImpTest<T>
 		 projectStatus.setUpdatedDate(updatedDate);
 	
 		DataBinder binder = new DataBinder(projectStatus);
-		Container<T> projectStatusContainer = projectStatusService.addProjectStatusDetails(projectStatus, binder.getBindingResult());
+		Container<T> projectStatusContainer = projectStatusService.addProjectStatus(projectStatus, binder.getBindingResult());
 					
 		String typeOfObject = projectStatusContainer.getObjectType();
 		if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -79,7 +79,7 @@ public class ProjectStatusServiceImpTest<T>
 	
 			
 			binder = new DataBinder(projectStatus);
-			projectStatusContainer = projectStatusService.addProjectStatusDetails(projectStatus, binder.getBindingResult());
+			projectStatusContainer = projectStatusService.addProjectStatus(projectStatus, binder.getBindingResult());
 			typeOfObject = projectStatusContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{
@@ -102,7 +102,7 @@ public class ProjectStatusServiceImpTest<T>
 				 updatedDate = new Timestamp(date.getTime());
 				 projectStatus.setUpdatedDate(updatedDate);
 				binder = new DataBinder(projectStatus);
-				projectStatusContainer = projectStatusService.addProjectStatusDetails(projectStatus, binder.getBindingResult());
+				projectStatusContainer = projectStatusService.addProjectStatus(projectStatus, binder.getBindingResult());
 				typeOfObject = projectStatusContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 					{

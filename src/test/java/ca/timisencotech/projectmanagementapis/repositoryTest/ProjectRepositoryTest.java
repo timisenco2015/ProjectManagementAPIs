@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 @RunWith(SpringRunner.class)
@@ -23,17 +23,17 @@ import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
 public class ProjectRepositoryTest {
 		 
 		@Autowired
-		private ProjectRepository projectRepository;
+		private ProjectRepo projectRepo;
 		
 		@Autowired
-		UserSignUpRepository userSignUpRepository;
+		UserSignUpRepo userSignUpRepo;
 
 		  @Test
 		  public void saveTest() {
 			  Date date= new Date();
 				Timestamp loginTime = new Timestamp(date.getTime());
 				
-				UserSignUpDetails findUserSignUpDetails =	userSignUpRepository.findUserSignUpDetailsByEmail("userEmail@gmail.com");
+				UserSignUpDetails findUserSignUpDetails =	userSignUpRepo.findUserSignUpDetailsByEmail("userEmail@gmail.com");
 				
 				
 				
@@ -56,8 +56,8 @@ public class ProjectRepositoryTest {
 				
 				
 				
-				projectRepository.save(projectDetails);
-			 assertNotNull(projectRepository.findProjectDetailsByProjectName("Calgary Project"));
+				projectRepo.save(projectDetails);
+			 assertNotNull(projectRepo.findProjectDetailsByProjectName("Calgary Project"));
 		  }
 		  
 		  
@@ -65,7 +65,7 @@ public class ProjectRepositoryTest {
 		  public void findProjectDetailsByProjectNameTest() {
 			  
 			
-			 assertNotNull(projectRepository.findProjectDetailsByProjectName("Calgary Project"));
+			 assertNotNull(projectRepo.findProjectDetailsByProjectName("Calgary Project"));
 		  }
 		  
 		  @Test
@@ -84,7 +84,7 @@ public class ProjectRepositoryTest {
 				
 				String projectName = "Winnipeg Project";
 				
-				int updateValue = projectRepository.updateProjectDetails(createdDate,startDate,endDate, description, projectName);
+				int updateValue = projectRepo.updateProjectDetails(createdDate,startDate,endDate, description, projectName);
 				assertEquals(1,updateValue);
 		  }
 		  

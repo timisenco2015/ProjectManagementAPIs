@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.CompaniesDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 
@@ -18,13 +18,13 @@ import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
 public class CompaniesDetailsTest 
 {
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	@Test
 	public void testSettersGetters() 
 	{
 		
-		UserSignUpDetails findUserSignUpDetails= userSignUpRepository.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
+		UserSignUpDetails findUserSignUpDetails= userSignUpRepo.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
 		
 		CompaniesDetails companiesDetails = new CompaniesDetails();
 		

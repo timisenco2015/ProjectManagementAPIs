@@ -1,10 +1,7 @@
 package ca.timisencotech.projectmanagementapis.integrationtest;
 
 import static org.junit.Assert.assertEquals;
-
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.Project;
 import ca.timisencotech.projectmanagementapis.domain.SupervisorTasks;
 
 
@@ -34,7 +30,7 @@ public class SupervisorTasksIntegrationTest {
 
 	
 	 @Test
-	public void addSupervisorTasksTest() 
+	public void addNewSupervisorTaskTest() 
 		 {
 			
 		 SupervisorTasks supervisorTasks = new  SupervisorTasks();
@@ -50,7 +46,7 @@ public class SupervisorTasksIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<SupervisorTasks> entity = new HttpEntity<>(supervisorTasks, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addTaskToSupervisotTaskList", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/supervisortasks/addtasktosupervisottasklist", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

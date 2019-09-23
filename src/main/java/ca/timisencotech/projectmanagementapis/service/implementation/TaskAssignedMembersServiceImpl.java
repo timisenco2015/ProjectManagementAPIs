@@ -47,7 +47,7 @@ public class TaskAssignedMembersServiceImpl<T> implements TaskAssignedMembersSer
 			
 			else
 			{
-				Application.getLogger().info("addTaskStatusDetails method in TaskStatusDetailsService Service Implementation. New project task status has already been updated in the database");
+				Application.getLogger().info("assignedTaskToMembers method in TaskAssignedMembers Service Implementation. task has been assigned to member and updated in the database");
 			    
 				genericObject = taskAssignedMembersDAOImp.assignedTaskToMembers(taskAssignedMembers);
 					

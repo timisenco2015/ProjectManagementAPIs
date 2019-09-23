@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.timisencotech.projectmanagementapis.controller.CountryController;
 import ca.timisencotech.projectmanagementapis.domain.Country;
-import ca.timisencotech.projectmanagementapis.service.CountriesService;
+import ca.timisencotech.projectmanagementapis.service.CountryService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,7 +32,7 @@ public class CountryControllerTest
 	   private MockMvc mockMvc;
 		
 		@Mock
-		private CountriesService countriesService;
+		private CountryService countryService;
 		
 		@InjectMocks
 		private CountryController countryController;
@@ -45,7 +45,7 @@ public class CountryControllerTest
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddCountryTest() throws Exception
 		{
 			 Country country = new  Country();
 			 country.setCountryId(8);
@@ -55,7 +55,7 @@ public class CountryControllerTest
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addCountry")
+				      .post("/country/addcountry")
 				      .content(asJsonString(country))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

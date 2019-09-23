@@ -26,9 +26,9 @@ public class UserSignUpTest
 		
 		
 		//check setter and getter for email
-		userSignUp.setUserEmail("testEmail@gmail.com");
+		userSignUp.setEmail("testEmail@gmail.com");
 		String testResult1 = "testEmail@gmail.com";
-		assertEquals(testResult1, userSignUp.getUserEmail());
+		assertEquals(testResult1, userSignUp.getEmail());
 		
 		//check setter and getter for password
 		userSignUp.setPassword("Test@2019");
@@ -40,7 +40,7 @@ public class UserSignUpTest
 		 
 	
 
-		 assertEquals("testEmail@gmail.com",  userSignUp.getUserEmail());
+		 assertEquals("testEmail@gmail.com",  userSignUp.getEmail());
 		 assertEquals("Test@2019", userSignUp.getPassword());
 		
 		

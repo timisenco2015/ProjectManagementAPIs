@@ -17,17 +17,17 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/project")
 public class ProjectController 
 {
 	@Autowired
 	ProjectService projectService;
 	
 	
-	@PostMapping("/addNewProject")
+	@PostMapping("/addnewproject")
 	@ResponseBody
-	public <T> Container<T> addNewUserLoginDetails(@Validated @RequestBody Project project,BindingResult result) { 
-		Application.getLogger().info("User called add project details (/addNewProjectDetails) api. parameters passed is: "+project);
+	public <T> Container<T> addNewProject(@Validated @RequestBody Project project,BindingResult result) { 
+		Application.getLogger().info("User called add project details (/addNewProject) api. parameters passed is: "+project);
 	    return projectService.addProjectpDetails(project, result);
 	    	
 	    		

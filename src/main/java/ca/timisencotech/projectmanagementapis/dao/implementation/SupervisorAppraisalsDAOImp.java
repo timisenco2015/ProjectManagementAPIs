@@ -11,22 +11,22 @@ import ca.timisencotech.projectmanagementapis.dto.SupervisorAppraisalsDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepository;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepo;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
 public class SupervisorAppraisalsDAOImp implements SupervisorAppraisalsDAO {
 	
 	@Autowired
-	SupervisorAppraisalsRepository supervisorAppraisalsRepository;
+	SupervisorAppraisalsRepo supervisorAppraisalsRepo;
 	
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepository;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberDetailsRepo;
+	TaskAssignedMemberRepo taskAssignedMemberDetailsRepo;
 	
 	
 	
@@ -42,7 +42,7 @@ public class SupervisorAppraisalsDAOImp implements SupervisorAppraisalsDAO {
 		String memberName = supervisorAppraisals.getSubordinateMember();
 		String taskName = supervisorAppraisals.getTaskName();
 		String supervisorName = supervisorAppraisals.getSupervisorName();
-		SupervisorTasksDetails findSupervisorTasksDetails = supervisorTasksRepository.findSupervisorsByProjectnameAndSupervisorNameAndTaskName(projectName, supervisorName, taskName); 
+		SupervisorTasksDetails findSupervisorTasksDetails = supervisorTasksRepo.findSupervisorsByProjectnameAndSupervisorNameAndTaskName(projectName, supervisorName, taskName); 
 		TaskAssignedMembersDetails findTaskAssignedMembersDetails = taskAssignedMemberDetailsRepo.findTaskAssignedMember(projectName,memberName,taskName); 
 		                         
 		if(findTaskAssignedMembersDetails==null)
@@ -91,7 +91,7 @@ public class SupervisorAppraisalsDAOImp implements SupervisorAppraisalsDAO {
 		SupervisorAppraisalsDetails responseSupervisorAppraisalsDetails = null;
 			 try {
 				 
-				 responseSupervisorAppraisalsDetails = supervisorAppraisalsRepository.save(newSupervisorAppraisalsDetails);
+				 responseSupervisorAppraisalsDetails = supervisorAppraisalsRepo.save(newSupervisorAppraisalsDetails);
 				 SupervisorAppraisals domainSupervisorAppraisals = new SupervisorAppraisals();
 				 domainSupervisorAppraisals.setStandardA(responseSupervisorAppraisalsDetails.getStandardA());
 				 domainSupervisorAppraisals.setStandardAPoint(responseSupervisorAppraisalsDetails.getStandardAPoint());

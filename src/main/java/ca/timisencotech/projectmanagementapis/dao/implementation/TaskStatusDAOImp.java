@@ -12,8 +12,8 @@ import ca.timisencotech.projectmanagementapis.domain.TaskStatus;
 import ca.timisencotech.projectmanagementapis.dto.TaskStatusDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.exception.PersistentException;
-import ca.timisencotech.projectmanagementapis.repository.TaskStatusRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.TaskStatusRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @Repository
@@ -21,16 +21,16 @@ public class TaskStatusDAOImp implements TaskStatusDAO {
 	
 	
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 	@Autowired
-	TaskStatusRepository taskStatusRepository;
+	TaskStatusRepo taskStatusRepo;
 
 	PersistentException persistentException = new PersistentException();
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Container<T> addTaskStatusDetails(TaskStatus taskStatus) {
+	public <T> Container<T> addTaskStatus(TaskStatus taskStatus) {
 		Container<T> genericObject=null; 
 	
 		String memberName = taskStatus.getMemberName();
@@ -43,7 +43,7 @@ public class TaskStatusDAOImp implements TaskStatusDAO {
 		
 		try {
 			                                                                                               
-			TaskAssignedMembersDetails findTaskAssignedMembersDetails =taskAssignedMemberRepository.findTaskAssignedMember(projectName,memberName,taskName); 
+			TaskAssignedMembersDetails findTaskAssignedMembersDetails =taskAssignedMemberRepo.findTaskAssignedMember(projectName,memberName,taskName); 
 					
 			if(findTaskAssignedMembersDetails!=null)
 			{
@@ -56,7 +56,7 @@ public class TaskStatusDAOImp implements TaskStatusDAO {
 				newProjectTaskStatusDetails.setUpdatedDate(updatedDate);
 				
 			
-				TaskStatusDetails responseProjectTaskStatusDetails = taskStatusRepository.save(newProjectTaskStatusDetails);
+				TaskStatusDetails responseProjectTaskStatusDetails = taskStatusRepo.save(newProjectTaskStatusDetails);
 				TaskStatus domainProjectTaskStatus = new TaskStatus();
 				domainProjectTaskStatus.setCompletedDate(responseProjectTaskStatusDetails.getCompletedDate());
 				domainProjectTaskStatus.setDescription(responseProjectTaskStatusDetails.getDescription());
@@ -66,7 +66,7 @@ public class TaskStatusDAOImp implements TaskStatusDAO {
 				domainProjectTaskStatus.setTaskName(taskName);
 				domainProjectTaskStatus.setUpdatedDate(updatedDate);
 				
-				Application.getLogger().info("addProjectTaskStatusDetails method in ProjectTaskStatusDetails DAO Implementation. At this point update to project task status has successfully saved to the database. Return ProjectTaskStatusDetails from repo is"+domainProjectTaskStatus);
+				Application.getLogger().info("addProjectTaskStatus method in ProjectTaskStatus DAO Implementation. At this point update to project task status has successfully saved to the database. Return ProjectTaskStatus from repo is"+domainProjectTaskStatus);
 				genericObject = (Container<T>) new Container<TaskStatus>(domainProjectTaskStatus,"Class Object");
 				  
 			
@@ -75,14 +75,14 @@ public class TaskStatusDAOImp implements TaskStatusDAO {
 			{
 		
 				 		genericObject = (Container<T>) new  Container<ApiError> (new ApiError("Persistence Error", "Repository returned null"),"Null Object");
-				 		Application.getLogger().info("addProjectTaskStatusDetails method in ProjectTaskStatusDetails DAO Implementation. At this point this user is not a project member");
+				 		Application.getLogger().info("addProjectTaskStatus method in ProjectTaskStatus DAO Implementation. At this point this user is not a project member");
 						
 			}
 			 
 		}
 			 
 			 catch (DataAccessException dataAccessException) {
-				 Application.getLogger().info("addProjectTaskStatusDetails method in ProjectTaskStatusDetails DAO Implementation. At this point there is an error that has prevented saving new project task status details to the database");
+				 Application.getLogger().info("addProjectTaskStatus method in ProjectTaskStatus DAO Implementation. At this point there is an error that has prevented saving new project task status to the database");
 				 
 				 genericObject = (Container<T>) new  Container<ApiError> (persistentException.handleDataAccessException((DataAccessException)dataAccessException),"Error Object");
 		

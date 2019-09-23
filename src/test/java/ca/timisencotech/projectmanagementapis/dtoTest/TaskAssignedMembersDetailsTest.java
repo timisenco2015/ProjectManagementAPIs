@@ -13,7 +13,7 @@ import ca.timisencotech.projectmanagementapis.dto.ProjectGroupMemberDetails;
 import ca.timisencotech.projectmanagementapis.dto.SupervisorTasksDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo;
-import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository;
+import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo;
 
 
 
@@ -23,7 +23,7 @@ import ca.timisencotech.projectmanagementapis.repository.SupervisorTasksReposito
 public class TaskAssignedMembersDetailsTest 
 {
 	@Autowired
-	SupervisorTasksRepository supervisorTasksRepo;
+	SupervisorTasksRepo supervisorTasksRepo;
 	
 	@Autowired
 	ProjectGroupMemberRepo projectGroupMemberRepo;

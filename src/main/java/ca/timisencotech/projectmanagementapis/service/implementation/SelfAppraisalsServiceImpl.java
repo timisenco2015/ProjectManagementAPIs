@@ -16,7 +16,7 @@ import ca.timisencotech.projectmanagementapis.validation.ValidateSelfAppraisal;
 
 
 
-@Service("SelfAppraisalsDetailsService")
+@Service("SelfAppraisalsService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class SelfAppraisalsServiceImpl implements SelfAppraisalsService{
 	
@@ -41,13 +41,13 @@ public class SelfAppraisalsServiceImpl implements SelfAppraisalsService{
 				validationError.setAllErrorObject(result.getAllErrors());
 	   
 			 genericObject = (Container<T>) new  Container<ValidationError> (validationError,"Error Object");
-			 Application.getLogger().info("task status validation error. Error info: "+validationError.getMessageObject());
+			 Application.getLogger().info("self appraisal validation error. Error info: "+validationError.getMessageObject());
 
 			}
 			
 			else
 			{
-				Application.getLogger().info("addSelfAppraisals method in SelfAppraisalsDetails Service Implementation. New selfAppraisalDetails has already been updated in the database");
+				Application.getLogger().info("addSelfAppraisals method in SelfAppraisals Service Implementation. New selfAppraisal has already been updated in the database");
 			    
 				genericObject = selfAppraisalsDAOImp.addSelfAppraisals(selfAppraisals);
 					

@@ -41,7 +41,7 @@ public class SupervisorsMembersControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testAddMemberToSupervisor() throws Exception
 		{
 			SupervisorsMembers supervisorsMembers = new SupervisorsMembers();
 			supervisorsMembers.setMemberName("userABAEmail@gmail.com");
@@ -49,7 +49,7 @@ public class SupervisorsMembersControllerTest {
 			supervisorsMembers.setSupervisorName("userAEmail@gmail.com");
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/assignMemberToSupervisor")
+				      .post("/supervisormembers/assignmembertosupervisor")
 				      .content(asJsonString(supervisorsMembers))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

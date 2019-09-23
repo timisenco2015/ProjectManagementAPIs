@@ -1,10 +1,7 @@
 package ca.timisencotech.projectmanagementapis.integrationtest;
 
 import static org.junit.Assert.assertEquals;
-
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import ca.timisencotech.projectmanagementapis.domain.ProjectGroup;
 import ca.timisencotech.projectmanagementapis.domain.ProjectGroupMembers;
 
 
@@ -34,7 +30,7 @@ public class ProjectGroupMemberIntegrationTest {
 
 	
 	 @Test
-	public void addprojectDetailsTest() 
+	public void addAddMemberToProjectGroupTest() 
 		 {
 			
 		 ProjectGroupMembers projectGroupMembers = new ProjectGroupMembers();
@@ -53,7 +49,7 @@ public class ProjectGroupMemberIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<ProjectGroupMembers> entity = new HttpEntity<>(projectGroupMembers, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/addUserToProjectGroup", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectgroupmember/addmembertoprojectgroup", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

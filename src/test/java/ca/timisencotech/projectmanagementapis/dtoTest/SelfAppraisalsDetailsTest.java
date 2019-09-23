@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.SelfAppraisalsDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
 
 
 
@@ -22,7 +22,7 @@ import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepos
 public class SelfAppraisalsDetailsTest 
 {
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 	@Test
 	public void testSettersGetters() 
@@ -50,7 +50,7 @@ public class SelfAppraisalsDetailsTest
 			selfAppraisalsDetails.setStandardIPoint(1);
 			selfAppraisalsDetails.setStandardJ("QuestionJ");
 			selfAppraisalsDetails.setStandardJPoint(2);
-			TaskAssignedMembersDetails findTaskAssignedMembersDetails = taskAssignedMemberRepository.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
+			TaskAssignedMembersDetails findTaskAssignedMembersDetails = taskAssignedMemberRepo.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
 			selfAppraisalsDetails.setTaskAssignedMembersDetails(findTaskAssignedMembersDetails);
 			selfAppraisalsDetails.setDescription("fdgdjdydtf");
 			Timestamp appraisedStartDate = new Timestamp(date.getTime());

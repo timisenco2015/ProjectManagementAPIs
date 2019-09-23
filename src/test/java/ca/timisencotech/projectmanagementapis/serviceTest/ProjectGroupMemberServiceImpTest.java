@@ -26,7 +26,7 @@ public class ProjectGroupMemberServiceImpTest<T>
 	
 
 	@Test
-	public void addProjectDetailsTest() throws JSONException 
+	public void addMemberToProjectGroupTest() throws JSONException 
 	 {
 		ProjectGroupMembers projectGroupMembers = new ProjectGroupMembers();
 		

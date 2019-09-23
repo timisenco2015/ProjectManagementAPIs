@@ -33,7 +33,7 @@ public class TaskIntegrationTest {
 
 	
 	 @Test
-	public void addprojectDetailsTest() 
+	public void addNewTaskTest() 
 		 {
 			
 		 Date date= new Date();
@@ -63,7 +63,7 @@ public class TaskIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<Task> entity = new HttpEntity<>(task, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/createNewTask", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/task/createnewtask", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

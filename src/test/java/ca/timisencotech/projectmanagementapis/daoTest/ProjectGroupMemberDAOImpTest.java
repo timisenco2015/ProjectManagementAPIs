@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dao.implementation.ProjectGroupMemberDAOImp;
 import ca.timisencotech.projectmanagementapis.domain.ProjectGroupMembers;
 import ca.timisencotech.projectmanagementapis.exception.ApiError;
-import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo;
 import ca.timisencotech.projectmanagementapis.validation.Container;
 
 @RunWith(SpringRunner.class)
@@ -22,13 +22,13 @@ public class ProjectGroupMemberDAOImpTest<T> {
 	 ProjectGroupMemberDAOImp projectGroupMemberDAOImp;
 	 
 	 @Autowired
-	 ProjectSupervisorsRepository projectSupervisorsRepository;
+	 ProjectSupervisorsRepo projectSupervisorsRepo;
  
 		
 
 	 
 	 @Test
-	 public void addNewProjectGroupServiceTest() 
+	 public void addNewProjectGroupMemberTest() 
 	 {
 
 

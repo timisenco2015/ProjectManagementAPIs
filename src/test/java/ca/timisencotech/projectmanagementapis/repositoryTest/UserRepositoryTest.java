@@ -8,24 +8,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.UserDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.UserRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.UserRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRepositoryTest {
 		 
 		@Autowired
-		private UserRepository userRepository;
+		private UserRepo userRepo;
 		
 		@Autowired
-		UserSignUpRepository userSignUpRepository;
+		UserSignUpRepo userSignUpRepo;
 
 		  @Test
 		  public void saveTest() {
 			  
 			
-				UserSignUpDetails findUserSignUpDetails = userSignUpRepository.findUserSignUpDetailsByEmail("userAEmail@gmail.com");
+				UserSignUpDetails findUserSignUpDetails = userSignUpRepo.findUserSignUpDetailsByEmail("userAEmail@gmail.com");
 				
 			  UserDetails userDetails = new UserDetails();
 			  userDetails.setFirstName("Gorge");
@@ -37,7 +37,7 @@ public class UserRepositoryTest {
 			  userDetails.setGender("Male");
 			  
 			//  userDetailsRepository.save(userDetails);
-			 assertNotNull(userRepository.findUserDetailsByEmail("userAEmail@gmail.com"));
+			 assertNotNull(userRepo.findUserDetailsByEmail("userAEmail@gmail.com"));
 		  }
 		  
 		  
@@ -45,7 +45,7 @@ public class UserRepositoryTest {
 		  public void findUserDetailsByEmailTest() {
 			  
 			
-			 assertNotNull(userRepository.findUserDetailsByEmail("userAEmail@gmail.com"));
+			 assertNotNull(userRepo.findUserDetailsByEmail("userAEmail@gmail.com"));
 		  }
 	
 	}

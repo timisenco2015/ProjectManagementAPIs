@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.ProjectDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskDetails;
 import ca.timisencotech.projectmanagementapis.dto.UserSignUpDetails;
-import ca.timisencotech.projectmanagementapis.repository.ProjectRepository;
-import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
+import ca.timisencotech.projectmanagementapis.repository.ProjectRepo;
+import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo;
 
 
 
@@ -25,17 +25,17 @@ import ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository;
 public class TaskDetailsTest 
 {
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectRepo projectRepo;
 	
 	@Autowired
-	UserSignUpRepository userSignUpRepository;
+	UserSignUpRepo userSignUpRepo;
 	
 	@Test
 	public void testSettersGetters() 
 	{
 		
-		ProjectDetails findProjectDetails = projectRepository.findProjectDetailsByProjectName("Edmonton Project");
-		UserSignUpDetails findUserSignUpDetails =userSignUpRepository.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
+		ProjectDetails findProjectDetails = projectRepo.findProjectDetailsByProjectName("Edmonton Project");
+		UserSignUpDetails findUserSignUpDetails =userSignUpRepo.findUserSignUpDetailsByEmail("userAAEmail@gmail.com");
 
 		
 		

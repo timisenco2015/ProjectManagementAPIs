@@ -45,7 +45,7 @@ public class ProjectControllerTest {
 
 		
 		@Test
-		public void testAddNewUserLoginDetails() throws Exception
+		public void testAddProject() throws Exception
 		{
 			Date date= new Date();
 			
@@ -67,7 +67,7 @@ public class ProjectControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addNewProject")
+				      .post("/project/addnewproject")
 				      .content(asJsonString(project ))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

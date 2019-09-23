@@ -16,17 +16,17 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 
 
 @RestController
-@RequestMapping("/projectmanagement")
+@RequestMapping("/projectgroupmember")
 public class ProjectGroupMemberController 
 {
 	@Autowired
 	ProjectGroupMemberService projectGroupMemberService;
 	
 	
-	@PostMapping("/addUserToProjectGroup")
+	@PostMapping("/addmembertoprojectgroup")
 	@ResponseBody
 	public <T> Container<T> addMemberToProjectGroup(@Validated @RequestBody ProjectGroupMembers projectGroupMembers,BindingResult result) { 
-		Application.getLogger().info("User called add member to project group (/addUserToProjectGroup) api. parameters passed is: "+projectGroupMembers);
+		Application.getLogger().info("User called add member to project group (/addmembertoprojectgroup) api. parameters passed is: "+projectGroupMembers);
 	    return  projectGroupMemberService.addMemberToProjectGroup(projectGroupMembers, result);
 	    		
 	    		

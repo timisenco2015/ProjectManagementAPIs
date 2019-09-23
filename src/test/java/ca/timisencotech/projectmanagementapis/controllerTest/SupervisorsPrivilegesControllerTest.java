@@ -1,9 +1,6 @@
 package ca.timisencotech.projectmanagementapis.controllerTest;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,13 +15,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ca.timisencotech.projectmanagementapis.controller.SupervisorTasksController;
 import ca.timisencotech.projectmanagementapis.controller.SupervisorsPrivilegesController;
-import ca.timisencotech.projectmanagementapis.domain.SupervisorTasks;
 import ca.timisencotech.projectmanagementapis.domain.SupervisorsPrivileges;
 import ca.timisencotech.projectmanagementapis.dto.Privileges;
 import ca.timisencotech.projectmanagementapis.service.SupervisorsPrivilegesService;
-import ca.timisencotech.projectmanagementapis.service.SupervisorsTasksService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -52,7 +46,7 @@ public class SupervisorsPrivilegesControllerTest {
 			SupervisorsPrivileges supervisorsPrivileges = new SupervisorsPrivileges();
 			Privileges privileges; 
 			
-			supervisorsPrivileges.setPrivileges(privileges.);
+			//supervisorsPrivileges.setPrivileges(privileges.);
 			supervisorsPrivileges.setProjectName("Sherwood Project");
 			supervisorsPrivileges.setSupervisorName("userEmail@gmail.com");
 			

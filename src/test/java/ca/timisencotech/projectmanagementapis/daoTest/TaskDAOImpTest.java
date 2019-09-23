@@ -49,7 +49,7 @@ public class TaskDAOImpTest<T> {
 		 
 		 task.setTaskName("Sub Task1");
 	
-			 Container<T> taskContainer = taskDAOImp.addTaskDetails(task);
+			 Container<T> taskContainer = taskDAOImp.addTask(task);
 			String typeOfObject = taskContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
 			{
@@ -91,7 +91,7 @@ public class TaskDAOImpTest<T> {
 			 task.setDescription("Description coming soon");
 			 
 			 task.setTaskName("Sub Task2");
-			 taskContainer = taskDAOImp.addTaskDetails(task);
+			 taskContainer = taskDAOImp.addTask(task);
 			typeOfObject = taskContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{

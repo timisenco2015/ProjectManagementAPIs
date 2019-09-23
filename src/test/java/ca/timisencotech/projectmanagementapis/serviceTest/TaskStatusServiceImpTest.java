@@ -27,7 +27,7 @@ public class TaskStatusServiceImpTest<T>
 	
 
 	@Test
-	public void addTaskStatusDetailsTest() throws JSONException 
+	public void addTaskStatusTest() throws JSONException 
 	 {
 		 Date date= new Date();
 			
@@ -43,7 +43,7 @@ public class TaskStatusServiceImpTest<T>
 			taskStatus.setUpdatedDate(updatedDate);
 
 		DataBinder binder = new DataBinder(taskStatus);
-		Container<T> taskStatusContainer = taskStatusService.addTaskStatusDetails(taskStatus, binder.getBindingResult());
+		Container<T> taskStatusContainer = taskStatusService.addTaskStatus(taskStatus, binder.getBindingResult());
 					
 		String typeOfObject = taskStatusContainer.getObjectType();
 		if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -77,7 +77,7 @@ public class TaskStatusServiceImpTest<T>
 			taskStatus.setUpdatedDate(updatedDate);
 
 		binder = new DataBinder(taskStatus);
-		taskStatusContainer = taskStatusService.addTaskStatusDetails(taskStatus, binder.getBindingResult());
+		taskStatusContainer = taskStatusService.addTaskStatus(taskStatus, binder.getBindingResult());
 					
 		typeOfObject = taskStatusContainer.getObjectType();
 		if (typeOfObject.equalsIgnoreCase("Error Object"))
@@ -106,7 +106,7 @@ public class TaskStatusServiceImpTest<T>
 		taskStatus.setUpdatedDate(updatedDate);
 
 	binder = new DataBinder(taskStatus);
-	taskStatusContainer = taskStatusService.addTaskStatusDetails(taskStatus, binder.getBindingResult());
+	taskStatusContainer = taskStatusService.addTaskStatus(taskStatus, binder.getBindingResult());
 				
 	typeOfObject = taskStatusContainer.getObjectType();
 	if (typeOfObject.equalsIgnoreCase("Error Object"))

@@ -10,18 +10,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ca.timisencotech.projectmanagementapis.dto.TaskAssignedMembersDetails;
 import ca.timisencotech.projectmanagementapis.dto.TaskStatusDetails;
-import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository;
-import ca.timisencotech.projectmanagementapis.repository.TaskStatusRepository;
+import ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo;
+import ca.timisencotech.projectmanagementapis.repository.TaskStatusRepo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TaskStatusRepositoryTest {
 		 
 	@Autowired
-	TaskAssignedMemberRepository taskAssignedMemberRepository;
+	TaskAssignedMemberRepo taskAssignedMemberRepo;
 	
 	@Autowired
-	TaskStatusRepository taskStatusRepository;
+	TaskStatusRepo taskStatusRepo;
 		
 	
 		  @Test
@@ -31,7 +31,7 @@ public class TaskStatusRepositoryTest {
 				Date date= new Date();
 				
 				
-				TaskAssignedMembersDetails findTaskAssignedMembersDetails =  taskAssignedMemberRepository.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
+				TaskAssignedMembersDetails findTaskAssignedMembersDetails =  taskAssignedMemberRepo.findTaskAssignedMember("Sherwood Project","userHEmail@gmail.com","Sub Task1");
 			
 				Timestamp completedDate = new Timestamp(date.getTime());
 				taskStatusDetails.setCompletedDate(completedDate);
@@ -45,8 +45,8 @@ public class TaskStatusRepositoryTest {
 				
 				taskStatusDetails.setTaskAssignedMembersDetails(findTaskAssignedMembersDetails);
 				
-				taskStatusRepository.save(taskStatusDetails);
-				assertNotNull(taskStatusRepository.findTaskStatusDetails("Sherwood Project","userACEmail@gmail.com"));
+				taskStatusRepo.save(taskStatusDetails);
+				assertNotNull(taskStatusRepo.findTaskStatusDetails("Sherwood Project","userACEmail@gmail.com"));
 		  }
 		  
 		  
@@ -54,7 +54,7 @@ public class TaskStatusRepositoryTest {
 		  public void findProjectSupervisorByProjectAndSupervisorNameTest() {
 			  
 			
-				assertNotNull(taskStatusRepository.findTaskStatusDetails("Sherwood Project","userACEmail@gmail.com"));
+				assertNotNull(taskStatusRepo.findTaskStatusDetails("Sherwood Project","userACEmail@gmail.com"));
 				  }
 	
 	}

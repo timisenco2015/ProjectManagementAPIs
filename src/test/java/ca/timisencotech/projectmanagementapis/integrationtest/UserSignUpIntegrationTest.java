@@ -30,13 +30,13 @@ public class UserSignUpIntegrationTest {
 
 	
 	 @Test
-	public void addUserLoginDetailsTest() 
+	public void addUserLoginTest() 
 		 {
 			
 		
 			UserSignUp userSignUp = new UserSignUp();
 			userSignUp.setPassword("Test@2019");
-			userSignUp.setUserEmail("userEmail@gmail.com");
+			userSignUp.setEmail("userEmail@gmail.com");
 			
 			
 		  
@@ -47,7 +47,7 @@ public class UserSignUpIntegrationTest {
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<UserSignUp> entity = new HttpEntity<>(userSignUp, headers);
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/newUserSignUp", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/usersignup/newusersignup", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
@@ -65,7 +65,7 @@ public class UserSignUpIntegrationTest {
 			
 			UserSignUp userSignUp = new UserSignUp();
 			userSignUp.setPassword("Test@2022");
-			userSignUp.setUserEmail("userEmail@gmail.com");
+			userSignUp.setEmail("userEmail@gmail.com");
 			
 			
 		 
@@ -76,7 +76,7 @@ public class UserSignUpIntegrationTest {
 	        headers.setAccept(mediaTypeList);
 	       HttpEntity<UserSignUp> entity = new HttpEntity<>(userSignUp, headers);
 	     //  System.out.println("--==>"+entity.getBody());
-	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/projectmanagement/changePassword", entity,String.class);
+	        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/usersignup/changePassword", entity,String.class);
 	      // String expectedOutput = "{object:{countryId:20,countryShortCode:ITY,countryName:Italy,phoneCode:290},objectType:Class Object}";
 	        assertEquals(HttpStatus.OK, response.getStatusCode());
 	        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());

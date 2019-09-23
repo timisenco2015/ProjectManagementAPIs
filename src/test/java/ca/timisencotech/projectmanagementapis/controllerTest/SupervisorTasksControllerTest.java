@@ -43,7 +43,7 @@ public class SupervisorTasksControllerTest {
 
 		
 		@Test
-		public void testAddNewUser() throws Exception
+		public void testNewSupervisorTask() throws Exception
 		{
 			SupervisorTasks supervisorTasks = new  SupervisorTasks();
 			supervisorTasks.setProjectName("Sherwood Project");
@@ -55,7 +55,7 @@ public class SupervisorTasksControllerTest {
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/addTaskToSupervisotTaskList")
+				      .post("/supervisortasks/addtasktosupervisottasklist")
 				      .content(asJsonString(supervisorTasks))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

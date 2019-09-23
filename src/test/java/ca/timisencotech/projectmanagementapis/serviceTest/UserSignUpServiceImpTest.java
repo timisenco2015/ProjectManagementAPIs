@@ -26,11 +26,11 @@ public class UserSignUpServiceImpTest<T>
 	
 
 	@Test
-	public void addUserSignUpDetailsTest() throws JSONException 
+	public void addUserSignUpTest() throws JSONException 
 	 {
 		  
 			UserSignUp userSignUp = new UserSignUp();
-			userSignUp.setUserEmail("userHEmail@gmail.com");
+			userSignUp.setEmail("userHEmail@gmail.com");
 			userSignUp.setPassword("Test@2018");
 			
 
@@ -42,7 +42,7 @@ public class UserSignUpServiceImpTest<T>
 			{
 			 
 				UserSignUp resultUserSignUpDetail=	(UserSignUp)userLoginDetailsContainer.getObject();
-				assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+				assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getEmail());
 				assertEquals("Test@2018",resultUserSignUpDetail.getPassword());
 			
 				
@@ -72,12 +72,12 @@ public class UserSignUpServiceImpTest<T>
 	
 		 
 	 	@Test
-		 public void addUserLoginDetailNullConstraintTest() throws JSONException
+		 public void addUserLoginNullConstraintTest() throws JSONException
 		 {
 			
 
 			UserSignUp userSignUp = new UserSignUp();
-			userSignUp.setUserEmail("userGEmail@gmail.com");
+			userSignUp.setEmail("userGEmail@gmail.com");
 			
 			
 
@@ -89,7 +89,7 @@ public class UserSignUpServiceImpTest<T>
 			{
 			 
 				UserSignUp resultUserSignUpDetail=	(UserSignUp)userLoginDetailsContainer.getObject();
-				assertEquals("userGEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+				assertEquals("userGEmail@gmail.com", resultUserSignUpDetail.getEmail());
 				assertEquals("Test@2018",resultUserSignUpDetail.getPassword());
 			
 				
@@ -122,7 +122,7 @@ public class UserSignUpServiceImpTest<T>
 			 
 			 //Test for update user password
 			 UserSignUp userSignUp = new UserSignUp();
-				userSignUp.setUserEmail("userHEmail@gmail.com");
+				userSignUp.setEmail("userHEmail@gmail.com");
 				userSignUp.setPassword("Test@2023");
 				
 				 DataBinder binder = new DataBinder(userSignUp);
@@ -133,7 +133,7 @@ public class UserSignUpServiceImpTest<T>
 				{
 				 
 					UserSignUp resultUserSignUpDetail=	(UserSignUp)userLoginDetailsContainer.getObject();
-					assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getUserEmail());
+					assertEquals("userEmail@gmail.com", resultUserSignUpDetail.getEmail());
 					assertEquals("Test@2023",resultUserSignUpDetail.getPassword());
 				
 					

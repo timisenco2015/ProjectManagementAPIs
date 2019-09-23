@@ -41,17 +41,17 @@ public class UserSignUpControllerTest {
 
 		
 		@Test
-		public void testAddNewUserSignUpDetails() throws Exception
+		public void testAddNewUserSignUp() throws Exception
 		{
 			
 			UserSignUp  userSignUp = new  UserSignUp();
-			userSignUp.setUserEmail("ayo.o.owu@gmail.com");	
+			userSignUp.setEmail("ayo.o.owu@gmail.com");	
 			userSignUp.setPassword("Test@2018");
 			
 			
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/newUserSignUp")
+				      .post("/usersignup/newusersignup")
 				      .content(asJsonString(userSignUp))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))
@@ -66,11 +66,11 @@ public class UserSignUpControllerTest {
 		public void testUpdateUserPassword() throws Exception
 		{
 			UserSignUp  userSignUp = new  UserSignUp();
-			userSignUp.setUserEmail("ayo.o.owu@gmail.com");	
+			userSignUp.setEmail("ayo.o.owu@gmail.com");	
 			userSignUp.setPassword("Test@2018");
 	
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/changePassword")
+				      .post("/usersignup/changePassword")
 				      .content(asJsonString(userSignUp))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

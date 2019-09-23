@@ -14,7 +14,7 @@ import ca.timisencotech.projectmanagementapis.validation.Container;
 import ca.timisencotech.projectmanagementapis.validation.ValidateProjectGroupMember;
 
 
-@Service("ProjectGroupMemberDetailsService")
+@Service("ProjectGroupMemberService")
 @Transactional(propagation=Propagation.SUPPORTS, rollbackFor = Exception.class)
 public class ProjectGroupMemberServiceImpl<T> implements ProjectGroupMemberService{
 	
@@ -47,7 +47,7 @@ public class ProjectGroupMemberServiceImpl<T> implements ProjectGroupMemberServi
 			
 			else
 			{
-				Application.getLogger().info("addProjectGroupMemberDetails method in ProjectGroupMemberDetails Service Implementation. Member  has already been added to project group in the database");
+				Application.getLogger().info("addProjectGroupMember method in ProjectGroupMember Service Implementation. Member  has already been added to project group in the database");
 			    
 				genericObject = projectGroupMemberDAOImp.addMemberToProjectGroup(projectGroupMembers);
 					
@@ -77,7 +77,7 @@ public class ProjectGroupMemberServiceImpl<T> implements ProjectGroupMemberServi
 			
 			else
 			{
-				Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMemberDetails Service Implementation. Member project group has already been changed in the database");
+				Application.getLogger().info("changeProjectMemberGroup method in ProjectGroupMember Service Implementation. Member project group has already been changed in the database");
 			    
 				genericObject = projectGroupMemberDAOImp.changeProjectMemberGroup(projectGroupMembers);
 					
@@ -107,7 +107,7 @@ public class ProjectGroupMemberServiceImpl<T> implements ProjectGroupMemberServi
 			
 			else
 			{
-				Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMemberDetails Service Implementation. Member  has already been removed from project group in the database");
+				Application.getLogger().info("removeMemberFromProjectGroup method in ProjectGroupMembers Service Implementation. Member  has already been removed from project group in the database");
 			    
 				genericObject = projectGroupMemberDAOImp.removeMemberFromProjectGroup(projectGroupMembers);
 					

@@ -45,7 +45,7 @@ public class TaskControllerTest {
 
 		
 		@Test
-		public void testAddNewUserLoginDetails() throws Exception
+		public void testAddNewTask() throws Exception
 		{
 			Date date= new Date();
 			
@@ -70,7 +70,7 @@ public class TaskControllerTest {
 			task.setTaskName("Sub Task1");
 			
 			mockMvc.perform( MockMvcRequestBuilders
-				      .post("/projectmanagement/createNewTask")
+				      .post("/task/createnewtask")
 				      .content(asJsonString(task))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON))

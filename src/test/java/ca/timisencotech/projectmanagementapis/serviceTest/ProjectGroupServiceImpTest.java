@@ -30,7 +30,7 @@ public class ProjectGroupServiceImpTest<T>
 	
 
 	@Test
-	public void addProjectDetailsTest() throws JSONException 
+	public void addProjectGroupTest() throws JSONException 
 	 {
 		 Date date= new Date();
 			
@@ -47,7 +47,7 @@ public class ProjectGroupServiceImpTest<T>
 		  	
 
 			 DataBinder binder = new DataBinder(projectGroup);
-			 Container<T> projectGroupContainer = projectGroupService.addProjectGroupDetails(projectGroup, binder.getBindingResult());
+			 Container<T> projectGroupContainer = projectGroupService.addProjectGroup(projectGroup, binder.getBindingResult());
 					
 			String typeOfObject = projectGroupContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -76,7 +76,7 @@ public class ProjectGroupServiceImpTest<T>
 			 projectGroup.setCreatedBy("userAEmail@gmail.com");
 			
 			 binder = new DataBinder(projectGroup);
-			projectGroupContainer = projectGroupService.addProjectGroupDetails(projectGroup, binder.getBindingResult());
+			projectGroupContainer = projectGroupService.addProjectGroup(projectGroup, binder.getBindingResult());
 			typeOfObject = projectGroupContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{
@@ -100,7 +100,7 @@ public class ProjectGroupServiceImpTest<T>
 				
 					
 				 binder = new DataBinder(projectGroup);
-				projectGroupContainer = projectGroupService.addProjectGroupDetails(projectGroup, binder.getBindingResult());
+				projectGroupContainer = projectGroupService.addProjectGroup(projectGroup, binder.getBindingResult());
 				typeOfObject = projectGroupContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 					{

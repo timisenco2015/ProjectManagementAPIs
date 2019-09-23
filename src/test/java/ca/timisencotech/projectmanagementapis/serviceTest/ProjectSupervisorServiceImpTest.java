@@ -26,7 +26,7 @@ public class ProjectSupervisorServiceImpTest<T>
 	
 
 	@Test
-	public void addProjectSupervisorsDetailsTest() throws JSONException 
+	public void addProjectSupervisorsTest() throws JSONException 
 	 {
 		ProjectSupervisors projectSupervisors = new ProjectSupervisors();
 		projectSupervisors.setIsActive(true);
@@ -37,7 +37,7 @@ public class ProjectSupervisorServiceImpTest<T>
 		  	
 
 			 DataBinder binder = new DataBinder(projectSupervisors);
-			 Container<T> projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisorsDetails(projectSupervisors, binder.getBindingResult());
+			 Container<T> projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisors(projectSupervisors, binder.getBindingResult());
 					
 			String typeOfObject = projectSupervisorsContainer.getObjectType();
 			if(typeOfObject.equalsIgnoreCase("Class Object"))
@@ -59,7 +59,7 @@ public class ProjectSupervisorServiceImpTest<T>
 			projectSupervisors.setSupervisorName("userEmail@gmail.com");
 			
 			binder = new DataBinder(projectSupervisors);
-			projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisorsDetails(projectSupervisors, binder.getBindingResult());
+			projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisors(projectSupervisors, binder.getBindingResult());
 			typeOfObject = projectSupervisorsContainer.getObjectType();
 				if (typeOfObject.equalsIgnoreCase("Error Object"))
 				{
@@ -79,7 +79,7 @@ public class ProjectSupervisorServiceImpTest<T>
 				projectSupervisors.setSupervisorName("userEmail@gmail.com");
 				
 				  binder = new DataBinder(projectSupervisors);
-				  projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisorsDetails(projectSupervisors, binder.getBindingResult());
+				  projectSupervisorsContainer = projectSupervisorsService.addProjectSupervisors(projectSupervisors, binder.getBindingResult());
 							
 					typeOfObject = projectSupervisorsContainer.getObjectType();
 					if (typeOfObject.equalsIgnoreCase("Error Object"))

@@ -43,26 +43,26 @@ import org.springframework.web.client.RestTemplate;
 })
 
 @EnableJpaRepositories(basePackageClasses = {
-		ca.timisencotech.projectmanagementapis.repository.CountriesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.StatesProvincesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.CitiesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.CompaniesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.UserLoginRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.UserRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.ProjectRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.UserSignUpRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.ProjectStatusRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.TaskStatusRepository.class,
+		ca.timisencotech.projectmanagementapis.repository.CountriesRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.StatesProvincesRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.CitiesRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.CompaniesRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.UserLoginRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.UserRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.ProjectRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.UserSignUpRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.ProjectSupervisorsRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.ProjectGroupRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.ProjectStatusRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.TaskStatusRepo.class,
 		ca.timisencotech.projectmanagementapis.repository.ProjectGroupMemberRepo.class,
-		ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.SelfAppraisalsRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.SupervisorsPrivilegesRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepository.class,
-		ca.timisencotech.projectmanagementapis.repository.TaskRepository.class})
+		ca.timisencotech.projectmanagementapis.repository.TaskAssignedMemberRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.SupervisorAppraisalsRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.SelfAppraisalsRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.SupervisorsMembersRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.SupervisorsPrivilegesRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.SupervisorTasksRepo.class,
+		ca.timisencotech.projectmanagementapis.repository.TaskRepo.class})
 
 public class Application {
 	
